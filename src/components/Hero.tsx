@@ -9,7 +9,7 @@ export function Hero() {
       className="section-anchor bg-brand-deep text-primary-foreground"
     >
       <div className="grid min-h-[calc(100svh-5rem)] lg:grid-cols-[1.12fr_.88fr]">
-        <div className="relative isolate flex min-h-[38rem] items-end overflow-hidden">
+        <div className="relative isolate flex min-h-[38rem] min-w-0 items-end overflow-hidden">
           <img
             className="absolute inset-0 size-full object-cover object-right"
             src="/assets/hero-tanker-operation.webp"
@@ -45,7 +45,7 @@ export function Hero() {
 
         <div
           id="diagnostico"
-          className="section-anchor flex items-center bg-card px-5 py-12 text-card-foreground sm:px-8 lg:px-12"
+          className="section-anchor flex min-w-0 items-center bg-card px-5 py-12 text-card-foreground sm:px-8 lg:px-12"
         >
           <div className="mx-auto w-full max-w-xl">
             <TechnicalRequestForm />

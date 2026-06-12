@@ -40,7 +40,7 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <Button asChild>
+          <Button asChild className="min-h-11">
             <a href="#diagnostico">
               <MessageCircle data-icon="inline-start" />
               Falar com especialista
@@ -51,7 +51,7 @@ export function Header() {
         <Sheet>
           <SheetTrigger asChild>
             <Button
-              className="lg:hidden"
+              className="size-11 lg:hidden"
               size="icon"
               type="button"
               variant="outline"
@@ -82,7 +82,7 @@ export function Header() {
                 </SheetClose>
               ))}
               <SheetClose asChild>
-                <Button asChild className="mt-4">
+                <Button asChild className="mt-4 min-h-11">
                   <a href="#diagnostico">
                     <MessageCircle data-icon="inline-start" />
                     Falar com especialista

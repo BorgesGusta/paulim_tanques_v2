@@ -14,7 +14,7 @@ export function ContactCta() {
             Conte o que sua operação precisa
           </h2>
         </div>
-        <Button asChild size="lg" variant="secondary">
+        <Button asChild className="min-h-11" size="lg" variant="secondary">
           <a href="#diagnostico">
             Preencher formulário técnico
             <ArrowRight data-icon="inline-end" />

@@ -145,7 +145,7 @@ export function TechnicalRequestForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+    <div className="min-w-0 rounded-2xl border border-border bg-card p-6 sm:p-8">
       <div className="mb-8 max-w-2xl">
         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary">
           Diagnóstico inicial
@@ -165,6 +165,7 @@ export function TechnicalRequestForm() {
             <Field data-invalid={Boolean(errors.name)}>
               <FieldLabel htmlFor="technical-name">Nome</FieldLabel>
               <Input
+                className="h-11"
                 ref={nameRef}
                 id="technical-name"
                 name="name"
@@ -188,6 +189,7 @@ export function TechnicalRequestForm() {
                 Empresa ou operação
               </FieldLabel>
               <Input
+                className="h-11"
                 ref={companyRef}
                 id="technical-company"
                 name="company"
@@ -213,6 +215,7 @@ export function TechnicalRequestForm() {
                 Telefone com DDD
               </FieldLabel>
               <Input
+                className="h-11"
                 ref={phoneRef}
                 id="technical-phone"
                 name="phone"
@@ -250,7 +253,7 @@ export function TechnicalRequestForm() {
                 <SelectTrigger
                   ref={segmentRef}
                   id="technical-segment"
-                  className="w-full"
+                  className="!h-11 w-full"
                   aria-invalid={Boolean(errors.segment)}
                   aria-describedby={
                     errors.segment ? 'technical-segment-error' : undefined
@@ -281,6 +284,7 @@ export function TechnicalRequestForm() {
               O que sua operação precisa?
             </FieldLabel>
             <Textarea
+              className="min-h-28"
               ref={detailsRef}
               id="technical-details"
               name="details"
@@ -306,7 +310,7 @@ export function TechnicalRequestForm() {
           <Button
             type="submit"
             size="lg"
-            className="w-full sm:w-fit"
+            className="min-h-11 w-full sm:w-fit"
             disabled={isPreparing}
           >
             {isPreparing ? (
@@ -338,7 +342,11 @@ export function TechnicalRequestForm() {
               O navegador bloqueou a abertura automática. Use o link abaixo
               para continuar.
             </span>
-            <Button asChild variant="outline">
+            <Button
+              asChild
+              className="min-h-11 w-full whitespace-normal"
+              variant="outline"
+            >
               <a href={fallbackUrl} target="_blank" rel="noreferrer">
                 Abrir WhatsApp manualmente
               </a>
@@ -377,8 +385,13 @@ export function TechnicalRequestForm() {
           </dl>
 
           <AlertDialogFooter>
-            <AlertDialogCancel>Revisar dados</AlertDialogCancel>
-            <AlertDialogAction onClick={handleOpenWhatsApp}>
+            <AlertDialogCancel className="min-h-11">
+              Revisar dados
+            </AlertDialogCancel>
+            <AlertDialogAction
+              className="min-h-11"
+              onClick={handleOpenWhatsApp}
+            >
               Abrir conversa no WhatsApp
             </AlertDialogAction>
           </AlertDialogFooter>
