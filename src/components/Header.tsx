@@ -15,14 +15,14 @@ import { navItems } from '@/data/site'
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur">
-      <div className="section-shell flex min-h-20 items-center justify-between gap-6">
+      <div className="section-shell flex min-h-16 items-center justify-between gap-6">
         <a
           className="inline-flex min-h-11 items-center"
           href="#inicio"
           aria-label="Paulim Tanques - início"
         >
           <img
-            className="h-auto w-40"
+            className="h-14 w-36 object-cover object-center"
             src="/assets/paulim-tanques-logo.png"
             alt="Paulim Tanques"
           />

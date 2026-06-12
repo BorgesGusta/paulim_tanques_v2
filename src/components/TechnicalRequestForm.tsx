@@ -145,24 +145,27 @@ export function TechnicalRequestForm() {
   }
 
   return (
-    <div className="min-w-0 rounded-2xl border border-border bg-card p-6 sm:p-8">
-      <div className="mb-8 max-w-2xl">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+    <div className="min-w-0 rounded-2xl border border-border bg-card p-6 sm:p-8 lg:p-5">
+      <div className="mb-8 max-w-2xl lg:mb-4">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary lg:mb-1">
           Diagnóstico inicial
         </p>
-        <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-3xl lg:leading-tight">
           Fale com um especialista técnico
         </h2>
-        <p className="mt-3 text-base leading-7 text-muted-foreground">
+        <p className="mt-3 text-base leading-7 text-muted-foreground lg:mt-1 lg:text-sm lg:leading-5">
           Conte o contexto da operação. Você revisa os dados antes de abrir a
           conversa.
         </p>
       </div>
 
       <form onSubmit={handleSubmit} noValidate>
-        <FieldGroup>
-          <div className="grid gap-5 sm:grid-cols-2">
-            <Field data-invalid={Boolean(errors.name)}>
+        <FieldGroup className="lg:gap-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:gap-3">
+            <Field
+              className="lg:gap-1"
+              data-invalid={Boolean(errors.name)}
+            >
               <FieldLabel htmlFor="technical-name">Nome</FieldLabel>
               <Input
                 className="h-11"
@@ -184,7 +187,10 @@ export function TechnicalRequestForm() {
               ) : null}
             </Field>
 
-            <Field data-invalid={Boolean(errors.company)}>
+            <Field
+              className="lg:gap-1"
+              data-invalid={Boolean(errors.company)}
+            >
               <FieldLabel htmlFor="technical-company">
                 Empresa ou operação
               </FieldLabel>
@@ -209,8 +215,11 @@ export function TechnicalRequestForm() {
             </Field>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            <Field data-invalid={Boolean(errors.phone)}>
+          <div className="grid gap-5 sm:grid-cols-2 lg:gap-3">
+            <Field
+              className="lg:gap-1"
+              data-invalid={Boolean(errors.phone)}
+            >
               <FieldLabel htmlFor="technical-phone">
                 Telefone com DDD
               </FieldLabel>
@@ -229,7 +238,7 @@ export function TechnicalRequestForm() {
                 }
                 onChange={(event) => updateValue('phone', event.target.value)}
               />
-              <FieldDescription>
+              <FieldDescription className="lg:text-xs lg:leading-4">
                 Usaremos este número somente para o atendimento solicitado.
               </FieldDescription>
               {errors.phone ? (
@@ -239,7 +248,10 @@ export function TechnicalRequestForm() {
               ) : null}
             </Field>
 
-            <Field data-invalid={Boolean(errors.segment)}>
+            <Field
+              className="lg:gap-1"
+              data-invalid={Boolean(errors.segment)}
+            >
               <FieldLabel htmlFor="technical-segment">Segmento</FieldLabel>
               <Select
                 value={values.segment}
@@ -279,12 +291,15 @@ export function TechnicalRequestForm() {
             </Field>
           </div>
 
-          <Field data-invalid={Boolean(errors.details)}>
+          <Field
+            className="lg:gap-1"
+            data-invalid={Boolean(errors.details)}
+          >
             <FieldLabel htmlFor="technical-details">
               O que sua operação precisa?
             </FieldLabel>
             <Textarea
-              className="min-h-28"
+              className="min-h-28 lg:min-h-24"
               ref={detailsRef}
               id="technical-details"
               name="details"
@@ -297,7 +312,7 @@ export function TechnicalRequestForm() {
               placeholder="Descreva o equipamento, a aplicação ou a necessidade da operação."
               onChange={(event) => updateValue('details', event.target.value)}
             />
-            <FieldDescription>
+            <FieldDescription className="lg:text-xs lg:leading-4">
               Uma breve descrição já ajuda o especialista a iniciar a análise.
             </FieldDescription>
             {errors.details ? (
