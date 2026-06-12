@@ -145,7 +145,7 @@ export function TechnicalRequestForm() {
   }
 
   return (
-    <div className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
+    <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
       <div className="mb-8 max-w-2xl">
         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary">
           Diagnóstico inicial
