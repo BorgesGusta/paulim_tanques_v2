@@ -539,25 +539,21 @@ export const solutions = [
     title: 'Equipamentos',
     description:
       'Reservatórios e componentes para manter transporte e abastecimento confiáveis.',
-    icon: 'container',
   },
   {
     title: 'Mangueiras e conexões',
     description:
       'Soluções de sucção, descarga, vedação e acoplamento para cada aplicação.',
-    icon: 'workflow',
   },
   {
     title: 'Peças e acessórios',
     description:
       'Itens compatíveis para manutenção, reposição e adequação de caminhões-tanque.',
-    icon: 'wrench',
   },
   {
     title: 'Segurança e sinalização',
     description:
       'EPIs e sinalização que ajudam a organizar operações com cargas sensíveis.',
-    icon: 'shield',
   },
 ] as const
 
@@ -1387,12 +1383,12 @@ import {
 import { SectionHeading } from '@/components/SectionHeading'
 import { solutions } from '@/data/site'
 
-const solutionIcons = {
-  container: Container,
-  workflow: Workflow,
-  wrench: Wrench,
-  shield: ShieldCheck,
-} satisfies Record<(typeof solutions)[number]['icon'], LucideIcon>
+const solutionIcons = [
+  Container,
+  Workflow,
+  Wrench,
+  ShieldCheck,
+] satisfies readonly LucideIcon[]
 
 export function Solutions() {
   return (
@@ -1413,7 +1409,7 @@ export function Solutions() {
 
         <ol className="border-t">
           {solutions.map((solution, index) => {
-            const Icon = solutionIcons[solution.icon]
+            const Icon = solutionIcons[index]
 
             return (
               <li
