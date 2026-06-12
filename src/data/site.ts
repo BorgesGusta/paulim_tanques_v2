@@ -1,226 +1,94 @@
-export type IconName =
-  | 'award'
-  | 'check'
-  | 'clipboard'
-  | 'clock'
-  | 'factory'
-  | 'flame'
-  | 'gauge'
-  | 'handshake'
-  | 'phone'
-  | 'shield'
-  | 'snowflake'
-  | 'sparkles'
-  | 'truck'
-  | 'wrench';
+import { WHATSAPP_NUMBER } from '@/lib/technical-request'
 
-export interface NavItem {
-  label: string;
-  href: string;
-}
+export const navItems = [
+  { label: 'Soluções', href: '#solucoes' },
+  { label: 'Setores', href: '#setores' },
+  { label: 'A Paulim', href: '#paulim' },
+  { label: 'Dúvidas', href: '#duvidas' },
+] as const
 
-export interface ServiceItem {
-  title: string;
-  description: string;
-  icon: IconName;
-}
+export const trustItems = [
+  { value: '15 anos', label: 'de experiência técnica' },
+  { value: 'Atendimento técnico', label: 'orientação antes da compra' },
+  { value: 'Norte do Brasil', label: 'base regional em Marabá' },
+] as const
 
-export interface DifferentialItem {
-  title: string;
-  description: string;
-  icon: IconName;
-}
-
-export interface ProcessStep {
-  title: string;
-  description: string;
-  icon: IconName;
-}
-
-export interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-export interface ContactInfo {
-  whatsappLabel: string;
-  whatsappHref: string;
-  phoneLabel: string;
-  phoneRaw: string;
-  serviceArea: string;
-}
-
-export const contact: ContactInfo = {
-  whatsappLabel: '(00) 00000-0000',
-  whatsappHref:
-    'https://wa.me/5500000000000?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20servi%C3%A7os%20em%20tanques.',
-  phoneLabel: '(00) 00000-0000',
-  phoneRaw: '+5500000000000',
-  serviceArea: 'Atendimento para empresas, frotas e operações industriais.',
-};
-
-export const navItems: NavItem[] = [
-  { label: 'Serviços', href: '#servicos' },
-  { label: 'Diferenciais', href: '#diferenciais' },
-  { label: 'Processo', href: '#processo' },
-  { label: 'Empresa', href: '#empresa' },
-  { label: 'FAQ', href: '#faq' },
-];
-
-export const heroStats = [
+export const solutions = [
   {
-    label: 'Tanques inflamáveis',
-    value: 'Serviço técnico para operações críticas',
-    icon: 'flame' as IconName,
-  },
-  {
-    label: 'Vapor a frio',
-    value: 'Procedimento com foco em controle e segurança',
-    icon: 'snowflake' as IconName,
-  },
-  {
-    label: 'Manutenção especializada',
-    value: 'Caminhões-tanque, válvulas e sistemas',
-    icon: 'wrench' as IconName,
-  },
-];
-
-export const services: ServiceItem[] = [
-  {
-    title: 'Fabricação e manutenção de tanques',
+    title: 'Equipamentos',
     description:
-      'Soluções para tanques e caminhões-tanque com atenção a estrutura, vedação, componentes e acabamento.',
-    icon: 'truck',
+      'Reservatórios e componentes para manter transporte e abastecimento confiáveis.',
   },
   {
-    title: 'Tanques inflamáveis',
+    title: 'Mangueiras e conexões',
     description:
-      'Serviços para operações que transportam ou armazenam produtos inflamáveis, com foco em segurança operacional.',
-    icon: 'flame',
+      'Soluções de sucção, descarga, vedação e acoplamento para cada aplicação.',
   },
   {
-    title: 'Vapor a frio',
+    title: 'Peças e acessórios',
     description:
-      'Atendimento técnico para processos de vapor a frio e preparação de tanques com equipamentos adequados.',
-    icon: 'snowflake',
+      'Itens compatíveis para manutenção, reposição e adequação de caminhões-tanque.',
   },
   {
-    title: 'Reparos e substituições',
+    title: 'Segurança e sinalização',
     description:
-      'Correções em válvulas, conexões, tubulações, suportes e pontos de desgaste que afetam a rotina da frota.',
-    icon: 'wrench',
+      'EPIs e sinalização que ajudam a organizar operações com cargas sensíveis.',
   },
-  {
-    title: 'Inspeção e diagnóstico',
-    description:
-      'Avaliação inicial para identificar riscos, prioridades e a melhor sequência de intervenção.',
-    icon: 'clipboard',
-  },
-  {
-    title: 'Adequações técnicas',
-    description:
-      'Apoio para melhorar confiabilidade, organização dos sistemas e disponibilidade dos equipamentos.',
-    icon: 'shield',
-  },
-];
+] as const
 
-export const serviceFeatures: string[] = [
-  'Fabricação completa de tanques sob medida',
-  'Manutenção preventiva e corretiva para frotas',
-  'Sistemas de válvulas e conexões industriais',
-];
+export const sectors = [
+  'Postos e distribuidoras de combustíveis',
+  'Agronegócio',
+  'Transporte e aviação',
+  'Indústrias',
+] as const
 
-export const serviceGallery = [
+export const processSteps = [
   {
-    image: '/assets/hero-tanker-workshop.png',
-    label: 'Fabricação de tanques',
-  },
-  {
-    image: '/assets/maintenance-valves.png',
-    label: 'Manutenção técnica',
-  },
-  {
-    image: '/assets/cold-vapor-service.png',
-    label: 'Vapor a frio',
-  },
-];
-
-export const differentials: DifferentialItem[] = [
-  {
-    title: 'Confiança em serviço crítico',
+    number: '01',
+    title: 'Envie o contexto',
     description:
-      'Atendimento pensado para reduzir risco, evitar improviso e manter a operação em ordem.',
-    icon: 'handshake',
+      'Informe operação, segmento e necessidade, mesmo sem conhecer o nome técnico da peça.',
   },
   {
-    title: 'Qualidade no detalhe',
+    number: '02',
+    title: 'Receba uma análise',
     description:
-      'Olhar técnico para acabamento, vedação, componentes e pontos que impactam a durabilidade.',
-    icon: 'award',
+      'Um especialista organiza as informações e identifica os próximos dados necessários.',
   },
   {
-    title: 'Profissionalismo em campo',
+    number: '03',
+    title: 'Avance com segurança',
     description:
-      'Comunicação objetiva, avaliação clara e execução organizada para empresas e frotas.',
-    icon: 'check',
+      'A Paulim recomenda a solução, o fornecimento ou o atendimento adequado ao caso.',
   },
-  {
-    title: 'Segurança como critério',
-    description:
-      'Serviços conduzidos com postura preventiva em tanques, conexões e sistemas sensíveis.',
-    icon: 'shield',
-  },
-];
+] as const
 
-export const processSteps: ProcessStep[] = [
+export const faqs = [
   {
-    title: 'Diagnóstico',
-    description: 'Entendimento do tanque, histórico, tipo de carga e urgência da operação.',
-    icon: 'clipboard',
-  },
-  {
-    title: 'Orçamento',
-    description: 'Definição do escopo técnico, prioridade e recursos necessários para execução.',
-    icon: 'phone',
-  },
-  {
-    title: 'Execução',
-    description: 'Serviço realizado com equipe, ferramentas e controle adequados ao tipo de tanque.',
-    icon: 'wrench',
-  },
-  {
-    title: 'Conferência',
-    description: 'Checagens finais para liberar o equipamento com mais previsibilidade e confiança.',
-    icon: 'gauge',
-  },
-];
-
-export const about = {
-  title: 'Uma marca construída para unir tradição, tecnologia e segurança.',
-  description:
-    'A Paulim Tanques atua com soluções para fabricação e manutenção de caminhões-tanque, tanques e sistemas relacionados. A identidade da marca nasce do próprio caminhão-tanque formando a letra P, símbolo de uma operação técnica, direta e comprometida com o cliente.',
-  values: ['Confiança', 'Qualidade', 'Profissionalismo', 'Inovação'],
-};
-
-export const faqs: FAQItem[] = [
-  {
-    question: 'Como solicito um orçamento?',
+    question: 'Preciso saber o nome exato da peça?',
     answer:
-      'O caminho principal é pelo WhatsApp. Envie o tipo de tanque, cidade, urgência e fotos iniciais para uma avaliação mais rápida.',
+      'Não. Descreva a aplicação, o equipamento e o problema percebido. Fotos e medidas podem ser solicitadas pelo especialista na conversa.',
   },
   {
-    question: 'A Paulim Tanques atende empresas com frota?',
+    question: 'A Paulim atende empresas com frota?',
     answer:
-      'Sim. A landing foi estruturada para atendimento B2B, incluindo transportadoras, indústrias, postos e operações com caminhões-tanque.',
+      'Sim. O atendimento é direcionado a proprietários, gestores de frota, manutenção, compras e segurança de operações B2B.',
   },
   {
-    question: 'Quais serviços podem entrar na avaliação?',
+    question: 'Quais segmentos podem solicitar atendimento?',
     answer:
-      'Manutenção, reparos, inspeção, adequações, serviços em tanques inflamáveis e demandas relacionadas a vapor a frio.',
+      'Postos e distribuidoras, agronegócio, transporte, aviação, indústrias e outras operações que utilizam tanques ou componentes relacionados.',
   },
   {
-    question: 'O atendimento considera segurança operacional?',
+    question: 'O formulário já gera um orçamento?',
     answer:
-      'Sim. O fluxo proposto prioriza diagnóstico, execução controlada e conferência técnica antes da liberação do equipamento.',
+      'Não. Ele reúne o contexto inicial para que um especialista avalie a necessidade antes de recomendar produtos, serviços ou próximos passos.',
   },
-];
+] as const
+
+export const contact = {
+  whatsappNumber: WHATSAPP_NUMBER,
+  whatsappLabel: '(94) 99999-9999',
+  serviceArea: 'Marabá e Norte do Brasil',
+} as const
