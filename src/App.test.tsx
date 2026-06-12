@@ -24,4 +24,16 @@ describe('Paulim Tanques landing page', () => {
       screen.getAllByRole('button', { name: 'Enviar dados técnicos' }),
     ).toHaveLength(1)
   })
+
+  it('aligns the hero content with the shared desktop shell', () => {
+    const { container } = render(<App />)
+    const heroGrid = container.querySelector('#inicio > div')
+
+    expect(heroGrid).toHaveClass(
+      'lg:mx-auto',
+      'lg:w-full',
+      'lg:max-w-7xl',
+      'lg:px-12',
+    )
+  })
 })

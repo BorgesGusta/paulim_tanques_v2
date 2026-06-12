@@ -6,17 +6,17 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="section-anchor bg-brand-deep text-primary-foreground"
+      className="section-anchor overflow-hidden bg-card text-card-foreground"
     >
-      <div className="grid min-h-[calc(100svh-5rem)] lg:grid-cols-[1.12fr_.88fr]">
-        <div className="relative isolate flex min-h-[38rem] min-w-0 items-end overflow-hidden">
+      <div className="grid min-h-[calc(100svh-5rem)] lg:mx-auto lg:w-full lg:max-w-7xl lg:grid-cols-[1.12fr_.88fr] lg:gap-12 lg:px-12">
+        <div className="relative isolate flex min-h-[38rem] min-w-0 items-end">
           <img
-            className="absolute inset-0 size-full object-cover object-right"
+            className="absolute inset-0 size-full object-cover object-right lg:inset-y-0 lg:right-0 lg:left-auto lg:h-full lg:w-screen lg:max-w-none"
             src="/assets/hero-tanker-operation.webp"
             alt="Especialista inspecionando equipamentos de um caminhão-tanque em operação."
           />
-          <div className="absolute inset-0 bg-brand-deep/75" />
-          <div className="section-shell relative flex flex-col gap-7 py-16 lg:py-24">
+          <div className="absolute inset-0 bg-brand-deep/75 lg:inset-y-0 lg:right-0 lg:left-auto lg:w-screen" />
+          <div className="relative flex flex-col gap-7 px-5 py-16 text-primary-foreground sm:px-8 lg:px-0 lg:py-24">
             <p className="text-sm font-bold uppercase tracking-[0.16em] text-primary-foreground/70">
               Especialista desde o início
             </p>
@@ -45,7 +45,7 @@ export function Hero() {
 
         <div
           id="diagnostico"
-          className="section-anchor flex min-w-0 items-center bg-card px-5 py-12 text-card-foreground sm:px-8 lg:px-12"
+          className="section-anchor flex min-w-0 items-center bg-card px-5 py-12 text-card-foreground sm:px-8 lg:px-0 lg:py-16"
         >
           <div className="mx-auto w-full max-w-xl">
             <TechnicalRequestForm />
