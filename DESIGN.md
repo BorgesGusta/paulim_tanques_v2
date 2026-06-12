@@ -2,6 +2,11 @@
 ---
 name: Paulim Tanques
 description: Engenharia de proximidade para operações críticas.
+colors:
+  green-light: "#6AB42D"
+  green-mid: "#3DAA34"
+  green-dark: "#0D8336"
+  green-deep: "#065320"
 ---
 
 # Design System: Paulim Tanques
@@ -45,30 +50,22 @@ identidade visual deve permanecer inequivocamente Paulim Tanques.
 ## Colors
 
 A estratégia é **Committed**: os verdes oficiais da Paulim Tanques carregam de
-30% a 60% das superfícies principais. A paleta exata deve ser extraída do manual
-e dos arquivos vetoriais oficiais durante a implementação.
+30% a 60% das superfícies principais. Os quatro tons formam a paleta oficial e
+devem preservar seus valores exatos em toda implementação.
 
 ### Primary
 
-- **Verde Estrutural Profundo** ([valor oficial a ser resolvido na
-  implementação]): fundo de hero, rodapé, grandes blocos institucionais e
-  superfícies que precisam transmitir estabilidade.
-- **Verde Operacional** ([valor oficial a ser resolvido na implementação]):
-  botões principais, indicadores de progresso, links ativos e destaques de
-  solução.
+- **Verde Estrutural Profundo** (`green-deep`): fundo de hero, rodapé, grandes
+  blocos institucionais e superfícies que precisam transmitir estabilidade.
+- **Verde Operacional Escuro** (`green-dark`): botões principais, navegação
+  ativa, títulos sobre superfícies claras e estados de interação com contraste.
 
 ### Secondary
 
-- **Verde Técnico Médio** ([valor oficial a ser resolvido na implementação]):
-  áreas de apoio, ícones funcionais, estados de interação e elementos gráficos.
-- **Verde Energia** ([valor oficial a ser resolvido na implementação]): acentos
-  pontuais que indicam disponibilidade, avanço ou benefício.
-
-### Tertiary
-
-- **Amarelo de Ação** ([tom a ser resolvido na implementação]): reservado para
-  a ação primária dentro de superfícies verdes, alertas não destrutivos e pontos
-  de atenção comercial. Não compete com o logotipo nem domina seções.
+- **Verde Técnico Médio** (`green-mid`): áreas de apoio, ícones funcionais,
+  indicadores de progresso e elementos gráficos.
+- **Verde Energia** (`green-light`): acentos pontuais que indicam
+  disponibilidade, avanço ou benefício.
 
 ### Neutral
 
@@ -84,8 +81,9 @@ e dos arquivos vetoriais oficiais durante a implementação.
 **The Green Carries the Brand Rule.** O verde oficial ocupa áreas decisivas da
 página. Ele não pode ser reduzido a pequenos botões sobre um site neutro.
 
-**The Yellow Signals Action Rule.** O amarelo é raro e funcional. Use-o para
-conduzir o olhar à próxima ação, nunca como decoração recorrente.
+**The Four Greens Rule.** A identidade cromática usa `green-light`,
+`green-mid`, `green-dark` e `green-deep`. Não criar um quinto verde nem trocar
+os valores oficiais por aproximações.
 
 **The No Generic Industrial Blue Rule.** Azul corporativo não substitui a paleta
 da Paulim Tanques, mesmo quando uma referência estrutural o utiliza.
@@ -145,6 +143,8 @@ separação, nunca a combinação de borda fina com sombra ampla.
 
 - **Do** usar os verdes oficiais da Paulim Tanques em áreas relevantes e manter
   o logotipo com suas proporções e aplicações aprovadas.
+- **Do** preservar exatamente os quatro valores da paleta: `green-light`,
+  `green-mid`, `green-dark` e `green-deep`.
 - **Do** abrir a página com promessa objetiva e formulário técnico lado a lado.
 - **Do** usar Designer Regular para expressão institucional e Montserrat para
   leitura, interação e dados.
