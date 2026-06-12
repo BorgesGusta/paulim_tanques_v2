@@ -36,10 +36,10 @@
 - `src/components/ui/*.tsx` - componentes adicionados pelo CLI oficial.
 - `src/App.test.tsx` - teste semântico da página completa.
 - `public/assets/paulim-tanques-logo.png` - cópia pública do logo real.
-- `public/assets/hero-tanker-operation.png` - fotografia principal.
-- `public/assets/technical-equipment.png` - detalhe de componentes.
-- `public/assets/technical-specialist.png` - especialista em inspeção.
-- `public/assets/sector-operations.png` - contexto operacional secundário.
+- `public/assets/hero-tanker-operation.webp` - fotografia principal otimizada.
+- `public/assets/technical-equipment.webp` - detalhe de componentes otimizado.
+- `public/assets/technical-specialist.webp` - especialista em inspeção otimizado.
+- `public/assets/sector-operations.webp` - contexto operacional secundário otimizado.
 
 **Modify:**
 
@@ -66,10 +66,10 @@
 **Files:**
 
 - Create: `public/assets/paulim-tanques-logo.png`
-- Create: `public/assets/hero-tanker-operation.png`
-- Create: `public/assets/technical-equipment.png`
-- Create: `public/assets/technical-specialist.png`
-- Create: `public/assets/sector-operations.png`
+- Create: `public/assets/hero-tanker-operation.webp`
+- Create: `public/assets/technical-equipment.webp`
+- Create: `public/assets/technical-specialist.webp`
+- Create: `public/assets/sector-operations.webp`
 
 - [ ] **Step 1: Create the public asset directory and copy the approved logo**
 
@@ -97,7 +97,8 @@ Constraints: appropriate PPE, clean safe environment, authentic hoses and fittin
 Avoid: improvised workshop, dirty unsafe scene, dramatic fire or danger, glossy 3D render, corporate handshake stock photo
 ```
 
-Copy the selected generated file to `public/assets/hero-tanker-operation.png`.
+Crop to `16:10`, encode as WebP at quality `84`, and save to
+`public/assets/hero-tanker-operation.webp`.
 
 - [ ] **Step 3: Generate the technical equipment photograph**
 
@@ -114,7 +115,8 @@ Constraints: no labels, no invented certification marks, no text, no watermark
 Avoid: catalog cutout on white, clutter, rust, unsafe setup, glossy 3D render
 ```
 
-Copy the selected file to `public/assets/technical-equipment.png`.
+Crop to `4:3`, encode as WebP at quality `84`, and save to
+`public/assets/technical-equipment.webp`.
 
 - [ ] **Step 4: Generate the specialist photograph**
 
@@ -131,7 +133,8 @@ Constraints: professional safety posture, realistic tools and tanker context, no
 Avoid: staged handshake, looking at camera, improvised workshop, excessive sparks, cold corporate office
 ```
 
-Copy the selected file to `public/assets/technical-specialist.png`.
+Crop to `4:3`, encode as WebP at quality `84`, and save to
+`public/assets/technical-specialist.webp`.
 
 - [ ] **Step 5: Generate the secondary operations photograph**
 
@@ -147,7 +150,8 @@ Constraints: appropriate PPE, no visible logos, no text, no watermark
 Avoid: visual collage, dramatic hazards, luxury advertising look, blue/yellow brand styling
 ```
 
-Copy the selected file to `public/assets/sector-operations.png`.
+Crop to `16:9`, encode as WebP at quality `84`, and save to
+`public/assets/sector-operations.webp`.
 
 - [ ] **Step 6: Inspect every asset**
 
@@ -161,7 +165,7 @@ Open all five files and verify:
 - [ ] **Step 7: Commit only the approved assets**
 
 ```powershell
-git add -- public/assets/paulim-tanques-logo.png public/assets/hero-tanker-operation.png public/assets/technical-equipment.png public/assets/technical-specialist.png public/assets/sector-operations.png
+git add -- public/assets/paulim-tanques-logo.png public/assets/hero-tanker-operation.webp public/assets/technical-equipment.webp public/assets/technical-specialist.webp public/assets/sector-operations.webp
 git commit -m "assets: add Paulim landing page imagery"
 ```
 
@@ -1302,7 +1306,7 @@ export function Hero() {
         <div className="relative isolate flex min-h-[38rem] items-end overflow-hidden">
           <img
             className="absolute inset-0 size-full object-cover object-center"
-            src="/assets/hero-tanker-operation.png"
+            src="/assets/hero-tanker-operation.webp"
             alt="Especialista inspecionando equipamentos de um caminhão-tanque em operação."
           />
           <div className="absolute inset-0 bg-brand-deep/70" />
@@ -1402,7 +1406,7 @@ export function Solutions() {
           />
           <img
             className="aspect-[4/3] w-full rounded-xl object-cover"
-            src="/assets/technical-equipment.png"
+            src="/assets/technical-equipment.webp"
             alt="Mangueiras, válvulas e conexões organizadas para atendimento técnico."
           />
         </div>
@@ -1475,7 +1479,7 @@ export function Sectors() {
 
         <img
           className="min-h-[28rem] w-full rounded-xl object-cover"
-          src="/assets/sector-operations.png"
+          src="/assets/sector-operations.webp"
           alt="Operação de caminhão-tanque em área logística com contexto regional."
         />
       </div>
@@ -1544,7 +1548,7 @@ export function About() {
       <div className="section-shell grid gap-14 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
         <img
           className="min-h-[30rem] w-full rounded-xl object-cover"
-          src="/assets/technical-specialist.png"
+          src="/assets/technical-specialist.webp"
           alt="Especialista e gestor avaliando componentes de uma operação com tanque."
         />
         <div className="flex flex-col gap-8">
@@ -2136,7 +2140,7 @@ Verify that no unrelated user changes were reverted or staged.
 - [ ] **Step 9: Commit final hardening**
 
 ```powershell
-git add -- index.html public/favicon.svg public/assets/paulim-tanques-logo.png public/assets/hero-tanker-operation.png public/assets/technical-equipment.png public/assets/technical-specialist.png public/assets/sector-operations.png components.json package.json package-lock.json vite.config.ts tsconfig.app.json tsconfig.node.json src/App.tsx src/App.test.tsx src/main.tsx src/index.css src/data/site.ts src/lib/utils.ts src/lib/technical-request.ts src/lib/technical-request.test.ts src/test/setup.ts src/components/TechnicalRequestForm.tsx src/components/TechnicalRequestForm.test.tsx src/components/Header.tsx src/components/Hero.tsx src/components/TrustBar.tsx src/components/Solutions.tsx src/components/Sectors.tsx src/components/Process.tsx src/components/About.tsx src/components/FAQ.tsx src/components/ContactCta.tsx src/components/Footer.tsx src/components/SectionHeading.tsx src/components/ui/accordion.tsx src/components/ui/alert-dialog.tsx src/components/ui/alert.tsx src/components/ui/button.tsx src/components/ui/field.tsx src/components/ui/input.tsx src/components/ui/select.tsx src/components/ui/separator.tsx src/components/ui/sheet.tsx src/components/ui/spinner.tsx src/components/ui/textarea.tsx
+git add -- index.html public/favicon.svg public/assets/paulim-tanques-logo.png public/assets/hero-tanker-operation.webp public/assets/technical-equipment.webp public/assets/technical-specialist.webp public/assets/sector-operations.webp components.json package.json package-lock.json vite.config.ts tsconfig.app.json tsconfig.node.json src/App.tsx src/App.test.tsx src/main.tsx src/index.css src/data/site.ts src/lib/utils.ts src/lib/technical-request.ts src/lib/technical-request.test.ts src/test/setup.ts src/components/TechnicalRequestForm.tsx src/components/TechnicalRequestForm.test.tsx src/components/Header.tsx src/components/Hero.tsx src/components/TrustBar.tsx src/components/Solutions.tsx src/components/Sectors.tsx src/components/Process.tsx src/components/About.tsx src/components/FAQ.tsx src/components/ContactCta.tsx src/components/Footer.tsx src/components/SectionHeading.tsx src/components/ui/accordion.tsx src/components/ui/alert-dialog.tsx src/components/ui/alert.tsx src/components/ui/button.tsx src/components/ui/field.tsx src/components/ui/input.tsx src/components/ui/select.tsx src/components/ui/separator.tsx src/components/ui/sheet.tsx src/components/ui/spinner.tsx src/components/ui/textarea.tsx
 git commit -m "fix: harden responsive landing experience"
 ```
 
