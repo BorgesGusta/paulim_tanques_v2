@@ -30,8 +30,8 @@ export function Header() {
           <ul className="flex items-center gap-1">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Button variant="ghost" size="sm" asChild>
-                  <a href={item.href}>{item.label}</a>
+                <Button variant="ghost" size="sm" render={<a href={item.href} />}>
+                  {item.label}
                 </Button>
               </li>
             ))}
@@ -40,11 +40,9 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:block">
-          <Button asChild>
-            <a href="#diagnostico">
-              <MessageCircle />
-              Falar com especialista
-            </a>
+          <Button render={<a href="#diagnostico" />}>
+            <MessageCircle />
+            Falar com especialista
           </Button>
         </div>
 
@@ -79,11 +77,11 @@ export function Header() {
                       <Button
                         variant="ghost"
                         className="w-full justify-start text-base"
-                        asChild
+                        render={<a href={item.href} />}
                       />
                     }
                   >
-                    <a href={item.href}>{item.label}</a>
+                    {item.label}
                   </SheetClose>
                 ))}
               </nav>
@@ -91,13 +89,14 @@ export function Header() {
               <div className="px-4 pb-6">
                 <SheetClose
                   render={
-                    <Button className="w-full" asChild />
+                    <Button
+                      className="w-full"
+                      render={<a href="#diagnostico" />}
+                    />
                   }
                 >
-                  <a href="#diagnostico">
-                    <MessageCircle />
-                    Falar com especialista
-                  </a>
+                  <MessageCircle />
+                  Falar com especialista
                 </SheetClose>
               </div>
             </SheetContent>
