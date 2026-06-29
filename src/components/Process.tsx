@@ -1,34 +1,30 @@
-import { SectionHeading } from '@/components/SectionHeading'
 import { processSteps } from '@/data/site'
+import { SectionHeading } from '@/components/SectionHeading'
 
 export function Process() {
   return (
-    <section className="bg-brand-deep py-20 text-primary-foreground md:py-28">
-      <div className="section-shell flex flex-col gap-14">
+    <section id="processo" className="section-anchor py-20 lg:py-28">
+      <div className="section-shell">
         <SectionHeading
-          inverse
-          eyebrow="Como funciona"
-          title="Do diagnóstico à solução certa"
-          description="Um fluxo curto para transformar contexto operacional em uma conversa técnica produtiva."
+          eyebrow="Como trabalhamos"
+          title="Do diagnóstico à entrega: um processo pensado para não travar sua operação"
+          className="mb-12 max-w-2xl"
         />
-        <ol className="grid border-y border-primary-foreground/20 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step) => (
-            <li
-              className="flex min-h-80 flex-col justify-between gap-10 border-b border-primary-foreground/20 py-8 last:border-b-0 lg:border-r lg:border-b-0 lg:px-8 lg:first:pl-0 lg:last:border-r-0"
-              key={step.number}
-            >
-              <span className="font-display text-7xl font-bold leading-none text-brand-light">
+            <div key={step.number} className="flex flex-col gap-3">
+              <span className="text-4xl font-extrabold text-brand-light/40">
                 {step.number}
               </span>
-              <div className="flex flex-col gap-3">
-                <h3 className="text-2xl font-bold">{step.title}</h3>
-                <p className="leading-7 text-primary-foreground/70">
-                  {step.description}
-                </p>
-              </div>
-            </li>
+              <h3 className="text-base font-bold text-foreground">
+                {step.title}
+              </h3>
+              <p className="text-sm leading-6 text-muted-foreground">
+                {step.description}
+              </p>
+            </div>
           ))}
-        </ol>
+        </div>
       </div>
     </section>
   )
