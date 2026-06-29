@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Menu, MessageCircle } from 'lucide-react'
 
 import { navItems } from '@/data/site'
