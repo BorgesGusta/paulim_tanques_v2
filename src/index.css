@@ -1,69 +1,73 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "@fontsource-variable/montserrat";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
   --radius: 0.625rem;
-  --background: #f7f8f4;
-  --foreground: #172019;
-  --card: #ffffff;
-  --card-foreground: #172019;
-  --popover: #ffffff;
-  --popover-foreground: #172019;
-  --primary: #0d8336;
-  --primary-foreground: #ffffff;
-  --secondary: #e9f3e6;
-  --secondary-foreground: #065320;
-  --muted: #eef1eb;
-  --muted-foreground: #5c675e;
-  --accent: #dcefd7;
-  --accent-foreground: #065320;
-  --destructive: #b42318;
-  --border: #d7ded5;
-  --input: #cbd5c9;
-  --ring: #3daa34;
-  --brand-light: #6ab42d;
-  --brand-mid: #3daa34;
-  --brand-dark: #0d8336;
-  --brand-deep: #065320;
-  --mineral: #f7f8f4;
-  --graphite: #172019;
+
+  --brand-light: oklch(0.68 0.17 130);
+  --brand-mid:   oklch(0.64 0.16 145);
+  --brand-dark:  oklch(0.51 0.15 145);
+  --brand-deep:  oklch(0.32 0.10 145);
+
+  --background:        oklch(0.98 0.005 130);
+  --foreground:        oklch(0.17 0.03 145);
+  --card:              oklch(1 0 0);
+  --card-foreground:   oklch(0.17 0.03 145);
+  --popover:           oklch(1 0 0);
+  --popover-foreground: oklch(0.17 0.03 145);
+
+  --primary:            oklch(0.51 0.15 145);
+  --primary-foreground: oklch(1 0 0);
+  --secondary:          oklch(0.92 0.04 130);
+  --secondary-foreground: oklch(0.32 0.10 145);
+  --muted:              oklch(0.94 0.01 130);
+  --muted-foreground:   oklch(0.45 0.03 145);
+  --accent:             oklch(0.90 0.05 130);
+  --accent-foreground:  oklch(0.32 0.10 145);
+  --destructive:        oklch(0.58 0.22 27);
+
+  --border: oklch(0.88 0.02 130);
+  --input:  oklch(0.85 0.02 130);
+  --ring:   oklch(0.64 0.16 145);
 }
 
 @theme inline {
-  --font-sans: "Montserrat Variable", "Montserrat", Arial, sans-serif;
-  --font-heading: "Montserrat Variable", "Montserrat", Arial, sans-serif;
-  --font-display: "Montserrat Variable", "Montserrat", Arial, sans-serif;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+  --font-sans:    "Montserrat Variable", Arial, sans-serif;
+  --font-heading: "Montserrat Variable", Arial, sans-serif;
+  --font-display: "Montserrat Variable", Arial, sans-serif;
+
   --color-brand-light: var(--brand-light);
-  --color-brand-mid: var(--brand-mid);
-  --color-brand-dark: var(--brand-dark);
-  --color-brand-deep: var(--brand-deep);
-  --color-mineral: var(--mineral);
-  --color-graphite: var(--graphite);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
+  --color-brand-mid:   var(--brand-mid);
+  --color-brand-dark:  var(--brand-dark);
+  --color-brand-deep:  var(--brand-deep);
+
+  --color-background:        var(--background);
+  --color-foreground:        var(--foreground);
+  --color-card:              var(--card);
+  --color-card-foreground:   var(--card-foreground);
+  --color-popover:           var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary:            var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary:          var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:              var(--muted);
+  --color-muted-foreground:   var(--muted-foreground);
+  --color-accent:             var(--accent);
+  --color-accent-foreground:  var(--accent-foreground);
+  --color-destructive:        var(--destructive);
+  --color-border:             var(--border);
+  --color-input:              var(--input);
+  --color-ring:               var(--ring);
+
+  --radius-sm:  calc(var(--radius) * 0.6);
+  --radius-md:  calc(var(--radius) * 0.8);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) * 1.4);
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
@@ -86,11 +90,7 @@
     text-rendering: optimizeLegibility;
   }
 
-  button,
-  a,
-  input,
-  textarea,
-  select {
+  button, a, input, textarea, select {
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -99,8 +99,8 @@
   }
 
   ::selection {
-    background: #6ab42d;
-    color: #065320;
+    background: oklch(0.68 0.17 130);
+    color: oklch(0.32 0.10 145);
   }
 }
 
@@ -113,10 +113,6 @@
     scroll-margin-top: 6rem;
   }
 
-  .text-balance {
-    text-wrap: balance;
-  }
-
   .safe-copy {
     overflow-wrap: anywhere;
   }
@@ -127,7 +123,6 @@
     opacity: 0;
     transform: translateY(1rem);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -143,9 +138,7 @@
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
