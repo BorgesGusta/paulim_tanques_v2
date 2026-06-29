@@ -10,7 +10,7 @@ export function Process() {
           title="Do diagnóstico à entrega: um processo pensado para não travar sua operação"
           className="mb-12 max-w-2xl"
         />
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
           {processSteps.map((step) => (
             <div key={step.number} className="flex flex-col gap-3">
               <span className="text-4xl font-extrabold text-brand-light/40">

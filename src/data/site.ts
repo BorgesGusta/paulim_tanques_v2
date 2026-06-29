@@ -3,8 +3,8 @@ import { WHATSAPP_NUMBER } from '@/lib/technical-request'
 export const navItems = [
   { label: 'Soluções', href: '#solucoes' },
   { label: 'Setores', href: '#setores' },
-  { label: 'A Paulim', href: '#paulim' },
-  { label: 'Dúvidas', href: '#duvidas' },
+  { label: 'A Paulim', href: '#sobre' },
+  { label: 'Dúvidas', href: '#faq' },
 ] as const
 
 export const trustItems = [

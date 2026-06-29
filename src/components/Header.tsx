@@ -2,7 +2,8 @@ import * as React from 'react'
 import { Menu, MessageCircle } from 'lucide-react'
 
 import { navItems } from '@/data/site'
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import {
   Sheet,
   SheetTrigger,
@@ -74,10 +75,12 @@ export function Header() {
                   <SheetClose
                     key={item.href}
                     render={
-                      <Button
-                        variant="ghost"
-                        className="w-full justify-start text-base"
-                        render={<a href={item.href} />}
+                      <a
+                        href={item.href}
+                        className={cn(
+                          buttonVariants({ variant: 'ghost' }),
+                          'w-full justify-start text-base',
+                        )}
                       />
                     }
                   >
@@ -89,9 +92,9 @@ export function Header() {
               <div className="px-4 pb-6">
                 <SheetClose
                   render={
-                    <Button
-                      className="w-full"
-                      render={<a href="#diagnostico" />}
+                    <a
+                      href="#diagnostico"
+                      className={cn(buttonVariants(), 'w-full')}
                     />
                   }
                 >
