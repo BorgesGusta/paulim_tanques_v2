@@ -9,38 +9,71 @@ export const navItems = [
 
 export const trustItems = [
   { value: '15 anos', label: 'de experiência técnica' },
-  { value: 'Atendimento técnico', label: 'orientação antes da compra' },
-  { value: 'Norte do Brasil', label: 'base regional em Marabá' },
+  { value: '400+ projetos', label: 'entregues no Norte do Brasil' },
+  { value: 'Entrega direta', label: 'até o cliente em toda a região' },
 ] as const
 
-export const solutions = [
+export const productCategories = [
   {
-    title: 'Equipamentos',
+    title: "Caixas d'Água",
     description:
-      'Reservatórios e componentes para manter transporte e abastecimento confiáveis.',
+      "Taça Cheia, Taça Vazia e Tubular. Volumes de 10.000 L a 50.000 L, com fabricação sob medida para instalações rurais, industriais e comerciais.",
+    models: ['Taça Cheia', 'Taça Vazia', 'Tubular'],
   },
   {
-    title: 'Mangueiras e conexões',
+    title: 'Tanques Estacionários',
     description:
-      'Soluções de sucção, descarga, vedação e acoplamento para cada aplicação.',
+      'Para armazenamento de diesel, gasolina, etanol, combustível de aviação e outros líquidos. Disponíveis bipartidos para dois produtos no mesmo tanque.',
+    models: ['Tanque simples', 'Tanque bipartido'],
+  },
+] as const
+
+export const equipmentItems = [
+  {
+    title: 'Bombas e Bicos',
+    description: 'Bombas completas e bicos calibrados para abastecimento preciso e seguro.',
   },
   {
-    title: 'Peças e acessórios',
-    description:
-      'Itens compatíveis para manutenção, reposição e adequação de caminhões-tanque.',
+    title: 'Mangueiras e Conexões',
+    description: 'Soluções de sucção, descarga, vedação e acoplamento para cada aplicação.',
   },
   {
-    title: 'Segurança e sinalização',
-    description:
-      'EPIs e sinalização que ajudam a organizar operações com cargas sensíveis.',
+    title: 'Peças e Acessórios',
+    description: 'Itens compatíveis para manutenção, reposição e adequação de caminhões-tanque.',
   },
 ] as const
 
 export const sectors = [
-  'Postos e distribuidoras de combustíveis',
-  'Agronegócio',
-  'Transporte e aviação',
-  'Indústrias',
+  {
+    label: 'Fazendas',
+    description: 'Armazenamento de insumos, defensivos e combustíveis para operações rurais de grande escala.',
+    imageSrc: '/assets/sector-farm.jpg',
+    imageAlt: 'Tanque de combustível instalado em fazenda do agronegócio',
+  },
+  {
+    label: 'Postos e Distribuidoras',
+    description: 'Tanques e equipamentos para abastecimento seguro e confiável de frotas e consumidores.',
+    imageSrc: '/assets/sector-fuel-station.jpg',
+    imageAlt: 'Posto de combustível com tanques instalados',
+  },
+  {
+    label: 'Indústrias',
+    description: 'Reservatórios e acessórios para processos industriais que exigem precisão e durabilidade.',
+    imageSrc: '/assets/sector-industry.jpg',
+    imageAlt: 'Instalação industrial com tanque estacionário',
+  },
+  {
+    label: 'Transporte e Aviação',
+    description: 'Soluções de alta performance para frotas de caminhões-tanque e operações aeroportuárias.',
+    imageSrc: '/assets/sector-aviation.jpg',
+    imageAlt: 'Abastecimento de aeronave com equipamento especializado',
+  },
+  {
+    label: 'Empresas em Geral',
+    description: 'Atendimento a qualquer operação que necessite de armazenamento ou transporte de líquidos.',
+    imageSrc: '/assets/sector-business.jpg',
+    imageAlt: 'Frota de caminhões-tanque em operação empresarial',
+  },
 ] as const
 
 export const processSteps = [
@@ -48,47 +81,55 @@ export const processSteps = [
     number: '01',
     title: 'Envie o contexto',
     description:
-      'Informe operação, segmento e necessidade, mesmo sem conhecer o nome técnico da peça.',
+      'Informe operação, segmento e necessidade, mesmo sem conhecer o nome técnico da peça ou o volume exato.',
   },
   {
     number: '02',
     title: 'Receba uma análise',
     description:
-      'Um especialista organiza as informações e identifica os próximos dados necessários.',
+      'Um especialista organiza as informações e identifica o equipamento, volume e configuração adequados.',
   },
   {
     number: '03',
     title: 'Avance com segurança',
     description:
-      'A Paulim recomenda a solução, o fornecimento ou o atendimento adequado ao caso.',
+      'A Paulim recomenda a solução, elabora o orçamento e cuida da entrega até o local de instalação.',
   },
 ] as const
 
 export const faqs = [
   {
-    question: 'Preciso saber o nome exato da peça?',
+    question: 'Preciso saber o nome exato da peça ou o volume do tanque?',
     answer:
-      'Não. Descreva a aplicação, o equipamento e o problema percebido. Fotos e medidas podem ser solicitadas pelo especialista na conversa.',
+      'Não. Descreva a aplicação, o equipamento e o problema percebido. Um especialista identifica o que você precisa e solicita as medidas ou fotos necessárias na conversa.',
   },
   {
-    question: 'A Paulim atende empresas com frota?',
+    question: 'A Paulim fabrica tanques sob medida?',
     answer:
-      'Sim. O atendimento é direcionado a proprietários, gestores de frota, manutenção, compras e segurança de operações B2B.',
+      "Sim. Tanques estacionários e caixas d'água são fabricados nos volumes e configurações que a sua operação exige, incluindo modelos bipartidos para dois produtos diferentes.",
+  },
+  {
+    question: 'A Paulim entrega fora de Marabá?',
+    answer:
+      'Sim. Atendemos toda a região Norte e demais estados conforme demanda. A entrega é feita diretamente até o cliente, incluindo fazendas e áreas rurais.',
   },
   {
     question: 'Quais segmentos podem solicitar atendimento?',
     answer:
-      'Postos e distribuidoras, agronegócio, transporte, aviação, indústrias e outras operações que utilizam tanques ou componentes relacionados.',
+      'Fazendas, postos e distribuidoras, indústrias, transporte, aviação e empresas em geral que operam com armazenamento ou transporte de líquidos.',
   },
-  {
-    question: 'O formulário já gera um orçamento?',
-    answer:
-      'Não. Ele reúne o contexto inicial para que um especialista avalie a necessidade antes de recomendar produtos, serviços ou próximos passos.',
-  },
+] as const
+
+export const differentials = [
+  'Mais de 15 anos de experiência técnica no setor',
+  'Mais de 400 projetos entregues na região Norte',
+  "Fabricação sob medida: tanques simples e bipartidos",
+  'Entrega direta até o cliente, incluindo área rural',
+  'Consultoria técnica antes da venda e suporte pós-entrega',
 ] as const
 
 export const contact = {
   whatsappNumber: WHATSAPP_NUMBER,
   whatsappLabel: '(94) 99999-9999',
-  serviceArea: 'Marabá e Norte do Brasil',
+  serviceArea: 'Marabá, Pará — Norte do Brasil',
 } as const
