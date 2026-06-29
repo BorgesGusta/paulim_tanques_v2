@@ -145,11 +145,12 @@
   }
 }
 
-.reveal {
+/* .reveal is visible by default; only hidden once JS confirms it can animate it in (js-reveal on <html>) */
+.js-reveal .reveal {
   opacity: 0;
 }
 
-.reveal.is-visible {
+.js-reveal .reveal.is-visible {
   animation: reveal-fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -165,8 +166,8 @@
     scroll-behavior: auto !important;
   }
 
-  .reveal,
-  .reveal.is-visible {
+  .js-reveal .reveal,
+  .js-reveal .reveal.is-visible {
     opacity: 1 !important;
     animation: none !important;
   }

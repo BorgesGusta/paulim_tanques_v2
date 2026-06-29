@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.tsx'
 
 function initReveal() {
+  document.documentElement.classList.add('js-reveal')
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -18,14 +19,11 @@ function initReveal() {
   document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initReveal)
-} else {
-  initReveal()
-}
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
   </StrictMode>,
 )
+
+// Runs after React's render is flushed to the DOM, so `.reveal` elements exist to observe.
+requestAnimationFrame(initReveal)
