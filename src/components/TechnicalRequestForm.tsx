@@ -86,6 +86,9 @@ export function TechnicalRequestForm() {
       timerRef.current = null
     }
 
+    setFallbackUrl(null)
+    setWasOpened(false)
+
     const validationErrors = validateTechnicalRequest(values)
     setErrors(validationErrors)
 
@@ -289,38 +292,39 @@ export function TechnicalRequestForm() {
             </Button>
           </div>
 
-          {/* Success alert */}
-          {wasOpened && (
-            <Alert>
-              <CheckCircle2Icon />
-              <AlertTitle>Solicitação enviada!</AlertTitle>
-              <AlertDescription>
-                O WhatsApp foi aberto com sua mensagem. Em breve um especialista
-                entrará em contato.
-              </AlertDescription>
-            </Alert>
-          )}
-
-          {/* Fallback alert (popup blocked) */}
-          {fallbackUrl && (
-            <Alert variant="destructive">
-              <TriangleAlertIcon />
-              <AlertTitle>Não foi possível abrir o WhatsApp</AlertTitle>
-              <AlertDescription>
-                Seu navegador bloqueou a abertura automática.{' '}
-                <a
-                  href={fallbackUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Clique aqui para abrir manualmente
-                </a>
-                .
-              </AlertDescription>
-            </Alert>
-          )}
         </FieldGroup>
       </form>
+
+      {/* Success alert */}
+      {wasOpened && (
+        <Alert className="mt-4">
+          <CheckCircle2Icon />
+          <AlertTitle>Solicitação enviada!</AlertTitle>
+          <AlertDescription>
+            O WhatsApp foi aberto com sua mensagem. Em breve um especialista
+            entrará em contato.
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {/* Fallback alert (popup blocked) */}
+      {fallbackUrl && (
+        <Alert variant="destructive" className="mt-4">
+          <TriangleAlertIcon />
+          <AlertTitle>Não foi possível abrir o WhatsApp</AlertTitle>
+          <AlertDescription>
+            Seu navegador bloqueou a abertura automática.{' '}
+            <a
+              href={fallbackUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Clique aqui para abrir manualmente
+            </a>
+            .
+          </AlertDescription>
+        </Alert>
+      )}
 
       {/* Confirmation dialog */}
       <AlertDialog open={isConfirmOpen} onOpenChange={setIsConfirmOpen}>
