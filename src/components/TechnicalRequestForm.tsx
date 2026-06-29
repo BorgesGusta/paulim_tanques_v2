@@ -202,6 +202,7 @@ export function TechnicalRequestForm() {
                 id="tr-phone"
                 ref={phoneRef}
                 type="tel"
+                inputMode="tel"
                 placeholder="(94) 99999-9999"
                 autoComplete="tel"
                 value={values.phone}

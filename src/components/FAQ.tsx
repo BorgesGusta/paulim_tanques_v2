@@ -29,7 +29,7 @@ export function FAQ() {
         </div>
         <Accordion>
           {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={String(index)}>
+            <AccordionItem key={faq.question} value={String(index)}>
               <AccordionTrigger>{faq.question}</AccordionTrigger>
               <AccordionContent>{faq.answer}</AccordionContent>
             </AccordionItem>
