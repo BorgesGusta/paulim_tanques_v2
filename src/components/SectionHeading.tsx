@@ -29,7 +29,7 @@ export function SectionHeading({
       ) : null}
       <h2
         className={cn(
-          'font-display text-balance font-bold leading-[1.02] tracking-[-0.035em]',
+          'reveal font-display text-balance font-bold leading-[1.02] tracking-[-0.035em]',
           inverse ? 'text-primary-foreground' : 'text-foreground',
         )}
         style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textWrap: 'balance' } as React.CSSProperties}

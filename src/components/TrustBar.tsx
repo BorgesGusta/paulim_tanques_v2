@@ -7,7 +7,7 @@ export function TrustBar() {
   return (
     <section aria-label="Credenciais da Paulim Tanques" className="bg-brand-deep py-10">
       <div className="section-shell">
-        <dl className="flex flex-wrap items-start justify-center gap-10 sm:gap-16">
+        <dl className="reveal flex flex-wrap items-start justify-center gap-10 sm:gap-16">
           {trustItems.map((item, index) => {
             const Icon = icons[index % icons.length]
             return (

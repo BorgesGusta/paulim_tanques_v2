@@ -9,7 +9,7 @@ export function About() {
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-4">
             <h2
-              className="font-display font-bold leading-[1.02] tracking-[-0.035em] text-foreground"
+              className="reveal font-display font-bold leading-[1.02] tracking-[-0.035em] text-foreground"
               style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textWrap: 'balance' } as React.CSSProperties}
             >
               Engenharia de proximidade desde 2009.

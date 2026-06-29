@@ -7,7 +7,7 @@ export function Sectors() {
         {/* Header */}
         <div className="flex flex-col gap-4 max-w-2xl">
           <h2
-            className="font-display font-bold leading-[1.02] tracking-[-0.035em] text-primary-foreground"
+            className="reveal font-display font-bold leading-[1.02] tracking-[-0.035em] text-primary-foreground"
             style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textWrap: 'balance' } as React.CSSProperties}
           >
             Especialistas nos setores que mais dependem de confiabilidade.
