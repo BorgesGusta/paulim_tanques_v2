@@ -1,68 +1,33 @@
-import {
-  Container,
-  ShieldCheck,
-  Workflow,
-  Wrench,
-  type LucideIcon,
-} from 'lucide-react'
-
-import { SectionHeading } from '@/components/SectionHeading'
+import { Cylinder, Cable, Wrench, ShieldAlert } from 'lucide-react'
 import { solutions } from '@/data/site'
+import { SectionHeading } from '@/components/SectionHeading'
 
-const solutionIcons = [
-  Container,
-  Workflow,
-  Wrench,
-  ShieldCheck,
-] satisfies readonly LucideIcon[]
+const icons = [Cylinder, Cable, Wrench, ShieldAlert]
 
 export function Solutions() {
   return (
-    <section
-      id="solucoes"
-      className="section-anchor bg-background py-20 md:py-28"
-    >
-      <div className="section-shell grid gap-14 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
-        <div className="flex flex-col gap-8 lg:sticky lg:top-28">
-          <SectionHeading
-            eyebrow="Soluções"
-            title="Soluções para cada etapa da operação"
-            description="A aplicação vem antes da especificação. A Paulim ajuda a identificar o componente, equipamento ou suporte adequado ao contexto."
-          />
-          <img
-            className="aspect-[4/3] w-full rounded-xl object-cover"
-            src="/assets/technical-equipment.webp"
-            alt="Mangueiras, válvulas e conexões organizadas para atendimento técnico."
-          />
-        </div>
-
-        <ol className="border-t">
+    <section id="solucoes" className="section-anchor py-20 lg:py-28">
+      <div className="section-shell">
+        <SectionHeading
+          eyebrow="O que fazemos"
+          title="Soluções para toda a cadeia de transporte e abastecimento"
+          className="mb-12"
+        />
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {solutions.map((solution, index) => {
-            const Icon = solutionIcons[index]
-
+            const Icon = icons[index % icons.length]
             return (
-              <li
-                className="grid gap-5 border-b py-8 sm:grid-cols-[auto_1fr] sm:py-10"
+              <div
                 key={solution.title}
+                className="rounded-xl border border-border bg-card p-6 flex flex-col gap-4"
               >
-                <span className="flex size-12 items-center justify-center rounded-lg bg-secondary text-primary">
-                  <Icon aria-hidden="true" />
-                </span>
-                <div className="flex flex-col gap-3">
-                  <p className="text-xs font-bold tracking-[0.16em] text-muted-foreground">
-                    {String(index + 1).padStart(2, '0')}
-                  </p>
-                  <h3 className="font-display text-2xl font-bold tracking-[-0.025em]">
-                    {solution.title}
-                  </h3>
-                  <p className="max-w-xl leading-7 text-muted-foreground">
-                    {solution.description}
-                  </p>
-                </div>
-              </li>
+                <Icon className="size-8 text-brand-dark" aria-hidden="true" />
+                <h3 className="text-lg font-bold text-foreground">{solution.title}</h3>
+                <p className="text-sm leading-6 text-muted-foreground flex-1">{solution.description}</p>
+              </div>
             )
           })}
-        </ol>
+        </div>
       </div>
     </section>
   )

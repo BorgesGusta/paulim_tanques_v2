@@ -1,45 +1,39 @@
-import { ArrowUpRight } from 'lucide-react'
-
-import { SectionHeading } from '@/components/SectionHeading'
 import { sectors } from '@/data/site'
+import { SectionHeading } from '@/components/SectionHeading'
+import { ImagePlaceholder } from '@/components/ImagePlaceholder'
+
+const sectorDescriptions: Record<string, string> = {
+  'Postos e distribuidoras de combustíveis':
+    'Abastecimento seguro e confiável para operações de distribuição e revenda de combustíveis.',
+  Agronegócio:
+    'Equipamentos e componentes para transporte de insumos e defensivos no campo.',
+  'Transporte e aviação':
+    'Soluções de alta performance para frotas de caminhões-tanque e operações aeroportuárias.',
+  Indústrias:
+    'Reservatórios e acessórios para processos industriais que exigem precisão e durabilidade.',
+}
 
 export function Sectors() {
   return (
-    <section
-      id="setores"
-      className="section-anchor bg-card py-20 md:py-28"
-    >
-      <div className="section-shell grid gap-14 lg:grid-cols-2 lg:items-center">
-        <div className="flex flex-col gap-10">
-          <SectionHeading
-            eyebrow="Setores atendidos"
-            title="Experiência onde a operação exige precisão"
-            description="Atendimento técnico para empresas que dependem de disponibilidade, compatibilidade e segurança."
-          />
-          <ol className="border-t">
-            {sectors.map((sector, index) => (
-              <li
-                className="grid grid-cols-[3rem_1fr_auto] items-center gap-4 border-b py-5"
-                key={sector}
-              >
-                <span className="font-bold text-primary">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <span className="font-bold">{sector}</span>
-                <ArrowUpRight
-                  className="text-muted-foreground"
-                  aria-hidden="true"
-                />
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        <img
-          className="min-h-[28rem] w-full rounded-xl object-cover"
-          src="/assets/sector-operations.webp"
-          alt="Operação de caminhão-tanque em área logística com contexto regional."
+    <section id="setores" className="section-anchor bg-brand-deep py-20 lg:py-28">
+      <div className="section-shell">
+        <SectionHeading
+          inverse
+          eyebrow="Quem atendemos"
+          title="Especialistas nos setores que mais dependem de confiabilidade"
+          className="mb-12"
         />
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {sectors.map((sector) => (
+            <div key={sector} className="rounded-xl bg-brand-dark/30 p-6 flex flex-col gap-3">
+              <ImagePlaceholder label={sector} className="aspect-video w-full" />
+              <h3 className="text-base font-bold text-primary-foreground">{sector}</h3>
+              <p className="text-sm leading-6 text-primary-foreground/70">
+                {sectorDescriptions[sector]}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
