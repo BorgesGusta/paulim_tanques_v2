@@ -29,7 +29,7 @@ export function ContactCta() {
             size="lg"
             variant="outline"
             onClick={() => open()}
-            className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+            className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
           >
             <FileText />
             Solicitar orçamento
