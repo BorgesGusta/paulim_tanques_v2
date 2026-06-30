@@ -15,7 +15,11 @@ export function Process() {
 
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">
           {processSteps.map((step, index) => (
-            <div key={step.number} className="flex flex-col gap-4">
+            <div
+              key={step.number}
+              className="reveal-stagger flex flex-col gap-4"
+              style={{ '--reveal-delay': `${index * 80}ms` } as React.CSSProperties}
+            >
               {/* Circle + connector */}
               <div className="flex items-center gap-3">
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-deep text-sm font-bold text-primary-foreground">

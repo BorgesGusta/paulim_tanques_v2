@@ -14,9 +14,9 @@ function initReveal() {
         }
       })
     },
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
+    { threshold: 0.08, rootMargin: '0px 0px -32px 0px' },
   )
-  document.querySelectorAll('.reveal').forEach((el) => {
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
     const rect = el.getBoundingClientRect()
     const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0
     if (alreadyVisible) {

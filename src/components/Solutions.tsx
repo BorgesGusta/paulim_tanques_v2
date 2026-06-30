@@ -37,7 +37,8 @@ export function Solutions() {
             return (
               <div
                 key={cat.title}
-                className="rounded-2xl bg-brand-deep p-8 flex flex-col gap-5"
+                className="reveal-stagger rounded-2xl bg-brand-deep p-8 flex flex-col gap-5"
+                style={{ '--reveal-delay': `${index * 80}ms` } as React.CSSProperties}
               >
                 <div className="flex items-center gap-4">
                   <span className="rounded-xl bg-brand-dark/40 p-3 shrink-0">
@@ -64,7 +65,7 @@ export function Solutions() {
                   variant="outline"
                   size="sm"
                   onClick={() => open(productKey)}
-                  className="self-start border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                  className="self-start border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                 >
                   <FileText className="size-3.5" />
                   Solicitar orçamento

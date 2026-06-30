@@ -35,27 +35,27 @@ export function Hero() {
       <div className="relative z-20 section-shell flex flex-col gap-10 py-10 lg:grid lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-20" style={{ minHeight: 'calc(100svh - 4rem)' }}>
         {/* Headline column */}
         <div className="flex flex-col gap-6 lg:col-span-7">
-          {/* Evidence line — concrete data, not a generic label */}
-          <p className="text-sm font-semibold text-primary-foreground/70">
+          {/* Evidence line */}
+          <p className="hero-enter text-sm font-semibold text-primary-foreground/70" style={{ animationDelay: '80ms' }}>
             Mais de 400 projetos entregues. 15 anos no Norte do Brasil
           </p>
 
           {/* H1 */}
           <h1
-            className="font-display font-extrabold leading-[0.95] tracking-[-0.04em] text-primary-foreground"
-            style={{ fontSize: 'clamp(2.6rem, 6vw, 5.5rem)', textWrap: 'balance' } as React.CSSProperties}
+            className="hero-enter font-display font-extrabold leading-[0.95] tracking-[-0.04em] text-primary-foreground"
+            style={{ fontSize: 'clamp(2.6rem, 6vw, 5.5rem)', textWrap: 'balance', animationDelay: '160ms' } as React.CSSProperties}
           >
             Soluções técnicas para operações que não podem parar.
           </h1>
 
           {/* Subtitle */}
-          <p className="max-w-[52ch] text-lg leading-8 text-primary-foreground/80">
+          <p className="hero-enter max-w-[52ch] text-lg leading-8 text-primary-foreground/80" style={{ animationDelay: '240ms' }}>
             Fabricação, manutenção, fornecimento de tanques,
             equipamentos para transporte e abastecimento em toda a região Norte.
           </p>
 
           {/* Proof points */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="hero-enter flex flex-wrap items-center gap-x-6 gap-y-3" style={{ animationDelay: '300ms' }}>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="size-5 shrink-0 text-brand-light" aria-hidden="true" />
               <span className="text-sm font-medium text-primary-foreground/90">
@@ -80,7 +80,8 @@ export function Hero() {
           <Button
             variant="outline"
             onClick={() => open()}
-            className="self-start border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+            className="hero-enter self-start border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+            style={{ animationDelay: '360ms' }}
           >
             <FileText className="size-4" />
             Solicitar orçamento
@@ -88,7 +89,11 @@ export function Hero() {
         </div>
 
         {/* Form column */}
-        <div id="diagnostico" className="section-anchor lg:col-span-5">
+        <div
+          id="diagnostico"
+          className="hero-enter section-anchor lg:col-span-5"
+          style={{ animationDelay: '200ms' }}
+        >
           <TechnicalRequestForm />
         </div>
       </div>

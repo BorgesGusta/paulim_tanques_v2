@@ -23,11 +23,11 @@ export function Sectors() {
           {/* Featured — first sector (Fazendas) */}
           <div className="group relative overflow-hidden rounded-2xl min-h-80 lg:min-h-105 cursor-default">
             <SectorImg src={sectors[0].imageSrc} alt={sectors[0].imageAlt} />
-            <div className="absolute inset-0 bg-linear-to-t from-brand-deep/90 via-brand-deep/20 to-transparent transition-opacity duration-400 motion-reduce:transition-none group-hover:opacity-0" />
-            <div className="absolute inset-0 bg-linear-to-t from-brand-deep/95 via-brand-deep/60 to-brand-deep/10 opacity-0 transition-opacity duration-400 motion-reduce:transition-none group-hover:opacity-100" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-[calc(1rem+1.5em+0.25rem)] transition-transform duration-400 ease-out motion-reduce:transition-none group-hover:translate-y-0">
+            <div className="absolute inset-0 bg-linear-to-t from-brand-deep/90 via-brand-deep/20 to-transparent transition-opacity duration-280 ease-out motion-reduce:transition-none group-hover:opacity-0" />
+            <div className="absolute inset-0 bg-linear-to-t from-brand-deep/95 via-brand-deep/60 to-brand-deep/10 opacity-0 transition-opacity duration-280 ease-out motion-reduce:transition-none group-hover:opacity-100" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-[calc(1rem+1.5em+0.25rem)] transition-transform duration-280 ease-out motion-reduce:transition-none group-hover:translate-y-0">
               <h3 className="text-lg font-bold text-primary-foreground">{sectors[0].label}</h3>
-              <p className="mt-1 text-sm leading-6 text-primary-foreground/75 max-w-[38ch] opacity-0 transition-opacity duration-300 delay-75 motion-reduce:transition-none group-hover:opacity-100">
+              <p className="mt-1 text-sm leading-6 text-primary-foreground/75 max-w-[38ch] opacity-0 transition-opacity duration-200 delay-50 motion-reduce:transition-none group-hover:opacity-100">
                 {sectors[0].description}
               </p>
             </div>
@@ -38,11 +38,11 @@ export function Sectors() {
             {sectors.slice(1).map((sector) => (
               <div key={sector.label} className="group relative overflow-hidden rounded-2xl min-h-47.5 cursor-default">
                 <SectorImg src={sector.imageSrc} alt={sector.imageAlt} />
-                <div className="absolute inset-0 bg-linear-to-t from-brand-deep/88 via-brand-deep/20 to-transparent transition-opacity duration-400 motion-reduce:transition-none group-hover:opacity-0" />
-                <div className="absolute inset-0 bg-linear-to-t from-brand-deep/95 via-brand-deep/55 to-brand-deep/10 opacity-0 transition-opacity duration-400 motion-reduce:transition-none group-hover:opacity-100" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-[calc(0.625rem+1.25em+0.125rem)] transition-transform duration-400 ease-out motion-reduce:transition-none group-hover:translate-y-0">
+                <div className="absolute inset-0 bg-linear-to-t from-brand-deep/88 via-brand-deep/20 to-transparent transition-opacity duration-280 ease-out motion-reduce:transition-none group-hover:opacity-0" />
+                <div className="absolute inset-0 bg-linear-to-t from-brand-deep/95 via-brand-deep/55 to-brand-deep/10 opacity-0 transition-opacity duration-280 ease-out motion-reduce:transition-none group-hover:opacity-100" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-[calc(0.625rem+1.25em+0.125rem)] transition-transform duration-280 ease-out motion-reduce:transition-none group-hover:translate-y-0">
                   <h3 className="text-sm font-bold text-primary-foreground">{sector.label}</h3>
-                  <p className="mt-0.5 text-xs leading-5 text-primary-foreground/70 opacity-0 transition-opacity duration-300 delay-75 motion-reduce:transition-none group-hover:opacity-100">
+                  <p className="mt-0.5 text-xs leading-5 text-primary-foreground/70 opacity-0 transition-opacity duration-200 delay-50 motion-reduce:transition-none group-hover:opacity-100">
                     {sector.description}
                   </p>
                 </div>

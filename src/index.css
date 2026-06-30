@@ -118,26 +118,33 @@
   }
 }
 
-@keyframes reveal-up {
+/* ── Easing tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ── Hero entrance (immediate, not scroll-triggered) ────────────────────────── */
+@keyframes hero-fade-up {
   from {
     opacity: 0;
-    transform: translateY(1rem);
+    translate: 0 1.5rem;
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    translate: 0 0;
   }
 }
 
-.reveal-up {
-  animation: reveal-up 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+.hero-enter {
+  animation: hero-fade-up 0.6s var(--ease-out-expo) both;
 }
 
-/* Scroll reveal */
+/* ── Scroll reveal ───────────────────────────────────────────────────────────── */
 @keyframes reveal-fade-up {
   from {
     opacity: 0;
-    translate: 0 1.25rem;
+    translate: 0 1rem;
   }
   to {
     opacity: 1;
@@ -151,7 +158,17 @@
 }
 
 .js-reveal .reveal.is-visible {
-  animation: reveal-fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: reveal-fade-up 0.42s var(--ease-out-expo) both;
+}
+
+/* Stagger variants — set --reveal-delay on each child */
+.js-reveal .reveal-stagger.is-visible {
+  animation: reveal-fade-up 0.42s var(--ease-out-expo) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.js-reveal .reveal-stagger {
+  opacity: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -167,7 +184,10 @@
   }
 
   .js-reveal .reveal,
-  .js-reveal .reveal.is-visible {
+  .js-reveal .reveal.is-visible,
+  .js-reveal .reveal-stagger,
+  .js-reveal .reveal-stagger.is-visible,
+  .hero-enter {
     opacity: 1 !important;
     animation: none !important;
   }
