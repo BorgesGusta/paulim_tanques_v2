@@ -14,6 +14,13 @@ export function StepConfirm() {
   const [status, setStatus] = React.useState<Status>('idle')
   const whatsappUrl = buildQuoteWhatsAppUrl(form)
 
+  React.useEffect(() => {
+    if (status === 'success') {
+      const timer = setTimeout(() => { close(); reset() }, 400)
+      return () => clearTimeout(timer)
+    }
+  }, [status, close, reset])
+
   async function handleSubmit() {
     setStatus('loading')
     try {
@@ -26,9 +33,6 @@ export function StepConfirm() {
 
   function openWhatsApp() {
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
-    if (status === 'success') {
-      setTimeout(() => { close(); reset() }, 400)
-    }
   }
 
   const productLabels: Record<string, string> = {
