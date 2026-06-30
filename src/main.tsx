@@ -14,9 +14,17 @@ function initReveal() {
         }
       })
     },
-    { threshold: 0.1 },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
   )
-  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
+  document.querySelectorAll('.reveal').forEach((el) => {
+    const rect = el.getBoundingClientRect()
+    const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0
+    if (alreadyVisible) {
+      el.classList.add('is-visible')
+    } else {
+      observer.observe(el)
+    }
+  })
 }
 
 createRoot(document.getElementById('root')!).render(
@@ -25,5 +33,5 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 
-// Runs after React's render is flushed to the DOM, so `.reveal` elements exist to observe.
-requestAnimationFrame(initReveal)
+// Double rAF ensures layout is stable before querying bounding rects.
+requestAnimationFrame(() => requestAnimationFrame(initReveal))

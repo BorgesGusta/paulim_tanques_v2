@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils'
 export function FAQ() {
   return (
     <section id="faq" className="section-anchor py-20 lg:py-28">
-      <div className="section-shell grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.5fr] lg:items-start">
+      <div className="section-shell grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.5fr] lg:items-center">
         <div className="flex flex-col gap-8">
           <SectionHeading
             eyebrow="Dúvidas frequentes"

@@ -12,7 +12,7 @@ export function Footer() {
             <img
               src="/assets/paulim-tanques-logo.png"
               alt="Paulim Tanques"
-              className="h-8 w-auto object-contain brightness-0 invert"
+              className="h-8 w-auto object-contain brightness-0 invert self-start"
             />
             <p className="text-sm text-background/60">
               Especialistas em equipamentos para transporte e abastecimento.
@@ -55,7 +55,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col gap-2 sm:flex-row sm:justify-between text-xs text-background/40">
           <span>© {new Date().getFullYear()} Paulim Tanques. Todos os direitos reservados.</span>
-          <span>Marabá, Pará — Brasil</span>
+          <span>Marabá, Pará, Brasil</span>
         </div>
       </div>
     </footer>

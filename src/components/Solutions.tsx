@@ -9,16 +9,16 @@ export function Solutions() {
     <section id="solucoes" className="section-anchor py-20 lg:py-28">
       <div className="section-shell flex flex-col gap-14">
         {/* Header — no eyebrow */}
-        <div className="flex flex-col gap-4 max-w-2xl">
+        <div className="flex flex-col gap-4">
           <h2
             className="reveal font-display font-bold leading-[1.02] tracking-[-0.035em] text-foreground"
-            style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textWrap: 'balance' } as React.CSSProperties}
+            style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textWrap: 'pretty' } as React.CSSProperties}
           >
-            Do tanque à entrega: soluções para toda a cadeia de abastecimento.
+            Do tanque à entrega, soluções para toda a cadeia de abastecimento.
           </h2>
-          <p className="text-base leading-7 text-muted-foreground max-w-[60ch]">
+          <p className="text-base leading-7 text-muted-foreground">
             Fabricamos, fornecemos e mantemos. Cada produto é dimensionado para a
-            sua operação — com orientação técnica antes da compra.
+            sua operação, com orientação técnica antes da compra.
           </p>
         </div>
 
@@ -31,11 +31,11 @@ export function Solutions() {
                 key={cat.title}
                 className="rounded-2xl bg-brand-deep p-8 flex flex-col gap-5"
               >
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <span className="rounded-xl bg-brand-dark/40 p-3 shrink-0">
                     <Icon className="size-6 text-brand-light" aria-hidden="true" />
                   </span>
-                  <h3 className="text-xl font-bold text-primary-foreground leading-tight mt-1.5">
+                  <h3 className="text-xl font-bold text-primary-foreground leading-tight">
                     {cat.title}
                   </h3>
                 </div>

@@ -17,8 +17,8 @@ export function About() {
             <p className="text-base leading-7 text-muted-foreground max-w-[58ch]">
               Há mais de 15 anos a Paulim Tanques fabrica, fornece e mantém
               soluções para quem opera com tanques e equipamentos de abastecimento
-              no Norte do Brasil. Mais de 400 projetos entregues — do posto à
-              fazenda, da indústria ao aeroporto.
+              no Norte do Brasil. Mais de 400 projetos entregues em postos,
+              fazendas, indústrias e aeroportos da região.
             </p>
           </div>
 
@@ -37,14 +37,14 @@ export function About() {
         </div>
 
         {/* Image column */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-brand-dark/10">
+        <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl bg-brand-dark/10">
           <img
             src="/assets/about-team.jpg"
             alt="Equipe técnica Paulim Tanques trabalhando com equipamentos industriais"
             className="h-full w-full object-cover object-center"
             loading="lazy"
             onError={(e) => {
-              ;(e.currentTarget as HTMLImageElement).style.opacity = '0'
+              ; (e.currentTarget as HTMLImageElement).style.opacity = '0'
             }}
           />
         </div>

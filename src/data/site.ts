@@ -8,7 +8,7 @@ export const navItems = [
 ] as const
 
 export const trustItems = [
-  { value: '15 anos', label: 'de experiência técnica' },
+  { value: '15 anos', label: 'de experiência técnica no setor' },
   { value: '400+ projetos', label: 'entregues no Norte do Brasil' },
   { value: 'Entrega direta', label: 'até o cliente em toda a região' },
 ] as const
@@ -23,7 +23,7 @@ export const productCategories = [
   {
     title: 'Tanques Estacionários',
     description:
-      'Para armazenamento de diesel, gasolina, etanol, combustível de aviação e outros líquidos. Disponíveis bipartidos para dois produtos no mesmo tanque.',
+      'Para armazenamento de diesel, gasolina, etanol, combustíveis e outros líquidos. O modelo bipartido permite dois produtos no mesmo tanque.',
     models: ['Tanque simples', 'Tanque bipartido'],
   },
 ] as const
@@ -64,7 +64,7 @@ export const sectors = [
   },
   {
     label: 'Transporte e Aviação',
-    description: 'Soluções de alta performance para frotas de caminhões-tanque e operações aeroportuárias.',
+    description: 'Tanques e equipamentos para frotas de caminhões-tanque e operações aeroportuárias.',
     imageSrc: '/assets/sector-aviation.jpg',
     imageAlt: 'Abastecimento de aeronave com equipamento especializado',
   },
@@ -123,13 +123,13 @@ export const faqs = [
 export const differentials = [
   'Mais de 15 anos de experiência técnica no setor',
   'Mais de 400 projetos entregues na região Norte',
-  "Fabricação sob medida: tanques simples e bipartidos",
+  "Fabricação sob medida, tanques simples e bipartidos",
   'Entrega direta até o cliente, incluindo área rural',
-  'Consultoria técnica antes da venda e suporte pós-entrega',
+  'Consultoria técnica antes da venda e acompanhamento após a entrega',
 ] as const
 
 export const contact = {
   whatsappNumber: WHATSAPP_NUMBER,
   whatsappLabel: '(94) 99999-9999',
-  serviceArea: 'Marabá, Pará — Norte do Brasil',
+  serviceArea: 'Marabá, Pará',
 } as const

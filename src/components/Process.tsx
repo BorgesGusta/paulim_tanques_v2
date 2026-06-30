@@ -4,12 +4,12 @@ export function Process() {
   return (
     <section id="processo" className="section-anchor py-20 lg:py-28">
       <div className="section-shell flex flex-col gap-14">
-        <div className="flex flex-col gap-4 max-w-2xl">
+        <div className="flex flex-col gap-4">
           <h2
             className="reveal font-display font-bold leading-[1.02] tracking-[-0.035em] text-foreground"
-            style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textWrap: 'balance' } as React.CSSProperties}
+            style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textWrap: 'pretty' } as React.CSSProperties}
           >
-            Do diagnóstico à entrega: um processo pensado para não travar sua operação.
+            Do diagnóstico à entrega, um processo pensado para não travar sua operação.
           </h2>
         </div>
 
@@ -21,12 +21,10 @@ export function Process() {
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-deep text-sm font-bold text-primary-foreground">
                   {index + 1}
                 </span>
-                {index < processSteps.length - 1 && (
-                  <div
-                    className="hidden sm:block h-px flex-1 bg-brand-dark/25"
-                    aria-hidden="true"
-                  />
-                )}
+                <div
+                  className="hidden sm:block h-px flex-1 bg-brand-dark/25"
+                  aria-hidden="true"
+                />
               </div>
               {/* Text */}
               <div className="flex flex-col gap-2">
