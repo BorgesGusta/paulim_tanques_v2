@@ -69,7 +69,7 @@ export function Step3Location() {
           setGeoLoading(false)
         }
       },
-      () => setGeoLoading(false),
+      () => { setError('Não foi possível obter sua localização. Verifique as permissões.'); setGeoLoading(false) },
     )
   }
 
