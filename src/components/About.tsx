@@ -1,50 +1,52 @@
 import { CheckCircle2 } from 'lucide-react'
-
-import { SectionHeading } from '@/components/SectionHeading'
-
-const capabilities = [
-  'Fabricação e adequação conforme a necessidade',
-  'Manutenção e fornecimento de componentes',
-  'Orientação técnica antes da decisão',
-] as const
+import { differentials } from '@/data/site'
 
 export function About() {
   return (
-    <section
-      id="paulim"
-      className="section-anchor bg-background py-20 md:py-28"
-    >
-      <div className="section-shell grid gap-14 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
-        <img
-          className="min-h-[30rem] w-full rounded-xl object-cover"
-          src="/assets/technical-specialist.webp"
-          alt="Especialista e gestor avaliando componentes de uma operação com tanque."
-        />
-        <div className="flex flex-col gap-8">
-          <SectionHeading
-            eyebrow="A Paulim"
-            title="Engenharia de proximidade"
-            description="Conhecimento técnico para operações críticas, com atendimento próximo a quem precisa manter equipamentos, frotas e abastecimento funcionando."
-          />
-          <p className="leading-8 text-muted-foreground">
-            Com base em Marabá e experiência no mercado do Norte, a Paulim reúne
-            fabricação, manutenção, peças e orientação para apoiar decisões mais
-            seguras e compatíveis com cada aplicação.
-          </p>
-          <ul className="flex flex-col gap-4">
-            {capabilities.map((capability) => (
-              <li
-                className="flex items-start gap-3 font-semibold"
-                key={capability}
-              >
+    <section id="sobre" className="section-anchor bg-secondary py-20 lg:py-28">
+      <div className="section-shell grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+        {/* Text column */}
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
+            <h2
+              className="reveal font-display font-bold leading-[1.02] tracking-[-0.035em] text-foreground"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textWrap: 'balance' } as React.CSSProperties}
+            >
+              Engenharia de proximidade desde 2009.
+            </h2>
+            <p className="text-base leading-7 text-muted-foreground max-w-[58ch]">
+              Há mais de 15 anos a Paulim Tanques fabrica, fornece e mantém
+              soluções para quem opera com tanques e equipamentos de abastecimento
+              no Norte do Brasil. Mais de 400 projetos entregues em postos,
+              fazendas, indústrias e aeroportos da região.
+            </p>
+          </div>
+
+          <ul className="flex flex-col gap-3">
+            {differentials.map((item) => (
+              <li key={item} className="flex items-start gap-3">
                 <CheckCircle2
-                  className="mt-0.5 shrink-0 text-primary"
+                  size={20}
+                  className="text-brand-dark shrink-0 mt-0.5"
                   aria-hidden="true"
                 />
-                {capability}
+                <span className="text-sm leading-6 text-foreground">{item}</span>
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* Image column */}
+        <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl bg-brand-dark/10">
+          <img
+            src="/assets/about-team.jpg"
+            alt="Equipe técnica Paulim Tanques trabalhando com equipamentos industriais"
+            className="h-full w-full object-cover object-center"
+            loading="lazy"
+            onError={(e) => {
+              ; (e.currentTarget as HTMLImageElement).style.opacity = '0'
+            }}
+          />
         </div>
       </div>
     </section>

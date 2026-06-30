@@ -1,25 +1,31 @@
-import { ArrowRight } from 'lucide-react'
+import { MessageCircle } from 'lucide-react'
 
+import { contact } from '@/data/site'
 import { Button } from '@/components/ui/button'
+import { SectionHeading } from '@/components/SectionHeading'
 
 export function ContactCta() {
+  const whatsappUrl = `https://wa.me/${contact.whatsappNumber}`
+
   return (
-    <section className="bg-brand-light py-16 text-brand-deep md:py-20">
-      <div className="section-shell flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
-        <div className="flex max-w-3xl flex-col gap-3">
-          <p className="text-sm font-bold uppercase tracking-[0.16em]">
-            Próximo passo
-          </p>
-          <h2 className="font-display text-balance text-4xl font-bold leading-none tracking-[-0.04em] md:text-5xl">
-            Conte o que sua operação precisa
-          </h2>
-        </div>
-        <Button asChild className="min-h-11" size="lg" variant="secondary">
-          <a href="#diagnostico">
-            Preencher formulário técnico
-            <ArrowRight data-icon="inline-end" />
-          </a>
+    <section id="contato" className="section-anchor bg-brand-deep py-20 lg:py-28">
+      <div className="section-shell flex flex-col items-center gap-8 text-center">
+        <SectionHeading
+          inverse
+          eyebrow="Pronto para começar?"
+          title="Fale com um especialista técnico agora"
+          description="Sem formulários longos. Uma conversa técnica no WhatsApp resolve."
+          className="items-center text-center"
+        />
+
+        <Button size="lg" render={<a href={whatsappUrl} target="_blank" rel="noopener noreferrer" />}>
+          <MessageCircle />
+          Iniciar diagnóstico no WhatsApp
         </Button>
+
+        <p className="text-sm text-primary-foreground/60">
+          Atendimento em dias úteis, 8h–18h
+        </p>
       </div>
     </section>
   )

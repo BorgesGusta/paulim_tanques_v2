@@ -1,10 +1,11 @@
 export const WHATSAPP_NUMBER = '5594999999999'
 
 export const segments = [
+  'Fazendas',
   'Postos e distribuidoras',
-  'Agronegócio',
-  'Transporte e aviação',
   'Indústrias',
+  'Transporte e aviação',
+  'Empresas em geral',
   'Outro',
 ] as const
 

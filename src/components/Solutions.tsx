@@ -1,68 +1,82 @@
-import {
-  Container,
-  ShieldCheck,
-  Workflow,
-  Wrench,
-  type LucideIcon,
-} from 'lucide-react'
+import { Cylinder, Droplets, Gauge, Cable, Wrench } from 'lucide-react'
+import { productCategories, equipmentItems } from '@/data/site'
 
-import { SectionHeading } from '@/components/SectionHeading'
-import { solutions } from '@/data/site'
-
-const solutionIcons = [
-  Container,
-  Workflow,
-  Wrench,
-  ShieldCheck,
-] satisfies readonly LucideIcon[]
+const productIcons = [Cylinder, Droplets]
+const equipmentIcons = [Gauge, Cable, Wrench]
 
 export function Solutions() {
   return (
-    <section
-      id="solucoes"
-      className="section-anchor bg-background py-20 md:py-28"
-    >
-      <div className="section-shell grid gap-14 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
-        <div className="flex flex-col gap-8 lg:sticky lg:top-28">
-          <SectionHeading
-            eyebrow="Soluções"
-            title="Soluções para cada etapa da operação"
-            description="A aplicação vem antes da especificação. A Paulim ajuda a identificar o componente, equipamento ou suporte adequado ao contexto."
-          />
-          <img
-            className="aspect-[4/3] w-full rounded-xl object-cover"
-            src="/assets/technical-equipment.webp"
-            alt="Mangueiras, válvulas e conexões organizadas para atendimento técnico."
-          />
+    <section id="solucoes" className="section-anchor py-20 lg:py-28">
+      <div className="section-shell flex flex-col gap-14">
+        {/* Header — no eyebrow */}
+        <div className="flex flex-col gap-4">
+          <h2
+            className="reveal font-display font-bold leading-[1.02] tracking-[-0.035em] text-foreground"
+            style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textWrap: 'pretty' } as React.CSSProperties}
+          >
+            Do tanque à entrega, soluções para toda a cadeia de abastecimento.
+          </h2>
+          <p className="text-base leading-7 text-muted-foreground">
+            Fabricamos, fornecemos e mantemos. Cada produto é dimensionado para a
+            sua operação, com orientação técnica antes da compra.
+          </p>
         </div>
 
-        <ol className="border-t">
-          {solutions.map((solution, index) => {
-            const Icon = solutionIcons[index]
-
+        {/* Tier 1 — 2 main product categories */}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {productCategories.map((cat, index) => {
+            const Icon = productIcons[index]
             return (
-              <li
-                className="grid gap-5 border-b py-8 sm:grid-cols-[auto_1fr] sm:py-10"
-                key={solution.title}
+              <div
+                key={cat.title}
+                className="rounded-2xl bg-brand-deep p-8 flex flex-col gap-5"
               >
-                <span className="flex size-12 items-center justify-center rounded-lg bg-secondary text-primary">
-                  <Icon aria-hidden="true" />
-                </span>
-                <div className="flex flex-col gap-3">
-                  <p className="text-xs font-bold tracking-[0.16em] text-muted-foreground">
-                    {String(index + 1).padStart(2, '0')}
-                  </p>
-                  <h3 className="font-display text-2xl font-bold tracking-[-0.025em]">
-                    {solution.title}
+                <div className="flex items-center gap-4">
+                  <span className="rounded-xl bg-brand-dark/40 p-3 shrink-0">
+                    <Icon className="size-6 text-brand-light" aria-hidden="true" />
+                  </span>
+                  <h3 className="text-xl font-bold text-primary-foreground leading-tight">
+                    {cat.title}
                   </h3>
-                  <p className="max-w-xl leading-7 text-muted-foreground">
-                    {solution.description}
-                  </p>
                 </div>
-              </li>
+                <p className="text-sm leading-7 text-primary-foreground/75 flex-1">
+                  {cat.description}
+                </p>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {cat.models.map((model) => (
+                    <span
+                      key={model}
+                      className="rounded-md bg-brand-dark/35 px-2.5 py-1 text-xs font-medium text-primary-foreground/85"
+                    >
+                      {model}
+                    </span>
+                  ))}
+                </div>
+              </div>
             )
           })}
-        </ol>
+        </div>
+
+        {/* Tier 2 — Equipment items, compact, below divider */}
+        <div className="border-t border-border pt-10">
+          <p className="mb-6 text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
+            Equipamentos e peças
+          </p>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {equipmentItems.map((item, index) => {
+              const Icon = equipmentIcons[index]
+              return (
+                <div key={item.title} className="flex gap-4 items-start">
+                  <Icon className="size-5 text-brand-dark shrink-0 mt-0.5" aria-hidden="true" />
+                  <div className="flex flex-col gap-1">
+                    <h3 className="text-sm font-bold text-foreground">{item.title}</h3>
+                    <p className="text-sm leading-6 text-muted-foreground">{item.description}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
       </div>
     </section>
   )

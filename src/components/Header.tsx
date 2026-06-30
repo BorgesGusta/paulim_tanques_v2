@@ -1,97 +1,109 @@
 import { Menu, MessageCircle } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { navItems } from '@/data/site'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import {
   Sheet,
-  SheetClose,
+  SheetTrigger,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  SheetClose,
 } from '@/components/ui/sheet'
-import { navItems } from '@/data/site'
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur">
-      <div className="section-shell flex min-h-16 items-center justify-between gap-6">
-        <a
-          className="inline-flex min-h-11 items-center"
-          href="#inicio"
-          aria-label="Paulim Tanques - início"
-        >
+    <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
+      <div className="section-shell flex min-h-16 items-center justify-between gap-4">
+        {/* Logo */}
+        <a href="#inicio" aria-label="Paulim Tanques — início da página">
           <img
-            className="h-14 w-36 object-cover object-center"
             src="/assets/paulim-tanques-logo.png"
             alt="Paulim Tanques"
+            className="h-9 w-auto object-contain"
           />
         </a>
 
-        <nav
-          className="hidden items-center gap-1 lg:flex"
-          aria-label="Navegação principal"
-        >
-          {navItems.map((item) => (
-            <Button asChild key={item.href} variant="ghost">
-              <a href={item.href}>{item.label}</a>
-            </Button>
-          ))}
+        {/* Desktop nav */}
+        <nav aria-label="Navegação principal" className="hidden lg:flex">
+          <ul className="flex items-center gap-1">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Button variant="ghost" size="sm" render={<a href={item.href} />}>
+                  {item.label}
+                </Button>
+              </li>
+            ))}
+          </ul>
         </nav>
 
+        {/* Desktop CTA */}
         <div className="hidden lg:block">
-          <Button asChild className="min-h-11">
-            <a href="#diagnostico">
-              <MessageCircle data-icon="inline-start" />
-              Falar com especialista
-            </a>
+          <Button render={<a href="#diagnostico" />}>
+            <MessageCircle />
+            Falar com especialista
           </Button>
         </div>
 
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button
-              className="size-11 lg:hidden"
-              size="icon"
-              type="button"
-              variant="outline"
-              aria-label="Abrir menu"
+        {/* Mobile hamburger */}
+        <div className="lg:hidden">
+          <Sheet>
+            <SheetTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label="Abrir menu de navegação"
+                />
+              }
             >
               <Menu />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right">
-            <SheetHeader>
-              <SheetTitle>Paulim Tanques</SheetTitle>
-              <SheetDescription>
-                Navegue pelas soluções e acesse o diagnóstico técnico.
-              </SheetDescription>
-            </SheetHeader>
-            <nav
-              className="flex flex-col gap-2 px-4"
-              aria-label="Navegação mobile"
-            >
-              {navItems.map((item) => (
-                <SheetClose asChild key={item.href}>
-                  <a
-                    className="inline-flex min-h-11 items-center border-b py-3 font-semibold"
-                    href={item.href}
+            </SheetTrigger>
+
+            <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle>Menu</SheetTitle>
+              </SheetHeader>
+
+              <nav
+                aria-label="Navegação mobile"
+                className="flex flex-col gap-1 px-4 pb-4"
+              >
+                {navItems.map((item) => (
+                  <SheetClose
+                    key={item.href}
+                    render={
+                      <a
+                        href={item.href}
+                        className={cn(
+                          buttonVariants({ variant: 'ghost' }),
+                          'w-full justify-start text-base',
+                        )}
+                      />
+                    }
                   >
                     {item.label}
-                  </a>
+                  </SheetClose>
+                ))}
+              </nav>
+
+              <div className="px-4 pb-6">
+                <SheetClose
+                  render={
+                    <a
+                      href="#diagnostico"
+                      className={cn(buttonVariants(), 'w-full')}
+                    />
+                  }
+                >
+                  <MessageCircle />
+                  Falar com especialista
                 </SheetClose>
-              ))}
-              <SheetClose asChild>
-                <Button asChild className="mt-4 min-h-11">
-                  <a href="#diagnostico">
-                    <MessageCircle data-icon="inline-start" />
-                    Falar com especialista
-                  </a>
-                </Button>
-              </SheetClose>
-            </nav>
-          </SheetContent>
-        </Sheet>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   )

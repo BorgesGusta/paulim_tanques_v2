@@ -1,24 +1,29 @@
+import { Clock, PackageCheck, Truck } from 'lucide-react'
 import { trustItems } from '@/data/site'
+
+const icons = [Clock, PackageCheck, Truck]
 
 export function TrustBar() {
   return (
-    <section
-      className="bg-brand-light text-brand-deep"
-      aria-label="Provas de confiança"
-    >
-      <ul className="section-shell grid gap-px bg-brand-deep/20 py-px md:grid-cols-3">
-        {trustItems.map((item) => (
-          <li
-            className="flex flex-col gap-1 bg-brand-light px-5 py-7 md:px-8"
-            key={item.value}
-          >
-            <strong className="text-xl font-extrabold">{item.value}</strong>
-            <span className="text-sm font-semibold text-brand-deep/80">
-              {item.label}
-            </span>
-          </li>
-        ))}
-      </ul>
+    <section aria-label="Credenciais da Paulim Tanques" className="bg-brand-deep py-10">
+      <div className="section-shell">
+        <dl className="reveal flex flex-wrap items-start justify-center gap-10 sm:gap-32">
+          {trustItems.map((item, index) => {
+            const Icon = icons[index % icons.length]
+            return (
+              <div key={item.label} className="flex flex-col items-center gap-2 text-center">
+                <Icon className="size-5 text-brand-light" aria-hidden="true" />
+                <dt className="text-2xl font-extrabold text-primary-foreground leading-none">
+                  {item.value}
+                </dt>
+                <dd className="text-xs text-primary-foreground/60 max-w-[18ch] leading-snug">
+                  {item.label}
+                </dd>
+              </div>
+            )
+          })}
+        </dl>
+      </div>
     </section>
   )
 }

@@ -1,55 +1,82 @@
-import { ArrowDown, CheckCircle2 } from 'lucide-react'
-
+import { CheckCircle2, ArrowDown } from 'lucide-react'
 import { TechnicalRequestForm } from '@/components/TechnicalRequestForm'
 
 export function Hero() {
   return (
     <section
       id="inicio"
-      className="section-anchor overflow-hidden bg-card text-card-foreground"
+      className="section-anchor relative overflow-hidden"
+      style={{ minHeight: 'calc(100svh - 4rem)' }}
     >
-      <div className="grid min-h-[calc(100svh-5rem)] lg:mx-auto lg:min-h-[calc(100svh-11rem)] lg:w-full lg:max-w-7xl lg:grid-cols-[1.12fr_.88fr] lg:gap-12 lg:px-12">
-        <div className="relative isolate flex min-h-[38rem] min-w-0 items-end lg:min-h-0">
-          <img
-            className="absolute inset-0 size-full object-cover object-right lg:inset-y-0 lg:right-0 lg:left-auto lg:h-full lg:w-screen lg:max-w-none"
-            src="/assets/hero-tanker-operation.webp"
-            alt="Especialista inspecionando equipamentos de um caminhão-tanque em operação."
-          />
-          <div className="absolute inset-0 bg-brand-deep/75 lg:inset-y-0 lg:right-0 lg:left-auto lg:w-screen" />
-          <div className="relative flex flex-col gap-7 px-5 py-16 text-primary-foreground sm:px-8 lg:gap-4 lg:px-0 lg:py-10">
-            <p className="text-sm font-bold uppercase tracking-[0.16em] text-primary-foreground/70">
-              Especialista desde o início
-            </p>
-            <h1 className="font-display text-balance max-w-4xl text-5xl font-bold leading-[0.95] tracking-[-0.04em] sm:text-6xl lg:text-[3.5rem] xl:text-[3.75rem]">
-              Soluções técnicas para operações que não podem parar.
-            </h1>
-            <p className="safe-copy max-w-2xl text-lg leading-8 text-primary-foreground/80 lg:text-base lg:leading-7">
-              Peças, equipamentos e suporte especializado para transporte e
-              abastecimento com segurança.
-            </p>
-            <div className="flex flex-wrap items-center gap-5">
-              <span className="inline-flex items-center gap-2 font-bold">
-                <CheckCircle2 aria-hidden="true" />
-                15 anos de experiência técnica
+      {/* Background image */}
+      <img
+        src="/assets/hero-bg.jpg"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 z-0 h-full w-full object-cover object-center"
+        fetchPriority="high"
+      />
+
+      {/* Overlay — heavy on left (text), lighter on right (form) */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{
+          background:
+            'linear-gradient(115deg, oklch(0.32 0.10 145 / 0.96) 0%, oklch(0.32 0.10 145 / 0.88) 48%, oklch(0.32 0.10 145 / 0.60) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Content */}
+      <div className="relative z-20 section-shell flex flex-col gap-10 py-10 lg:grid lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-20" style={{ minHeight: 'calc(100svh - 4rem)' }}>
+        {/* Headline column */}
+        <div className="flex flex-col gap-6 lg:col-span-7">
+          {/* Evidence line — concrete data, not a generic label */}
+          <p className="text-sm font-semibold text-primary-foreground/70">
+            Mais de 400 projetos entregues. 15 anos no Norte do Brasil
+          </p>
+
+          {/* H1 */}
+          <h1
+            className="font-display font-extrabold leading-[0.95] tracking-[-0.04em] text-primary-foreground"
+            style={{ fontSize: 'clamp(2.6rem, 6vw, 5.5rem)', textWrap: 'balance' } as React.CSSProperties}
+          >
+            Soluções técnicas para operações que não podem parar.
+          </h1>
+
+          {/* Subtitle */}
+          <p className="max-w-[52ch] text-lg leading-8 text-primary-foreground/80">
+            Fabricação, manutenção, fornecimento de tanques,
+            equipamentos para transporte e abastecimento em toda a região Norte.
+          </p>
+
+          {/* Proof points */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="size-5 shrink-0 text-brand-light" aria-hidden="true" />
+              <span className="text-sm font-medium text-primary-foreground/90">
+                Entrega até o cliente
               </span>
-              <a
-                className="inline-flex min-h-11 items-center gap-2 font-bold underline decoration-brand-light decoration-2 underline-offset-8"
-                href="#solucoes"
-              >
-                Conhecer soluções
-                <ArrowDown aria-hidden="true" />
-              </a>
             </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="size-5 shrink-0 text-brand-light" aria-hidden="true" />
+              <span className="text-sm font-medium text-primary-foreground/90">
+                Fabricação sob medida
+              </span>
+            </div>
+            <a
+              href="#solucoes"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-primary-foreground/70 underline-offset-4 transition-colors hover:text-primary-foreground hover:underline"
+            >
+              Conhecer soluções
+              <ArrowDown className="size-4" aria-hidden="true" />
+            </a>
           </div>
         </div>
 
-        <div
-          id="diagnostico"
-          className="section-anchor flex min-w-0 items-center bg-card px-5 py-12 text-card-foreground sm:px-8 lg:px-0 lg:py-5"
-        >
-          <div className="mx-auto w-full max-w-xl">
-            <TechnicalRequestForm />
-          </div>
+        {/* Form column */}
+        <div id="diagnostico" className="section-anchor lg:col-span-5">
+          <TechnicalRequestForm />
         </div>
       </div>
     </section>
