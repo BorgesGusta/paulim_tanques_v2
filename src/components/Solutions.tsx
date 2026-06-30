@@ -1,10 +1,17 @@
-import { Cylinder, Droplets, Gauge, Cable, Wrench } from 'lucide-react'
+import { Cylinder, Droplets, Gauge, Cable, Wrench, FileText } from 'lucide-react'
 import { productCategories, equipmentItems } from '@/data/site'
+import { Button } from '@/components/ui/button'
+import { useQuote } from '@/context/QuoteContext'
+import type { QuoteProduct } from '@/lib/quote-form'
 
 const productIcons = [Cylinder, Droplets]
 const equipmentIcons = [Gauge, Cable, Wrench]
 
+const productKeys: QuoteProduct[] = ['caixa-dagua', 'tanque-estacionario']
+
 export function Solutions() {
+  const { open } = useQuote()
+
   return (
     <section id="solucoes" className="section-anchor py-20 lg:py-28">
       <div className="section-shell flex flex-col gap-14">
@@ -26,6 +33,7 @@ export function Solutions() {
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           {productCategories.map((cat, index) => {
             const Icon = productIcons[index]
+            const productKey = productKeys[index]
             return (
               <div
                 key={cat.title}
@@ -52,6 +60,15 @@ export function Solutions() {
                     </span>
                   ))}
                 </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => open(productKey)}
+                  className="self-start border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                >
+                  <FileText className="size-3.5" />
+                  Solicitar orçamento
+                </Button>
               </div>
             )
           })}
@@ -75,6 +92,16 @@ export function Solutions() {
                 </div>
               )
             })}
+          </div>
+          <div className="mt-8">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => open('equipamentos')}
+            >
+              <FileText className="size-3.5" />
+              Solicitar orçamento de equipamentos
+            </Button>
           </div>
         </div>
       </div>

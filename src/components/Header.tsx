@@ -1,4 +1,4 @@
-import { Menu, MessageCircle } from 'lucide-react'
+import { Menu, MessageCircle, FileText } from 'lucide-react'
 
 import { navItems } from '@/data/site'
 import { Button, buttonVariants } from '@/components/ui/button'
@@ -11,8 +11,11 @@ import {
   SheetTitle,
   SheetClose,
 } from '@/components/ui/sheet'
+import { useQuote } from '@/context/QuoteContext'
 
 export function Header() {
+  const { open } = useQuote()
+
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="section-shell flex min-h-16 items-center justify-between gap-4">
@@ -40,9 +43,9 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:block">
-          <Button render={<a href="#diagnostico" />}>
-            <MessageCircle />
-            Falar com especialista
+          <Button onClick={() => open()}>
+            <FileText />
+            Solicitar orçamento
           </Button>
         </div>
 

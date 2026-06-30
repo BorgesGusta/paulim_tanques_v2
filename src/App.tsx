@@ -8,10 +8,12 @@ import { About } from '@/components/About'
 import { FAQ } from '@/components/FAQ'
 import { ContactCta } from '@/components/ContactCta'
 import { Footer } from '@/components/Footer'
+import { QuoteProvider } from '@/context/QuoteContext'
+import { QuoteWizard } from '@/components/QuoteWizard'
 
 export default function App() {
   return (
-    <>
+    <QuoteProvider>
       <Header />
       <main>
         <Hero />
@@ -24,6 +26,7 @@ export default function App() {
         <ContactCta />
       </main>
       <Footer />
-    </>
+      <QuoteWizard />
+    </QuoteProvider>
   )
 }

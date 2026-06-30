@@ -1,7 +1,11 @@
-import { CheckCircle2, ArrowDown } from 'lucide-react'
+import { CheckCircle2, ArrowDown, FileText } from 'lucide-react'
 import { TechnicalRequestForm } from '@/components/TechnicalRequestForm'
+import { Button } from '@/components/ui/button'
+import { useQuote } from '@/context/QuoteContext'
 
 export function Hero() {
+  const { open } = useQuote()
+
   return (
     <section
       id="inicio"
@@ -72,6 +76,15 @@ export function Hero() {
               <ArrowDown className="size-4" aria-hidden="true" />
             </a>
           </div>
+
+          <Button
+            variant="outline"
+            onClick={() => open()}
+            className="self-start border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+          >
+            <FileText className="size-4" />
+            Solicitar orçamento
+          </Button>
         </div>
 
         {/* Form column */}
