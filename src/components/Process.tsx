@@ -1,4 +1,7 @@
+import { MessageCircle, Search, Truck } from 'lucide-react'
 import { processSteps } from '@/data/site'
+
+const stepIcons = [MessageCircle, Search, Truck]
 
 export function Process() {
   return (
@@ -14,14 +17,17 @@ export function Process() {
         </div>
 
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">
-          {processSteps.map((step, index) => (
+          {processSteps.map((step, index) => {
+            const Icon = stepIcons[index]
+            return (
             <div
               key={step.number}
               className="reveal-stagger flex flex-col gap-4"
               style={{ '--reveal-delay': `${index * 80}ms` } as React.CSSProperties}
             >
-              {/* Circle + connector */}
+              {/* Icon + circle + connector */}
               <div className="flex items-center gap-3">
+                <Icon className="size-5 shrink-0 text-brand-dark" aria-hidden="true" />
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-deep text-sm font-bold text-primary-foreground">
                   {index + 1}
                 </span>
@@ -36,7 +42,8 @@ export function Process() {
                 <p className="text-sm leading-6 text-muted-foreground">{step.description}</p>
               </div>
             </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

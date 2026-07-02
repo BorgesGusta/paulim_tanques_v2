@@ -2,7 +2,7 @@ import { sectors } from '@/data/site'
 
 export function Sectors() {
   return (
-    <section id="setores" className="section-anchor bg-brand-deep py-20 lg:py-28">
+    <section id="setores" className="section-anchor bg-brand-deep pt-10 pb-20 lg:pt-14 lg:pb-28">
       <div className="section-shell flex flex-col gap-14">
         {/* Header */}
         <div className="flex flex-col gap-4">

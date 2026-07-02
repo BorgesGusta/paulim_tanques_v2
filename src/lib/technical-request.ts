@@ -1,4 +1,4 @@
-export const WHATSAPP_NUMBER = '5594999999999'
+export const WHATSAPP_NUMBER = '5594991562929'
 
 export const segments = [
   'Fazendas',
@@ -14,6 +14,7 @@ export type Segment = (typeof segments)[number]
 export type TechnicalRequest = {
   name: string
   company: string
+  city: string
   phone: string
   segment: Segment | ''
   details: string
@@ -26,6 +27,7 @@ export type TechnicalRequestErrors = Partial<
 export const emptyTechnicalRequest: TechnicalRequest = {
   name: '',
   company: '',
+  city: '',
   phone: '',
   segment: '',
   details: '',
@@ -66,6 +68,7 @@ export function buildWhatsAppUrl(request: TechnicalRequest): string {
     '',
     `Nome: ${request.name.trim()}`,
     `Empresa/operação: ${request.company.trim()}`,
+    ...(request.city.trim() ? [`Cidade/Município: ${request.city.trim()}`] : []),
     `Telefone: ${request.phone.trim()}`,
     `Segmento: ${request.segment}`,
     `Necessidade: ${request.details.trim()}`,

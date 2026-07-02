@@ -1,13 +1,11 @@
-import { MessageCircle, FileText } from 'lucide-react'
+import { MessageCircle, PackageSearch } from 'lucide-react'
 
 import { contact } from '@/data/site'
 import { Button } from '@/components/ui/button'
 import { SectionHeading } from '@/components/SectionHeading'
-import { useQuote } from '@/context/QuoteContext'
 
 export function ContactCta() {
   const whatsappUrl = `https://wa.me/${contact.whatsappNumber}`
-  const { open } = useQuote()
 
   return (
     <section id="contato" className="section-anchor bg-brand-deep py-20 lg:py-28">
@@ -28,11 +26,11 @@ export function ContactCta() {
           <Button
             size="lg"
             variant="outline"
-            onClick={() => open()}
+            render={<a href="#solucoes" />}
             className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
           >
-            <FileText />
-            Solicitar orçamento
+            <PackageSearch />
+            Ver nossas soluções
           </Button>
         </div>
 

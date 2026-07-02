@@ -49,7 +49,7 @@ export function Step4Client() {
             id="cl-phone"
             type="tel"
             inputMode="tel"
-            placeholder="(94) 99999-9999"
+            placeholder="(94) 99156-2929"
             autoComplete="tel"
             value={form.clientPhone}
             onChange={(e) => update('clientPhone', e.target.value)}

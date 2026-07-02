@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# Environment variables (contains API keys — never commit)
+.env
+.env.*
+!.env.example
+
+# Large reference PDFs — not yet used by the site, kept out of git history
+docs/context/Catálogo Paulim Tanques.pdf
+public/Catálogo Paulim Tanques.pdf
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

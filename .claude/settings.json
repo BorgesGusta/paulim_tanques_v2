@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(kill -9 4987)",
+      "Bash(ps aux *)",
+      "Read(//private/tmp/**)",
+      "Bash(kill -9 9254)",
+      "Bash(pkill -9 -f vite)"
+    ]
+  }
+}

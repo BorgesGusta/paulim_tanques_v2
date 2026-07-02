@@ -193,6 +193,20 @@ export function TechnicalRequestForm() {
             </Field>
           </div>
 
+          {/* City / municipality of the operation */}
+          {/* TODO: Substituir por Google Maps Places Autocomplete quando a API key estiver configurada */}
+          <Field>
+            <FieldLabel htmlFor="tr-city">Cidade / Município da operação</FieldLabel>
+            <Input
+              id="tr-city"
+              type="text"
+              placeholder="Ex.: Marabá, Altamira, Tucuruí..."
+              autoComplete="address-level2"
+              value={values.city}
+              onChange={(e) => handleChange('city', e.target.value)}
+            />
+          </Field>
+
           {/* Row 2: Phone + Segment */}
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             {/* Phone */}
@@ -203,7 +217,7 @@ export function TechnicalRequestForm() {
                 ref={phoneRef}
                 type="tel"
                 inputMode="tel"
-                placeholder="(94) 99999-9999"
+                placeholder="(94) 99156-2929"
                 autoComplete="tel"
                 value={values.phone}
                 onChange={(e) => handleChange('phone', e.target.value)}
@@ -342,6 +356,12 @@ export function TechnicalRequestForm() {
               <dt className="font-medium text-foreground">Empresa</dt>
               <dd className="text-muted-foreground">{values.company}</dd>
             </div>
+            {values.city && (
+              <div className="flex justify-between gap-2 py-1">
+                <dt className="font-medium text-foreground">Cidade</dt>
+                <dd className="text-muted-foreground">{values.city}</dd>
+              </div>
+            )}
             <div className="flex justify-between gap-2 py-1">
               <dt className="font-medium text-foreground">Telefone</dt>
               <dd className="text-muted-foreground">{values.phone}</dd>

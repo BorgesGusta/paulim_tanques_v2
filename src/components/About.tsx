@@ -39,7 +39,7 @@ export function About() {
         {/* Image column */}
         <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl bg-brand-dark/10">
           <img
-            src="/assets/about-team.jpg"
+            src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800"
             alt="Equipe técnica Paulim Tanques trabalhando com equipamentos industriais"
             className="h-full w-full object-cover object-center"
             loading="lazy"

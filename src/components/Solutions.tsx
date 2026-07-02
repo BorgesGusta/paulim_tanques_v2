@@ -37,39 +37,47 @@ export function Solutions() {
             return (
               <div
                 key={cat.title}
-                className="reveal-stagger rounded-2xl bg-brand-deep p-8 flex flex-col gap-5"
+                className="reveal-stagger overflow-hidden rounded-2xl bg-brand-deep flex flex-col gap-5"
                 style={{ '--reveal-delay': `${index * 80}ms` } as React.CSSProperties}
               >
-                <div className="flex items-center gap-4">
-                  <span className="rounded-xl bg-brand-dark/40 p-3 shrink-0">
-                    <Icon className="size-6 text-brand-light" aria-hidden="true" />
-                  </span>
-                  <h3 className="text-xl font-bold text-primary-foreground leading-tight">
-                    {cat.title}
-                  </h3>
-                </div>
-                <p className="text-sm leading-7 text-primary-foreground/75 flex-1">
-                  {cat.description}
-                </p>
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {cat.models.map((model) => (
-                    <span
-                      key={model}
-                      className="rounded-md bg-brand-dark/35 px-2.5 py-1 text-xs font-medium text-primary-foreground/85"
-                    >
-                      {model}
+                <img
+                  src={cat.imageSrc}
+                  alt={cat.imageAlt}
+                  className="h-50 w-full object-cover object-center"
+                  loading="lazy"
+                />
+                <div className="flex flex-col gap-5 p-8 pt-0">
+                  <div className="flex items-center gap-4">
+                    <span className="rounded-xl bg-brand-dark/40 p-3 shrink-0">
+                      <Icon className="size-6 text-brand-light" aria-hidden="true" />
                     </span>
-                  ))}
+                    <h3 className="text-xl font-bold text-primary-foreground leading-tight">
+                      {cat.title}
+                    </h3>
+                  </div>
+                  <p className="text-sm leading-7 text-primary-foreground/75 flex-1">
+                    {cat.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {cat.models.map((model) => (
+                      <span
+                        key={model}
+                        className="rounded-md bg-brand-dark/35 px-2.5 py-1 text-xs font-medium text-primary-foreground/85"
+                      >
+                        {model}
+                      </span>
+                    ))}
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => open(productKey)}
+                    className="self-start border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                  >
+                    <FileText className="size-3.5" />
+                    Solicitar orçamento
+                  </Button>
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => open(productKey)}
-                  className="self-start border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
-                >
-                  <FileText className="size-3.5" />
-                  Solicitar orçamento
-                </Button>
               </div>
             )
           })}

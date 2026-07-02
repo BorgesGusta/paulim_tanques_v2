@@ -27,7 +27,7 @@ export function FAQ() {
             Falar com especialista
           </a>
         </div>
-        <Accordion>
+        <Accordion defaultValue={['0']}>
           {faqs.map((faq, index) => (
             <AccordionItem key={faq.question} value={String(index)}>
               <AccordionTrigger>{faq.question}</AccordionTrigger>
