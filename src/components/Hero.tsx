@@ -2,6 +2,7 @@ import * as React from 'react'
 import { CheckCircle2, ArrowDown, FileText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useQuote } from '@/context/QuoteContext'
+import { useParallax } from '@/lib/use-parallax'
 
 const heroImages = [
   '/assets/hero-truck-field-sunset.png',
@@ -10,6 +11,7 @@ const heroImages = [
 
 function HeroCarousel() {
   const [index, setIndex] = React.useState(0)
+  const { ref, offset } = useParallax<HTMLDivElement>(0.15)
 
   React.useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -20,14 +22,18 @@ function HeroCarousel() {
   }, [])
 
   return (
-    <>
+    <div
+      ref={ref}
+      className="absolute inset-0 z-0 scale-110"
+      style={{ translate: `0 ${offset}px` }}
+    >
       {heroImages.map((src, i) => (
         <img
           key={src}
           src={src}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 z-0 h-full w-full object-cover object-center transition-[opacity,translate] duration-1000 ease-out motion-reduce:transition-none"
+          className="absolute inset-0 h-full w-full object-cover object-center transition-[opacity,translate] duration-1000 ease-out motion-reduce:transition-none"
           style={{
             opacity: i === index ? 1 : 0,
             translate: i === index ? '0 0' : '3% 0',
@@ -36,7 +42,7 @@ function HeroCarousel() {
           loading={i === 0 ? undefined : 'lazy'}
         />
       ))}
-    </>
+    </div>
   )
 }
 

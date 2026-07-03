@@ -1,3 +1,4 @@
+import { ScrollProgress } from '@/components/ScrollProgress'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { TrustBar } from '@/components/TrustBar'
@@ -17,6 +18,7 @@ import { WhatsAppFloatingButton } from '@/components/WhatsAppFloatingButton'
 export default function App() {
   return (
     <QuoteProvider>
+      <ScrollProgress />
       <Header />
       <main>
         <Hero />
