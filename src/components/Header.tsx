@@ -24,7 +24,7 @@ export function Header() {
           <img
             src="/assets/paulim-tanques-logo.png"
             alt="Paulim Tanques"
-            className="h-9 w-auto object-contain"
+            className="logo-enter h-9 w-auto object-contain"
           />
         </a>
 
