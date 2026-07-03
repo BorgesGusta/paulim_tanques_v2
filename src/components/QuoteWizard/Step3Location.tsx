@@ -2,7 +2,7 @@ import * as React from 'react'
 import { MapPin, LocateFixed } from 'lucide-react'
 import { useQuote } from '@/context/QuoteContext'
 import { validateStep3, type LocationType } from '@/lib/quote-form'
-import { loadGoogleMaps, initAutocomplete, reverseGeocode } from '@/lib/google-maps'
+import { loadGoogleMaps, initAutocomplete, reverseGeocode, createMapWithMarker } from '@/lib/google-maps'
 import { StepIndicator } from './StepIndicator'
 import { WizardNav } from './WizardNav'
 import { Field, FieldLabel, FieldError } from '@/components/ui/field'
@@ -18,12 +18,17 @@ const locationTypes: { value: LocationType; label: string }[] = [
   { value: 'outro', label: 'Outro' },
 ]
 
+// Marabá, PA — centro padrão do mapa até o usuário buscar ou compartilhar localização
+const DEFAULT_CENTER = { lat: -5.3686, lng: -49.1178 }
+
 export function Step3Location() {
   const { form, setForm, setStep } = useQuote()
   const [error, setError] = React.useState<string | null>(null)
   const [geoLoading, setGeoLoading] = React.useState(false)
   const [mapsReady, setMapsReady] = React.useState(false)
   const addressRef = React.useRef<HTMLInputElement>(null)
+  const mapContainerRef = React.useRef<HTMLDivElement>(null)
+  const mapControllerRef = React.useRef<{ setPosition: (lat: number, lng: number) => void } | null>(null)
 
   // Load Google Maps and attach autocomplete
   React.useEffect(() => {
@@ -37,9 +42,24 @@ export function Step3Location() {
     const cleanup = initAutocomplete(addressRef.current, (address, lat, lng) => {
       setForm((prev) => ({ ...prev, address, lat, lng }))
       setError(null)
+      mapControllerRef.current?.setPosition(lat, lng)
     })
     return cleanup
   }, [mapsReady, setForm])
+
+  // Create the visual map + draggable pin once Maps is ready
+  React.useEffect(() => {
+    if (!mapsReady || !mapContainerRef.current) return
+    const initialCenter = form.lat && form.lng ? { lat: form.lat, lng: form.lng } : DEFAULT_CENTER
+    const controller = createMapWithMarker(mapContainerRef.current, initialCenter, (lat, lng) => {
+      setForm((prev) => ({ ...prev, lat, lng }))
+      reverseGeocode(lat, lng)
+        .then((address) => setForm((prev) => ({ ...prev, address })))
+        .catch(() => {})
+    })
+    mapControllerRef.current = controller
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mapsReady])
 
   function update<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
     setForm((prev) => ({ ...prev, [key]: value }))
@@ -51,6 +71,7 @@ export function Step3Location() {
     setGeoLoading(true)
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
+        mapControllerRef.current?.setPosition(pos.coords.latitude, pos.coords.longitude)
         try {
           const address = await reverseGeocode(pos.coords.latitude, pos.coords.longitude)
           setForm((prev) => ({
@@ -167,12 +188,23 @@ export function Step3Location() {
               )}
             </Button>
           </div>
-          {form.lat && form.lng && (
+          {mapsReady && (
+            <div
+              ref={mapContainerRef}
+              className="mt-2 h-56 w-full overflow-hidden rounded-lg border border-border bg-muted"
+            />
+          )}
+          {mapsReady ? (
+            <p className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
+              <MapPin className="size-3" />
+              Arraste o pino no mapa para ajustar a localização exata.
+            </p>
+          ) : form.lat && form.lng ? (
             <p className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
               <MapPin className="size-3" />
               Localização capturada
             </p>
-          )}
+          ) : null}
         </Field>
       </div>
 

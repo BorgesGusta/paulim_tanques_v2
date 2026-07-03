@@ -49,6 +49,39 @@ export function initAutocomplete(
   return () => window.google.maps.event.removeListener(listener)
 }
 
+export function createMapWithMarker(
+  container: HTMLElement,
+  center: { lat: number; lng: number },
+  onDrag: (lat: number, lng: number) => void,
+): { map: google.maps.Map; setPosition: (lat: number, lng: number) => void } {
+  const map = new window.google.maps.Map(container, {
+    center,
+    zoom: 13,
+    streetViewControl: false,
+    mapTypeControl: false,
+    fullscreenControl: false,
+  })
+
+  const marker = new window.google.maps.Marker({
+    map,
+    position: center,
+    draggable: true,
+  })
+
+  marker.addListener('dragend', () => {
+    const position = marker.getPosition()
+    if (position) onDrag(position.lat(), position.lng())
+  })
+
+  function setPosition(lat: number, lng: number) {
+    const position = { lat, lng }
+    marker.setPosition(position)
+    map.panTo(position)
+  }
+
+  return { map, setPosition }
+}
+
 export async function reverseGeocode(lat: number, lng: number): Promise<string> {
   const geocoder = new window.google.maps.Geocoder()
   return new Promise((resolve, reject) => {

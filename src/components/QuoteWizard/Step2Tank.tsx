@@ -14,6 +14,7 @@ const liquids: { value: TankLiquid; label: string }[] = [
   { value: 'gasolina', label: 'Gasolina' },
   { value: 'etanol', label: 'Etanol' },
   { value: 'aviacao', label: 'Combustível de Aviação' },
+  { value: 'querosene', label: 'Querosene' },
   { value: 'outro', label: 'Outro' },
 ]
 
@@ -72,8 +73,37 @@ export function Step2Tank() {
           </Field>
         )}
 
+        <fieldset className="flex flex-col gap-2">
+          <legend className="text-sm font-medium text-foreground mb-1">Tanque bipartido?</legend>
+          <p className="text-xs text-muted-foreground -mt-1">Permite armazenar dois líquidos diferentes no mesmo tanque.</p>
+          <div className="flex gap-3 mt-1">
+            {[{ value: true, label: 'Sim' }, { value: false, label: 'Não' }].map(({ value, label }) => (
+              <button
+                key={String(value)}
+                type="button"
+                onClick={() => {
+                  update('tankBipartido', value)
+                  if (!value) {
+                    setForm((prev) => ({ ...prev, tankLiquid2: '', tankLiquid2Custom: '' }))
+                  }
+                }}
+                className={cn(
+                  'rounded-lg border px-4 py-2 text-sm font-medium transition-colors',
+                  form.tankBipartido === value
+                    ? 'border-brand-dark bg-brand-deep text-primary-foreground'
+                    : 'border-border hover:border-brand-dark/40',
+                )}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+
         <Field>
-          <FieldLabel htmlFor="tank-liquid">Líquido armazenado</FieldLabel>
+          <FieldLabel htmlFor="tank-liquid">
+            {form.tankBipartido ? 'Líquido armazenado — lado 1' : 'Líquido armazenado'}
+          </FieldLabel>
           <Select value={form.tankLiquid || null} onValueChange={(v) => update('tankLiquid', v as TankLiquid ?? '')}>
             <SelectTrigger id="tank-liquid" className="w-full">
               <SelectValue placeholder="Selecione o líquido" />
@@ -100,27 +130,37 @@ export function Step2Tank() {
           </Field>
         )}
 
-        <fieldset className="flex flex-col gap-2">
-          <legend className="text-sm font-medium text-foreground mb-1">Tanque bipartido?</legend>
-          <p className="text-xs text-muted-foreground -mt-1">Permite armazenar dois líquidos diferentes no mesmo tanque.</p>
-          <div className="flex gap-3 mt-1">
-            {[{ value: true, label: 'Sim' }, { value: false, label: 'Não' }].map(({ value, label }) => (
-              <button
-                key={String(value)}
-                type="button"
-                onClick={() => update('tankBipartido', value)}
-                className={cn(
-                  'rounded-lg border px-4 py-2 text-sm font-medium transition-colors',
-                  form.tankBipartido === value
-                    ? 'border-brand-dark bg-brand-deep text-primary-foreground'
-                    : 'border-border hover:border-brand-dark/40',
-                )}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </fieldset>
+        {form.tankBipartido && (
+          <>
+            <Field>
+              <FieldLabel htmlFor="tank-liquid-2">Líquido armazenado — lado 2</FieldLabel>
+              <Select value={form.tankLiquid2 || null} onValueChange={(v) => update('tankLiquid2', v as TankLiquid ?? '')}>
+                <SelectTrigger id="tank-liquid-2" className="w-full">
+                  <SelectValue placeholder="Selecione o líquido" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {liquids.map(({ value, label }) => (
+                      <SelectItem key={value} value={value}>{label}</SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </Field>
+
+            {form.tankLiquid2 === 'outro' && (
+              <Field>
+                <FieldLabel htmlFor="tank-liquid-2-custom">Informe o líquido do lado 2</FieldLabel>
+                <Input
+                  id="tank-liquid-2-custom"
+                  placeholder="Ex.: Óleo vegetal"
+                  value={form.tankLiquid2Custom}
+                  onChange={(e) => update('tankLiquid2Custom', e.target.value)}
+                />
+              </Field>
+            )}
+          </>
+        )}
       </div>
 
       {error && <p className="text-sm text-destructive">{error}</p>}

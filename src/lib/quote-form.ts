@@ -2,7 +2,7 @@ import { WHATSAPP_NUMBER } from '@/lib/technical-request'
 
 export type QuoteProduct = 'caixa-dagua' | 'tanque-estacionario' | 'equipamentos'
 export type WaterTankModel = 'taca-cheia' | 'taca-vazia' | 'tubular'
-export type TankLiquid = 'diesel' | 'gasolina' | 'etanol' | 'aviacao' | 'outro'
+export type TankLiquid = 'diesel' | 'gasolina' | 'etanol' | 'aviacao' | 'querosene' | 'outro'
 export type LocationType = 'fazenda' | 'empresa' | 'industria' | 'posto' | 'outro'
 
 export type QuoteForm = {
@@ -20,6 +20,8 @@ export type QuoteForm = {
   tankLiquid: TankLiquid | ''
   tankLiquidCustom: string
   tankBipartido: boolean
+  tankLiquid2: TankLiquid | ''
+  tankLiquid2Custom: string
 
   // Step 2 – Equipamentos
   equipmentDescription: string
@@ -51,6 +53,8 @@ export const emptyQuoteForm: QuoteForm = {
   tankLiquid: '',
   tankLiquidCustom: '',
   tankBipartido: false,
+  tankLiquid2: '',
+  tankLiquid2Custom: '',
   equipmentDescription: '',
   locationType: '',
   locationName: '',
@@ -85,6 +89,11 @@ export function validateStep2(f: QuoteForm): string | null {
     if (!f.tankLiquid) return 'Selecione o líquido armazenado.'
     if (f.tankLiquid === 'outro' && !f.tankLiquidCustom.trim())
       return 'Informe o líquido armazenado.'
+    if (f.tankBipartido) {
+      if (!f.tankLiquid2) return 'Selecione o líquido do segundo lado do tanque.'
+      if (f.tankLiquid2 === 'outro' && !f.tankLiquid2Custom.trim())
+        return 'Informe o líquido do segundo lado do tanque.'
+    }
   }
   if (f.product === 'equipamentos') {
     if (f.equipmentDescription.trim().length < 10)
@@ -128,14 +137,17 @@ function productLabel(f: QuoteForm): string {
   if (f.product === 'tanque-estacionario') {
     const liquidMap: Record<string, string> = {
       diesel: 'Diesel', gasolina: 'Gasolina', etanol: 'Etanol',
-      aviacao: 'Combustível de Aviação',
+      aviacao: 'Combustível de Aviação', querosene: 'Querosene',
     }
     const vol = f.tankVolume === 'outro'
       ? f.tankVolumeCustom
       : `${Number(f.tankVolume).toLocaleString('pt-BR')} L`
     const liquid = f.tankLiquid === 'outro' ? f.tankLiquidCustom : (liquidMap[f.tankLiquid] ?? '')
-    const bipartido = f.tankBipartido ? ' (bipartido)' : ''
-    return `Tanque Estacionário ${vol} — ${liquid}${bipartido}`
+    if (f.tankBipartido) {
+      const liquid2 = f.tankLiquid2 === 'outro' ? f.tankLiquid2Custom : (liquidMap[f.tankLiquid2] ?? '')
+      return `Tanque Estacionário Bipartido ${vol} — Lado 1: ${liquid} / Lado 2: ${liquid2}`
+    }
+    return `Tanque Estacionário ${vol} — ${liquid}`
   }
   return `Equipamentos: ${f.equipmentDescription}`
 }
