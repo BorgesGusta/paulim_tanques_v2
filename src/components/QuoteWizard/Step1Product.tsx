@@ -1,14 +1,15 @@
 import * as React from 'react'
-import { Cylinder, Droplets, Wrench } from 'lucide-react'
+import { Wrench } from 'lucide-react'
 import { useQuote } from '@/context/QuoteContext'
 import { validateStep1, type QuoteProduct } from '@/lib/quote-form'
 import { StepIndicator } from './StepIndicator'
 import { WizardNav } from './WizardNav'
+import { IconImage } from '@/components/IconImage'
 import { cn } from '@/lib/utils'
 
-const products: { value: QuoteProduct; label: string; description: string; Icon: React.ElementType }[] = [
-  { value: 'caixa-dagua', label: "Caixa d'Água", description: 'Taça Cheia, Taça Vazia ou Tubular', Icon: Droplets },
-  { value: 'tanque-estacionario', label: 'Tanque Estacionário', description: 'Diesel, gasolina, etanol e outros líquidos', Icon: Cylinder },
+const products: { value: QuoteProduct; label: string; description: string; iconSrc?: string; Icon?: React.ElementType }[] = [
+  { value: 'caixa-dagua', label: "Caixa d'Água", description: 'Taça Cheia, Taça Vazia ou Tubular', iconSrc: '/assets/icons/icon-caixa-dagua.png' },
+  { value: 'tanque-estacionario', label: 'Tanque Estacionário', description: 'Diesel, gasolina, etanol e outros líquidos', iconSrc: '/assets/icons/icon-tanque-estacionario.png' },
   { value: 'equipamentos', label: 'Equipamentos', description: 'Bombas, bicos, mangueiras e acessórios', Icon: Wrench },
 ]
 
@@ -37,7 +38,7 @@ export function Step1Product() {
       </div>
 
       <div className="flex flex-col gap-3">
-        {products.map(({ value, label, description, Icon }) => (
+        {products.map(({ value, label, description, iconSrc, Icon }) => (
           <button
             key={value}
             type="button"
@@ -53,7 +54,7 @@ export function Step1Product() {
               'flex size-10 shrink-0 items-center justify-center rounded-lg',
               form.product === value ? 'bg-brand-deep text-primary-foreground' : 'bg-muted text-muted-foreground',
             )}>
-              <Icon className="size-5" />
+              {iconSrc ? <IconImage src={iconSrc} className="size-5" /> : Icon ? <Icon className="size-5" /> : null}
             </span>
             <div>
               <p className="text-sm font-semibold text-foreground">{label}</p>

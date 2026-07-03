@@ -1,11 +1,12 @@
-import { Cylinder, Droplets, Gauge, Cable, Wrench, FileText } from 'lucide-react'
+import { Wrench, FileText } from 'lucide-react'
 import { productCategories, equipmentItems } from '@/data/site'
 import { Button } from '@/components/ui/button'
 import { useQuote } from '@/context/QuoteContext'
+import { IconImage } from '@/components/IconImage'
 import type { QuoteProduct } from '@/lib/quote-form'
 
-const productIcons = [Cylinder, Droplets]
-const equipmentIcons = [Gauge, Cable, Wrench]
+const productIcons = ['/assets/icons/icon-caixa-dagua.png', '/assets/icons/icon-tanque-estacionario.png']
+const equipmentIcons = ['/assets/icons/icon-bombas-bicos.png', '/assets/icons/icon-mangueiras.png']
 
 const productKeys: QuoteProduct[] = ['caixa-dagua', 'tanque-estacionario']
 
@@ -32,7 +33,6 @@ export function Solutions() {
         {/* Tier 1 — 2 main product categories */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           {productCategories.map((cat, index) => {
-            const Icon = productIcons[index]
             const productKey = productKeys[index]
             return (
               <div
@@ -49,7 +49,7 @@ export function Solutions() {
                 <div className="flex flex-col gap-5 p-8 pt-0">
                   <div className="flex items-center gap-4">
                     <span className="rounded-xl bg-brand-dark/40 p-3 shrink-0">
-                      <Icon className="size-6 text-brand-light" aria-hidden="true" />
+                      <IconImage src={productIcons[index]} className="size-6 text-brand-light" />
                     </span>
                     <h3 className="text-xl font-bold text-primary-foreground leading-tight">
                       {cat.title}
@@ -90,10 +90,14 @@ export function Solutions() {
           </p>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             {equipmentItems.map((item, index) => {
-              const Icon = equipmentIcons[index]
+              const iconSrc = equipmentIcons[index]
               return (
                 <div key={item.title} className="flex gap-4 items-start">
-                  <Icon className="size-5 text-brand-dark shrink-0 mt-0.5" aria-hidden="true" />
+                  {iconSrc ? (
+                    <IconImage src={iconSrc} className="size-5 text-brand-dark mt-0.5" />
+                  ) : (
+                    <Wrench className="size-5 text-brand-dark shrink-0 mt-0.5" aria-hidden="true" />
+                  )}
                   <div className="flex flex-col gap-1">
                     <h3 className="text-sm font-bold text-foreground">{item.title}</h3>
                     <p className="text-sm leading-6 text-muted-foreground">{item.description}</p>

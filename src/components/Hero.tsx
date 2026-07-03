@@ -1,7 +1,42 @@
+import * as React from 'react'
 import { CheckCircle2, ArrowDown, FileText } from 'lucide-react'
 import { TechnicalRequestForm } from '@/components/TechnicalRequestForm'
 import { Button } from '@/components/ui/button'
 import { useQuote } from '@/context/QuoteContext'
+
+const heroImages = [
+  '/assets/hero-truck-field-sunset.png',
+  '/assets/hero-water-tower-farm-sunset.png',
+]
+
+function HeroCarousel() {
+  const [index, setIndex] = React.useState(0)
+
+  React.useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % heroImages.length)
+    }, 6000)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <>
+      {heroImages.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 z-0 h-full w-full object-cover object-center transition-opacity duration-1000 ease-out motion-reduce:transition-none"
+          style={{ opacity: i === index ? 1 : 0 }}
+          fetchPriority={i === 0 ? 'high' : undefined}
+          loading={i === 0 ? undefined : 'lazy'}
+        />
+      ))}
+    </>
+  )
+}
 
 export function Hero() {
   const { open } = useQuote()
@@ -12,14 +47,8 @@ export function Hero() {
       className="section-anchor relative overflow-hidden"
       style={{ minHeight: 'calc(100svh - 4rem)' }}
     >
-      {/* Background image */}
-      <img
-        src="/assets/hero-bg.jpg"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 z-0 h-full w-full object-cover object-center"
-        fetchPriority="high"
-      />
+      {/* Background carousel */}
+      <HeroCarousel />
 
       {/* Overlay — heavy on left (text), lighter on right (form) */}
       <div
