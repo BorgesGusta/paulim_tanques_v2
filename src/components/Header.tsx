@@ -94,8 +94,9 @@ export function Header() {
               <div className="px-4 pb-6">
                 <SheetClose
                   render={
-                    <a
-                      href="#diagnostico"
+                    <button
+                      type="button"
+                      onClick={() => open()}
                       className={cn(buttonVariants(), 'w-full')}
                     />
                   }

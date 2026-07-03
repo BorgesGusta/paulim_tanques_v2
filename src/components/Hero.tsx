@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { CheckCircle2, ArrowDown, FileText } from 'lucide-react'
-import { TechnicalRequestForm } from '@/components/TechnicalRequestForm'
 import { Button } from '@/components/ui/button'
 import { useQuote } from '@/context/QuoteContext'
 
@@ -53,22 +52,20 @@ export function Hero() {
       {/* Background carousel */}
       <HeroCarousel />
 
-      {/* Overlay — heavy on left (text needs contrast), fades out before the form
-          column so the photo shows through clearly on the right (the form card
-          already has its own background, it doesn't need the dark wash). */}
+      {/* Overlay — heavy on the left, where the text needs contrast, fading out
+          well before the right edge so the photo shows through clearly there. */}
       <div
         className="absolute inset-0 z-10"
         style={{
           background:
-            'linear-gradient(100deg, oklch(0.32 0.10 145 / 0.97) 0%, oklch(0.32 0.10 145 / 0.92) 30%, oklch(0.32 0.10 145 / 0.45) 50%, oklch(0.32 0.10 145 / 0.1) 65%, oklch(0.32 0.10 145 / 0) 82%)',
+            'linear-gradient(100deg, oklch(0.32 0.10 145 / 0.97) 0%, oklch(0.32 0.10 145 / 0.9) 34%, oklch(0.32 0.10 145 / 0.35) 58%, oklch(0.32 0.10 145 / 0) 78%)',
         }}
         aria-hidden="true"
       />
 
       {/* Content */}
-      <div className="relative z-20 section-shell flex flex-col gap-10 py-10 lg:grid lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-20" style={{ minHeight: 'calc(100svh - 4rem)' }}>
-        {/* Headline column */}
-        <div className="flex flex-col gap-6 lg:col-span-7">
+      <div className="relative z-20 section-shell flex min-h-full flex-col justify-center gap-10 py-16 lg:max-w-2xl lg:py-24" style={{ minHeight: 'calc(100svh - 4rem)' }}>
+        <div className="flex flex-col gap-6">
           {/* Evidence line */}
           <p className="hero-enter text-sm font-semibold text-primary-foreground/70" style={{ animationDelay: '80ms' }}>
             Mais de 400 projetos entregues. 15 anos no Norte do Brasil
@@ -112,23 +109,14 @@ export function Hero() {
           </div>
 
           <Button
-            variant="outline"
+            size="lg"
             onClick={() => open()}
-            className="hero-enter self-start border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+            className="hero-enter self-start shadow-lg shadow-brand-deep/30"
             style={{ animationDelay: '360ms' }}
           >
             <FileText className="size-4" />
             Solicitar orçamento
           </Button>
-        </div>
-
-        {/* Form column */}
-        <div
-          id="diagnostico"
-          className="hero-enter section-anchor lg:col-span-5"
-          style={{ animationDelay: '200ms' }}
-        >
-          <TechnicalRequestForm />
         </div>
       </div>
     </section>

@@ -11,14 +11,14 @@ export function WhatsAppFloatingButton() {
   }, [])
 
   React.useEffect(() => {
-    const heroForm = document.getElementById('diagnostico')
-    if (!heroForm) return
+    const hero = document.getElementById('inicio')
+    if (!hero) return
 
     const observer = new IntersectionObserver(
       ([entry]) => setIsDimmed(entry.isIntersecting),
-      { threshold: 0.4 },
+      { threshold: 0.6 },
     )
-    observer.observe(heroForm)
+    observer.observe(hero)
     return () => observer.disconnect()
   }, [])
 

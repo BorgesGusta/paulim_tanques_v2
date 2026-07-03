@@ -1,10 +1,10 @@
 import { useQuote } from '@/context/QuoteContext'
 import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from '@/components/ui/sheet'
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
 import { Step1Product } from './Step1Product'
 import { Step2WaterTank } from './Step2WaterTank'
 import { Step2Tank } from './Step2Tank'
@@ -34,19 +34,15 @@ export function QuoteWizard() {
   const StepComponent = stepComponents[step]
 
   return (
-    <Sheet open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
-      <SheetContent
-        side="right"
-        className="w-full sm:max-w-lg overflow-y-auto"
-        showCloseButton
-      >
-        <SheetHeader className="sr-only">
-          <SheetTitle>Solicitar orçamento</SheetTitle>
-        </SheetHeader>
+    <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
+      <DialogContent showCloseButton>
+        <DialogHeader className="sr-only">
+          <DialogTitle>Solicitar orçamento</DialogTitle>
+        </DialogHeader>
         <div className="flex flex-col gap-6 p-6">
           {StepComponent && <StepComponent />}
         </div>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }
