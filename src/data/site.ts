@@ -161,4 +161,8 @@ export const contact = {
   whatsappNumber: WHATSAPP_NUMBER,
   whatsappLabel: '(94) 99156-2929',
   serviceArea: 'Marabá, Pará',
+  address: 'RD PA 150, 48 — Próximo ao Motel, Distrito Industrial, Marabá - PA, 68500-001',
+  email: 'vendas@paulimtanques.com.br',
+  instagramUrl: 'https://www.instagram.com/paulimtanques/',
+  facebookUrl: 'https://www.facebook.com/profile.php?id=61559910652895',
 } as const

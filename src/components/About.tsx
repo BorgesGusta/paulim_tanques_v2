@@ -1,5 +1,5 @@
-import { CheckCircle2 } from 'lucide-react'
-import { differentials } from '@/data/site'
+import { CheckCircle2, MapPin } from 'lucide-react'
+import { differentials, contact } from '@/data/site'
 
 export function About() {
   return (
@@ -34,6 +34,16 @@ export function About() {
               </li>
             ))}
           </ul>
+
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-start gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <MapPin className="size-4 shrink-0 mt-0.5 text-brand-dark" aria-hidden="true" />
+            {contact.address}
+          </a>
         </div>
 
         {/* Image column */}
