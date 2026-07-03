@@ -2,6 +2,7 @@ import * as React from 'react'
 import { CheckCircle2, ArrowDown, FileText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useQuote } from '@/context/QuoteContext'
+import { CatalogRequestButton } from '@/components/CatalogRequest'
 
 const heroImages = [
   '/assets/hero-truck-field-sunset.png',
@@ -108,15 +109,20 @@ export function Hero() {
             </a>
           </div>
 
-          <Button
-            size="lg"
-            onClick={() => open()}
-            className="hero-enter self-start shadow-lg shadow-brand-deep/30"
-            style={{ animationDelay: '360ms' }}
-          >
-            <FileText className="size-4" />
-            Solicitar orçamento
-          </Button>
+          <div className="hero-enter flex flex-wrap gap-3" style={{ animationDelay: '360ms' }}>
+            <Button
+              size="lg"
+              onClick={() => open()}
+              className="shadow-lg shadow-brand-deep/30"
+            >
+              <FileText className="size-4" />
+              Solicitar orçamento
+            </Button>
+            <CatalogRequestButton
+              size="lg"
+              className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+            />
+          </div>
         </div>
       </div>
     </section>

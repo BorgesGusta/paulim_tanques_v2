@@ -3,7 +3,6 @@ import { productCategories, equipmentItems } from '@/data/site'
 import { Button } from '@/components/ui/button'
 import { useQuote } from '@/context/QuoteContext'
 import { IconImage } from '@/components/IconImage'
-import { CatalogRequestButton } from '@/components/CatalogRequest'
 import type { QuoteProduct } from '@/lib/quote-form'
 
 const productIcons = ['/assets/icons/icon-caixa-dagua.png', '/assets/icons/icon-tanque-estacionario.png']
@@ -29,7 +28,6 @@ export function Solutions() {
             Fabricamos, fornecemos e mantemos. Cada produto é dimensionado para a
             sua operação, com orientação técnica antes da compra.
           </p>
-          <CatalogRequestButton className="self-start" />
         </div>
 
         {/* Tier 1 — 2 main product categories */}
