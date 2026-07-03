@@ -28,8 +28,11 @@ function HeroCarousel() {
           src={src}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 z-0 h-full w-full object-cover object-center transition-opacity duration-1000 ease-out motion-reduce:transition-none"
-          style={{ opacity: i === index ? 1 : 0 }}
+          className="absolute inset-0 z-0 h-full w-full object-cover object-center transition-[opacity,translate] duration-1000 ease-out motion-reduce:transition-none"
+          style={{
+            opacity: i === index ? 1 : 0,
+            translate: i === index ? '0 0' : '3% 0',
+          }}
           fetchPriority={i === 0 ? 'high' : undefined}
           loading={i === 0 ? undefined : 'lazy'}
         />
@@ -50,12 +53,14 @@ export function Hero() {
       {/* Background carousel */}
       <HeroCarousel />
 
-      {/* Overlay — heavy on left (text), lighter on right (form) */}
+      {/* Overlay — heavy on left (text needs contrast), fades out before the form
+          column so the photo shows through clearly on the right (the form card
+          already has its own background, it doesn't need the dark wash). */}
       <div
         className="absolute inset-0 z-10"
         style={{
           background:
-            'linear-gradient(115deg, oklch(0.32 0.10 145 / 0.96) 0%, oklch(0.32 0.10 145 / 0.88) 48%, oklch(0.32 0.10 145 / 0.60) 100%)',
+            'linear-gradient(100deg, oklch(0.32 0.10 145 / 0.97) 0%, oklch(0.32 0.10 145 / 0.92) 30%, oklch(0.32 0.10 145 / 0.45) 50%, oklch(0.32 0.10 145 / 0.1) 65%, oklch(0.32 0.10 145 / 0) 82%)',
         }}
         aria-hidden="true"
       />
