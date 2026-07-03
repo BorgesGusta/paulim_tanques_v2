@@ -50,31 +50,31 @@ export const equipmentItems = [
 export const sectors = [
   {
     label: 'Fazendas',
-    description: 'Armazenamento de insumos, defensivos e combustíveis para operações rurais de grande escala.',
+    description: 'Combustível e insumos sempre à mão na porteira da fazenda, sem depender de posto distante ou estrada ruim.',
     imageSrc: 'https://images.unsplash.com/photo-1562702076-c719c8796b8d?w=800',
     imageAlt: 'Plantação de soja no campo, típica do agronegócio da região Norte',
   },
   {
     label: 'Postos e Distribuidoras',
-    description: 'Tanques e equipamentos para abastecimento seguro e confiável de frotas e consumidores.',
+    description: 'Tanques e bombas que aguentam o movimento do dia a dia, com segurança pra sua frota e seus clientes.',
     imageSrc: 'https://images.unsplash.com/photo-1528458538087-f58e9ad895da?w=800',
     imageAlt: 'Caminhão-tanque de combustível em estrada rural',
   },
   {
     label: 'Indústrias',
-    description: 'Reservatórios e acessórios para processos industriais que exigem precisão e durabilidade.',
+    description: 'Reservatórios sob medida pra processos que não podem parar por falta de precisão ou durabilidade.',
     imageSrc: 'https://images.unsplash.com/photo-1772376920749-afdc99c517f7?w=800',
     imageAlt: 'Tanques de armazenamento industrial de grande porte',
   },
   {
     label: 'Transporte e Aviação',
-    description: 'Tanques e equipamentos para frotas de caminhões-tanque e operações aeroportuárias.',
+    description: 'Equipamentos confiáveis pra frotas de caminhões-tanque e abastecimento de aeronaves, onde erro não é opção.',
     imageSrc: 'https://images.unsplash.com/photo-1773831045367-e156e41e1499?w=800',
     imageAlt: 'Caminhão de abastecimento reabastecendo aeronave em pátio de aeroporto',
   },
   {
     label: 'Empresas em Geral',
-    description: 'Atendimento a qualquer operação que necessite de armazenamento ou transporte de líquidos.',
+    description: 'Atendemos qualquer operação que dependa de armazenar ou transportar líquidos com segurança.',
     imageSrc: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800',
     imageAlt: 'Frota de caminhões-tanque em operação empresarial',
   },
