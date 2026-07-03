@@ -1,4 +1,5 @@
-export const WHATSAPP_NUMBER = '5594991562929'
+// TODO: número de teste temporário — voltar para '5594991562929' (oficial) depois de confirmar o fluxo
+export const WHATSAPP_NUMBER = '5594981939666'
 
 export const segments = [
   'Fazendas',
