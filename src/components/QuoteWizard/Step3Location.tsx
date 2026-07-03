@@ -8,7 +8,7 @@ import { WizardNav } from './WizardNav'
 import { Field, FieldLabel, FieldError } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
 const locationTypes: { value: LocationType; label: string }[] = [
   { value: 'fazenda', label: 'Fazenda' },
@@ -112,26 +112,24 @@ export function Step3Location() {
       </div>
 
       <div className="flex flex-col gap-4">
-        <fieldset className="flex flex-col gap-2">
-          <legend className="text-sm font-medium text-foreground mb-1">Tipo de local</legend>
-          <div className="flex flex-wrap gap-2">
-            {locationTypes.map(({ value, label }) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => update('locationType', value)}
-                className={cn(
-                  'rounded-lg border px-3 py-2 text-sm font-medium transition-colors',
-                  form.locationType === value
-                    ? 'border-brand-dark bg-brand-deep text-primary-foreground'
-                    : 'border-border hover:border-brand-dark/40',
-                )}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </fieldset>
+        <Field>
+          <FieldLabel htmlFor="loc-type">Tipo de local</FieldLabel>
+          <Select
+            value={form.locationType || null}
+            onValueChange={(v) => update('locationType', (v as LocationType) ?? '')}
+          >
+            <SelectTrigger id="loc-type" className="w-full">
+              <SelectValue placeholder="Selecione o tipo de local" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {locationTypes.map(({ value, label }) => (
+                  <SelectItem key={value} value={value}>{label}</SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </Field>
 
         {showNameField && (
           <Field>

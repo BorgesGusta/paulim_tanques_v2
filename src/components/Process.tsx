@@ -22,17 +22,19 @@ export function Process() {
             return (
             <div
               key={step.number}
-              className="reveal-stagger flex flex-col gap-4"
+              className="reveal-stagger flex flex-col gap-5"
               style={{ '--reveal-delay': `${index * 80}ms` } as React.CSSProperties}
             >
-              {/* Icon + circle + connector */}
-              <div className="flex items-center gap-3">
-                <Icon className="size-5 shrink-0 text-brand-dark" aria-hidden="true" />
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-deep text-sm font-bold text-primary-foreground">
-                  {index + 1}
-                </span>
+              {/* Icon badge with step number + connector */}
+              <div className="flex items-center gap-4">
+                <div className="relative flex size-14 shrink-0 items-center justify-center rounded-2xl bg-brand-deep">
+                  <Icon className="size-6 text-primary-foreground" aria-hidden="true" />
+                  <span className="absolute -top-2 -right-2 flex size-6 items-center justify-center rounded-full bg-brand-light text-xs font-bold text-brand-deep ring-2 ring-background">
+                    {index + 1}
+                  </span>
+                </div>
                 <div
-                  className="hidden sm:block h-px flex-1 bg-brand-dark/25"
+                  className="hidden h-px flex-1 bg-brand-dark/20 sm:block"
                   aria-hidden="true"
                 />
               </div>
