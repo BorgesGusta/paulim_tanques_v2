@@ -1,5 +1,4 @@
 import { sectors } from '@/data/site'
-import { useParallax } from '@/lib/use-parallax'
 
 export function Sectors() {
   return (
@@ -57,18 +56,14 @@ export function Sectors() {
 }
 
 function SectorImg({ src, alt }: { src: string; alt: string }) {
-  const { ref, offset } = useParallax<HTMLImageElement>(0.08)
-
   return (
     <>
       {/* Fallback color — always visible behind the image */}
       <div className="absolute inset-0 bg-brand-dark/40" aria-hidden="true" />
       <img
-        ref={ref}
         src={src}
         alt={alt}
-        className="absolute inset-0 h-full w-full scale-125 object-cover object-center"
-        style={{ translate: `0 ${offset}px` }}
+        className="absolute inset-0 h-full w-full object-cover object-center"
         loading="lazy"
         onError={(e) => {
           ; (e.currentTarget as HTMLImageElement).style.opacity = '0'

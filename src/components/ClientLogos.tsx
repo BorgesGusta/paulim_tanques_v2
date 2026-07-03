@@ -6,8 +6,8 @@ export function ClientLogos() {
   const track = [...clientLogos, ...clientLogos]
 
   return (
-    <section aria-label="Empresas que confiam na Paulim Tanques" className="overflow-hidden bg-foreground py-6">
-      <p className="section-shell mb-4 text-center text-xs font-bold uppercase tracking-[0.16em] text-background/50">
+    <section aria-label="Empresas que confiam na Paulim Tanques" className="overflow-hidden bg-secondary py-6">
+      <p className="section-shell mb-4 text-center text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
         Empresas que confiam na Paulim
       </p>
       <div className="marquee-track flex w-max items-center gap-12">
@@ -23,7 +23,7 @@ export function ClientLogos() {
                 className="max-h-10 max-w-full object-contain opacity-70 grayscale transition-opacity hover:opacity-100"
               />
             ) : (
-              <div className="flex items-center gap-2 text-background/35">
+              <div className="flex items-center gap-2 text-muted-foreground/60">
                 <Building2 className="size-5" aria-hidden="true" />
                 <span className="text-sm font-medium">{client.name}</span>
               </div>

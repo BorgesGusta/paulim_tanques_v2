@@ -7,7 +7,6 @@ import { Solutions } from '@/components/Solutions'
 import { Sectors } from '@/components/Sectors'
 import { Process } from '@/components/Process'
 import { About } from '@/components/About'
-import { Testimonials } from '@/components/Testimonials'
 import { FAQ } from '@/components/FAQ'
 import { ContactCta } from '@/components/ContactCta'
 import { Footer } from '@/components/Footer'
@@ -28,7 +27,6 @@ export default function App() {
         <Sectors />
         <Process />
         <About />
-        <Testimonials />
         <FAQ />
         <ContactCta />
       </main>

@@ -47,22 +47,25 @@ function AnimatedValue({ value }: { value: string }) {
 
 export function TrustBar() {
   return (
-    <section aria-label="Credenciais da Paulim Tanques" className="bg-brand-deep py-10">
+    <section aria-label="Credenciais da Paulim Tanques" className="bg-brand-deep py-14 lg:py-20">
       <div className="section-shell">
-        <dl className="flex flex-wrap items-start justify-center gap-10 sm:gap-32">
+        <dl className="flex flex-wrap items-start justify-center gap-12 sm:gap-24 lg:gap-36">
           {trustItems.map((item, index) => {
             const Icon = icons[index % icons.length]
             return (
               <div
                 key={item.label}
-                className="reveal-stagger flex flex-col items-center gap-2 text-center"
+                className="reveal-stagger flex flex-col items-center gap-3 text-center"
                 style={{ '--reveal-delay': `${index * 80}ms` } as React.CSSProperties}
               >
-                <Icon className="size-5 text-brand-light" aria-hidden="true" />
-                <dt className="text-2xl font-extrabold text-primary-foreground leading-none">
+                <Icon className="size-7 text-brand-light" aria-hidden="true" />
+                <dt
+                  className="font-display font-extrabold text-primary-foreground leading-none"
+                  style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)' }}
+                >
                   <AnimatedValue value={item.value} />
                 </dt>
-                <dd className="text-xs text-primary-foreground/60 max-w-[18ch] leading-snug">
+                <dd className="text-sm text-primary-foreground/65 max-w-[20ch] leading-snug">
                   {item.label}
                 </dd>
               </div>
