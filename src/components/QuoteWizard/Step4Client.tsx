@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useQuote } from '@/context/QuoteContext'
 import { validateStep4 } from '@/lib/quote-form'
+import { loadGoogleMaps, initCityAutocomplete } from '@/lib/google-maps'
 import { StepIndicator } from './StepIndicator'
 import { WizardNav } from './WizardNav'
 import { Field, FieldLabel } from '@/components/ui/field'
@@ -10,11 +11,26 @@ import { Textarea } from '@/components/ui/textarea'
 export function Step4Client() {
   const { form, setForm, setStep } = useQuote()
   const [error, setError] = React.useState<string | null>(null)
+  const cityRef = React.useRef<HTMLInputElement>(null)
 
   function update(key: keyof typeof form, value: string) {
     setForm((prev) => ({ ...prev, [key]: value }))
     setError(null)
   }
+
+  React.useEffect(() => {
+    let cleanup: (() => void) | undefined
+    loadGoogleMaps()
+      .then(() => {
+        if (!cityRef.current) return
+        cleanup = initCityAutocomplete(cityRef.current, (city, state) => {
+          setForm((prev) => ({ ...prev, clientCity: city, clientState: state }))
+          setError(null)
+        })
+      })
+      .catch(() => {})
+    return () => cleanup?.()
+  }, [setForm])
 
   function handleNext() {
     const err = validateStep4(form)
@@ -74,7 +90,8 @@ export function Step4Client() {
             <FieldLabel htmlFor="cl-city">Cidade</FieldLabel>
             <Input
               id="cl-city"
-              placeholder="Marabá"
+              ref={cityRef}
+              placeholder="Digite e selecione sua cidade"
               autoComplete="address-level2"
               value={form.clientCity}
               onChange={(e) => update('clientCity', e.target.value)}

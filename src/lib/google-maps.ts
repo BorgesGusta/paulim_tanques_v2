@@ -49,6 +49,33 @@ export function initAutocomplete(
   return () => window.google.maps.event.removeListener(listener)
 }
 
+export function initCityAutocomplete(
+  input: HTMLInputElement,
+  onPlace: (city: string, state: string) => void,
+): () => void {
+  const autocomplete = new window.google.maps.places.Autocomplete(input, {
+    fields: ['address_components'],
+    types: ['(cities)'],
+    componentRestrictions: { country: 'br' },
+  })
+
+  const listener = autocomplete.addListener('place_changed', () => {
+    const place = autocomplete.getPlace()
+    const components = place.address_components ?? []
+    const cityComponent =
+      components.find((c) => c.types.includes('locality')) ??
+      components.find((c) => c.types.includes('administrative_area_level_2'))
+    const stateComponent = components.find((c) =>
+      c.types.includes('administrative_area_level_1'),
+    )
+    if (cityComponent && stateComponent) {
+      onPlace(cityComponent.long_name, stateComponent.short_name)
+    }
+  })
+
+  return () => window.google.maps.event.removeListener(listener)
+}
+
 export function createMapWithMarker(
   container: HTMLElement,
   center: { lat: number; lng: number },

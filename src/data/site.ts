@@ -124,6 +124,17 @@ export const faqs = [
   },
 ] as const
 
+// TODO: Substituir pelas logos reais dos clientes — adicione os arquivos em
+// /public/assets/logos/ e preencha logoSrc (ex.: '/assets/logos/cliente-1.png')
+export const clientLogos: { name: string; logoSrc: string | null }[] = [
+  { name: 'Cliente 1', logoSrc: null },
+  { name: 'Cliente 2', logoSrc: null },
+  { name: 'Cliente 3', logoSrc: null },
+  { name: 'Cliente 4', logoSrc: null },
+  { name: 'Cliente 5', logoSrc: null },
+  { name: 'Cliente 6', logoSrc: null },
+]
+
 // TODO: Substituir pelos depoimentos reais dos clientes
 export const testimonials = [
   {

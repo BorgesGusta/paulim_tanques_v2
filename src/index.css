@@ -171,6 +171,24 @@
   opacity: 0;
 }
 
+/* ── Client logos marquee ─────────────────────────────────────────────────── */
+@keyframes marquee-scroll {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: -50% 0;
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll 32s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

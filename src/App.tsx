@@ -1,6 +1,7 @@
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { TrustBar } from '@/components/TrustBar'
+import { ClientLogos } from '@/components/ClientLogos'
 import { Solutions } from '@/components/Solutions'
 import { Sectors } from '@/components/Sectors'
 import { Process } from '@/components/Process'
@@ -20,6 +21,7 @@ export default function App() {
       <main>
         <Hero />
         <TrustBar />
+        <ClientLogos />
         <Solutions />
         <Sectors />
         <Process />
