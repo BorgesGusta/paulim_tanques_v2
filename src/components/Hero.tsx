@@ -64,16 +64,6 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      {/* Floating product render */}
-      <img
-        src="/assets/products/caixa-dagua.png"
-        alt=""
-        aria-hidden="true"
-        className="product-float absolute right-[4%] bottom-0 z-20 hidden h-[85%] w-auto drop-shadow-2xl lg:block"
-        style={{ animationDelay: '500ms' }}
-        loading="lazy"
-      />
-
       {/* Content */}
       <div className="relative z-20 section-shell flex min-h-full flex-col justify-center gap-10 py-16 lg:max-w-2xl lg:py-24" style={{ minHeight: 'calc(100svh - 4rem)' }}>
         <div className="flex flex-col gap-6">

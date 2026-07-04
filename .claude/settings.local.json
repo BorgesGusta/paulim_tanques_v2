@@ -14,7 +14,13 @@
       "Bash(nohup node node_modules/.bin/vite --port 5183 --host)",
       "Bash(curl -s http://localhost:5183/ -o /dev/null -w \"HTTP %{http_code}\\\\n\")",
       "Bash(sleep 3; cat /tmp/vite-dev.log; echo \"---\"; ps aux | grep vite | grep -v grep; lsof -i :5183 2>/dev/null)",
-      "Bash(pkill -f vite)"
+      "Bash(pkill -f vite)",
+      "Bash(python3 -c ' *)",
+      "Read(//tmp/**)",
+      "Bash(cp /tmp/transparent-0.png \"/Users/gustavoborges/Desktop/paulim-tanques/public/assets/products/caixa-dagua.png\")",
+      "Bash(cp /tmp/transparent-2.png \"/Users/gustavoborges/Desktop/paulim-tanques/public/assets/products/caixa-dagua-corte.png\")",
+      "Bash(cp /tmp/retry-6-tol4.png \"/Users/gustavoborges/Desktop/paulim-tanques/public/assets/products/tanque-estacionario.png\")",
+      "Bash(git --no-optional-locks status --porcelain)"
     ]
   },
   "hooks": {
