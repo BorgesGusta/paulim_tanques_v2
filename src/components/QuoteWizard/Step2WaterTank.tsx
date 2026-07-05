@@ -8,15 +8,27 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
 
-const models: { value: WaterTankModel; label: string }[] = [
-  { value: 'taca-cheia', label: 'Taça Cheia' },
-  { value: 'taca-vazia', label: 'Taça Vazia' },
-  { value: 'tubular', label: 'Tubular' },
+const models: { value: WaterTankModel; label: string; description: string }[] = [
+  {
+    value: 'coluna-cheia',
+    label: 'Coluna Cheia',
+    description: 'A coluna de sustentação também é preenchida com água, aumentando a capacidade total de armazenamento.',
+  },
+  {
+    value: 'coluna-seca',
+    label: 'Coluna Seca',
+    description: 'A coluna de sustentação é apenas estrutural — só o reservatório no topo armazena água.',
+  },
+  {
+    value: 'tubular',
+    label: 'Tubular',
+    description: 'Formato tubular contínuo, sem separação entre reservatório e coluna de sustentação.',
+  },
 ]
 
 const modelImages: Record<WaterTankModel, string> = {
-  'taca-cheia': '/assets/products/caixa-dagua-taca-cheia.png',
-  'taca-vazia': '/assets/products/caixa-dagua-taca-vazia.png',
+  'coluna-cheia': '/assets/products/caixa-dagua-coluna-cheia.png',
+  'coluna-seca': '/assets/products/caixa-dagua-coluna-seca.png',
   'tubular': '/assets/products/caixa-dagua-tubular.png',
 }
 
@@ -68,12 +80,17 @@ export function Step2WaterTank() {
         </fieldset>
 
         {form.waterTankModel && (
-          <div className="overflow-hidden rounded-xl border border-border">
-            <img
-              src={modelImages[form.waterTankModel]}
-              alt={`Caixa d'água modelo ${models.find((m) => m.value === form.waterTankModel)?.label}`}
-              className="h-40 w-full object-cover object-center bg-white"
-            />
+          <div className="flex flex-col gap-2">
+            <div className="overflow-hidden rounded-xl border border-border">
+              <img
+                src={modelImages[form.waterTankModel]}
+                alt={`Caixa d'água modelo ${models.find((m) => m.value === form.waterTankModel)?.label}`}
+                className="h-40 w-full object-cover object-center bg-white"
+              />
+            </div>
+            <p className="text-xs leading-5 text-muted-foreground">
+              {models.find((m) => m.value === form.waterTankModel)?.description}
+            </p>
           </div>
         )}
 

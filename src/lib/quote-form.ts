@@ -1,7 +1,7 @@
 import { WHATSAPP_NUMBER } from '@/lib/technical-request'
 
 export type QuoteProduct = 'caixa-dagua' | 'tanque-estacionario' | 'equipamentos'
-export type WaterTankModel = 'taca-cheia' | 'taca-vazia' | 'tubular'
+export type WaterTankModel = 'coluna-cheia' | 'coluna-seca' | 'tubular'
 export type TankLiquid = 'diesel' | 'gasolina' | 'etanol' | 'aviacao' | 'querosene' | 'outro'
 export type LocationType = 'fazenda' | 'empresa' | 'industria' | 'posto' | 'outro'
 
@@ -129,8 +129,8 @@ export function validateStep4(f: QuoteForm): string | null {
 function productLabel(f: QuoteForm): string {
   if (f.product === 'caixa-dagua') {
     const modelMap: Record<string, string> = {
-      'taca-cheia': 'Taça Cheia',
-      'taca-vazia': 'Taça Vazia',
+      'coluna-cheia': 'Coluna Cheia',
+      'coluna-seca': 'Coluna Seca',
       'tubular': 'Tubular',
     }
     const vol = f.waterTankVolume === 'outro'

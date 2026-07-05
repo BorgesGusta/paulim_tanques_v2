@@ -8,7 +8,7 @@ import { IconImage } from '@/components/IconImage'
 import { cn } from '@/lib/utils'
 
 const products: { value: QuoteProduct; label: string; description: string; iconSrc?: string; Icon?: React.ElementType }[] = [
-  { value: 'caixa-dagua', label: "Caixa d'Água", description: 'Taça Cheia, Taça Vazia ou Tubular', iconSrc: '/assets/icons/icon-caixa-dagua.png' },
+  { value: 'caixa-dagua', label: "Caixa d'Água", description: 'Coluna Cheia, Coluna Seca ou Tubular', iconSrc: '/assets/icons/icon-caixa-dagua.png' },
   { value: 'tanque-estacionario', label: 'Tanque Estacionário', description: 'Diesel, gasolina, etanol e outros líquidos', iconSrc: '/assets/icons/icon-tanque-estacionario.png' },
   { value: 'equipamentos', label: 'Equipamentos', description: 'Bombas, bicos, mangueiras e acessórios', Icon: Wrench },
 ]

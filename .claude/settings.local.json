@@ -21,7 +21,11 @@
       "Bash(cp /tmp/transparent-2.png \"/Users/gustavoborges/Desktop/paulim-tanques/public/assets/products/caixa-dagua-corte.png\")",
       "Bash(cp /tmp/retry-6-tol4.png \"/Users/gustavoborges/Desktop/paulim-tanques/public/assets/products/tanque-estacionario.png\")",
       "Bash(git --no-optional-locks status --porcelain)",
-      "Bash(cat /tmp/watertank-validation.txt)"
+      "Bash(cat /tmp/watertank-validation.txt)",
+      "Bash(cat /tmp/commit-push23.txt)",
+      "Bash(mv caixa-dagua-taca-cheia.png caixa-dagua-coluna-cheia.png)",
+      "Bash(mv caixa-dagua-taca-vazia.png caixa-dagua-coluna-seca.png)",
+      "Bash(cat /tmp/model-rename-validation.txt)"
     ]
   },
   "hooks": {

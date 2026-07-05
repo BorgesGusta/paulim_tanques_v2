@@ -17,8 +17,8 @@ export const productCategories = [
   {
     title: "Caixas d'Água",
     description:
-      "Taça Cheia, Taça Vazia e Tubular. Volumes de 10.000 L a 50.000 L, com fabricação sob medida para instalações rurais, industriais e comerciais.",
-    models: ['Taça Cheia', 'Taça Vazia', 'Tubular'],
+      "Coluna Cheia, Coluna Seca e Tubular. Volumes de 10.000 L a 50.000 L, com fabricação sob medida para instalações rurais, industriais e comerciais.",
+    models: ['Coluna Cheia', 'Coluna Seca', 'Tubular'],
     imageSrc: '/assets/products/caixa-dagua-ambiente.jpg',
     imageAlt: "Caixa d'água Paulim Tanques instalada em fazenda",
   },
