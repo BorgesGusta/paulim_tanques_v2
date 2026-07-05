@@ -14,6 +14,12 @@ const models: { value: WaterTankModel; label: string }[] = [
   { value: 'tubular', label: 'Tubular' },
 ]
 
+const modelImages: Record<WaterTankModel, string> = {
+  'taca-cheia': '/assets/products/caixa-dagua-taca-cheia.png',
+  'taca-vazia': '/assets/products/caixa-dagua-taca-vazia.png',
+  'tubular': '/assets/products/caixa-dagua-tubular.png',
+}
+
 const volumes = ['10000', '15000', '20000', '25000', '30000', '50000']
 
 export function Step2WaterTank() {
@@ -60,6 +66,16 @@ export function Step2WaterTank() {
             ))}
           </div>
         </fieldset>
+
+        {form.waterTankModel && (
+          <div className="overflow-hidden rounded-xl border border-border">
+            <img
+              src={modelImages[form.waterTankModel]}
+              alt={`Caixa d'água modelo ${models.find((m) => m.value === form.waterTankModel)?.label}`}
+              className="h-40 w-full object-cover object-center bg-white"
+            />
+          </div>
+        )}
 
         <Field>
           <FieldLabel htmlFor="wt-volume">Volume</FieldLabel>

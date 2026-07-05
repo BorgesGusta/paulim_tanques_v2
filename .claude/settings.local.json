@@ -20,7 +20,8 @@
       "Bash(cp /tmp/transparent-0.png \"/Users/gustavoborges/Desktop/paulim-tanques/public/assets/products/caixa-dagua.png\")",
       "Bash(cp /tmp/transparent-2.png \"/Users/gustavoborges/Desktop/paulim-tanques/public/assets/products/caixa-dagua-corte.png\")",
       "Bash(cp /tmp/retry-6-tol4.png \"/Users/gustavoborges/Desktop/paulim-tanques/public/assets/products/tanque-estacionario.png\")",
-      "Bash(git --no-optional-locks status --porcelain)"
+      "Bash(git --no-optional-locks status --porcelain)",
+      "Bash(cat /tmp/watertank-validation.txt)"
     ]
   },
   "hooks": {
