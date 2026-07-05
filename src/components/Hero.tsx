@@ -4,9 +4,12 @@ import { Button } from '@/components/ui/button'
 import { useQuote } from '@/context/QuoteContext'
 import { CatalogRequestButton } from '@/components/CatalogRequest'
 
-const heroImages = [
-  '/assets/hero-truck-field-sunset.png',
-  '/assets/hero-water-tower-farm-sunset.png',
+type HeroMedia = { type: 'image' | 'video'; src: string }
+
+const heroMedia: HeroMedia[] = [
+  { type: 'image', src: '/assets/hero-truck-field-sunset.png' },
+  { type: 'image', src: '/assets/hero-water-tower-farm-sunset.png' },
+  { type: 'video', src: '/assets/hero-video.mp4' },
 ]
 
 function HeroCarousel() {
@@ -15,28 +18,51 @@ function HeroCarousel() {
   React.useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const id = setInterval(() => {
-      setIndex((i) => (i + 1) % heroImages.length)
-    }, 6000)
+      setIndex((i) => (i + 1) % heroMedia.length)
+    }, 7000)
     return () => clearInterval(id)
   }, [])
 
   return (
     <>
-      {heroImages.map((src, i) => (
-        <img
-          key={src}
-          src={src}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 z-0 h-full w-full object-cover object-center transition-[opacity,translate] duration-1000 ease-out motion-reduce:transition-none"
-          style={{
+      {heroMedia.map((media, i) => {
+        const shared = {
+          className:
+            'absolute inset-0 z-0 h-full w-full object-cover object-center transition-[opacity,translate] duration-1000 ease-out motion-reduce:transition-none',
+          style: {
             opacity: i === index ? 1 : 0,
             translate: i === index ? '0 0' : '3% 0',
-          }}
-          fetchPriority={i === 0 ? 'high' : undefined}
-          loading={i === 0 ? undefined : 'lazy'}
-        />
-      ))}
+          } as React.CSSProperties,
+        }
+
+        if (media.type === 'video') {
+          return (
+            <video
+              key={media.src}
+              src={media.src}
+              aria-hidden="true"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="none"
+              {...shared}
+            />
+          )
+        }
+
+        return (
+          <img
+            key={media.src}
+            src={media.src}
+            alt=""
+            aria-hidden="true"
+            fetchPriority={i === 0 ? 'high' : undefined}
+            loading={i === 0 ? undefined : 'lazy'}
+            {...shared}
+          />
+        )
+      })}
     </>
   )
 }

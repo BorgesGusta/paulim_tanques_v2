@@ -162,57 +162,63 @@ export function Step2Tank() {
           </>
         )}
 
-        <fieldset className="flex flex-col gap-2">
-          <legend className="text-sm font-medium text-foreground mb-1">Bacia de contenção?</legend>
-          <p className="text-xs text-muted-foreground -mt-1">Estrutura que retém vazamentos ao redor do tanque.</p>
-          <div className="flex gap-3 mt-1">
-            {[{ value: true, label: 'Sim' }, { value: false, label: 'Não' }].map(({ value, label }) => (
-              <button
-                key={String(value)}
-                type="button"
-                onClick={() => update('tankContainment', value)}
-                className={cn(
-                  'rounded-lg border px-4 py-2 text-sm font-medium transition-colors',
-                  form.tankContainment === value
-                    ? 'border-brand-dark bg-brand-deep text-primary-foreground'
-                    : 'border-border hover:border-brand-dark/40',
-                )}
-              >
-                {label}
-              </button>
-            ))}
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+          <div className="shrink-0 sm:w-56">
+            <div className="aspect-video overflow-hidden rounded-xl border border-border bg-white">
+              <img
+                src={form.tankContainment ? '/assets/products/tanque-com-bacia.png' : '/assets/products/tanque-sem-bacia.png'}
+                alt={form.tankContainment ? 'Tanque estacionário com bacia de contenção' : 'Tanque estacionário sem bacia de contenção'}
+                className="h-full w-full object-contain p-2"
+              />
+            </div>
           </div>
-        </fieldset>
 
-        <div className="overflow-hidden rounded-xl border border-border">
-          <img
-            src={form.tankContainment ? '/assets/products/tanque-com-bacia.png' : '/assets/products/tanque-sem-bacia.png'}
-            alt={form.tankContainment ? 'Tanque estacionário com bacia de contenção' : 'Tanque estacionário sem bacia de contenção'}
-            className="h-40 w-full object-cover object-center bg-white"
-          />
+          <div className="flex flex-1 flex-col gap-4">
+            <fieldset className="flex flex-col gap-2">
+              <legend className="text-sm font-medium text-foreground mb-1">Bacia de contenção?</legend>
+              <p className="text-xs text-muted-foreground -mt-1">Estrutura que retém vazamentos ao redor do tanque.</p>
+              <div className="flex gap-3 mt-1">
+                {[{ value: true, label: 'Sim' }, { value: false, label: 'Não' }].map(({ value, label }) => (
+                  <button
+                    key={String(value)}
+                    type="button"
+                    onClick={() => update('tankContainment', value)}
+                    className={cn(
+                      'rounded-lg border px-4 py-2 text-sm font-medium transition-colors',
+                      form.tankContainment === value
+                        ? 'border-brand-dark bg-brand-deep text-primary-foreground'
+                        : 'border-border hover:border-brand-dark/40',
+                    )}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+
+            <fieldset className="flex flex-col gap-2">
+              <legend className="text-sm font-medium text-foreground mb-1">Bomba instalada?</legend>
+              <p className="text-xs text-muted-foreground -mt-1">Bomba e bico de abastecimento já montados no tanque.</p>
+              <div className="flex gap-3 mt-1">
+                {[{ value: true, label: 'Sim' }, { value: false, label: 'Não' }].map(({ value, label }) => (
+                  <button
+                    key={String(value)}
+                    type="button"
+                    onClick={() => update('tankPump', value)}
+                    className={cn(
+                      'rounded-lg border px-4 py-2 text-sm font-medium transition-colors',
+                      form.tankPump === value
+                        ? 'border-brand-dark bg-brand-deep text-primary-foreground'
+                        : 'border-border hover:border-brand-dark/40',
+                    )}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+          </div>
         </div>
-
-        <fieldset className="flex flex-col gap-2">
-          <legend className="text-sm font-medium text-foreground mb-1">Bomba instalada?</legend>
-          <p className="text-xs text-muted-foreground -mt-1">Bomba e bico de abastecimento já montados no tanque.</p>
-          <div className="flex gap-3 mt-1">
-            {[{ value: true, label: 'Sim' }, { value: false, label: 'Não' }].map(({ value, label }) => (
-              <button
-                key={String(value)}
-                type="button"
-                onClick={() => update('tankPump', value)}
-                className={cn(
-                  'rounded-lg border px-4 py-2 text-sm font-medium transition-colors',
-                  form.tankPump === value
-                    ? 'border-brand-dark bg-brand-deep text-primary-foreground'
-                    : 'border-border hover:border-brand-dark/40',
-                )}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </fieldset>
       </div>
 
       {error && <p className="text-sm text-destructive">{error}</p>}

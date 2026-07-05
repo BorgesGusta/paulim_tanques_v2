@@ -57,35 +57,15 @@ export function Step2WaterTank() {
         <h3 className="text-lg font-bold text-foreground">Configuração da caixa d'água</h3>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <fieldset className="flex flex-col gap-2">
-          <legend className="text-sm font-medium text-foreground mb-1">Modelo</legend>
-          <div className="flex flex-wrap gap-2">
-            {models.map(({ value, label }) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => update('waterTankModel', value)}
-                className={cn(
-                  'rounded-lg border px-4 py-2 text-sm font-medium transition-colors',
-                  form.waterTankModel === value
-                    ? 'border-brand-dark bg-brand-deep text-primary-foreground'
-                    : 'border-border hover:border-brand-dark/40',
-                )}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </fieldset>
-
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+        {/* Illustration — full image visible, no cropping */}
         {form.waterTankModel && (
-          <div className="flex flex-col gap-2">
-            <div className="overflow-hidden rounded-xl border border-border">
+          <div className="flex shrink-0 flex-col gap-2 sm:w-44">
+            <div className="aspect-3/4 overflow-hidden rounded-xl border border-border bg-white">
               <img
                 src={modelImages[form.waterTankModel]}
                 alt={`Caixa d'água modelo ${models.find((m) => m.value === form.waterTankModel)?.label}`}
-                className="h-40 w-full object-cover object-center bg-white"
+                className="h-full w-full object-contain p-2"
               />
             </div>
             <p className="text-xs leading-5 text-muted-foreground">
@@ -94,36 +74,59 @@ export function Step2WaterTank() {
           </div>
         )}
 
-        <Field>
-          <FieldLabel htmlFor="wt-volume">Volume</FieldLabel>
-          <Select value={form.waterTankVolume || null} onValueChange={(v) => update('waterTankVolume', v ?? '')}>
-            <SelectTrigger id="wt-volume" className="w-full">
-              <SelectValue placeholder="Selecione o volume" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                {volumes.map((v) => (
-                  <SelectItem key={v} value={v}>
-                    {Number(v).toLocaleString('pt-BR')} L
-                  </SelectItem>
-                ))}
-                <SelectItem value="outro">Outro volume</SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </Field>
+        <div className="flex flex-1 flex-col gap-4">
+          <fieldset className="flex flex-col gap-2">
+            <legend className="text-sm font-medium text-foreground mb-1">Modelo</legend>
+            <div className="flex flex-wrap gap-2">
+              {models.map(({ value, label }) => (
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => update('waterTankModel', value)}
+                  className={cn(
+                    'rounded-lg border px-4 py-2 text-sm font-medium transition-colors',
+                    form.waterTankModel === value
+                      ? 'border-brand-dark bg-brand-deep text-primary-foreground'
+                      : 'border-border hover:border-brand-dark/40',
+                  )}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </fieldset>
 
-        {form.waterTankVolume === 'outro' && (
           <Field>
-            <FieldLabel htmlFor="wt-volume-custom">Informe o volume</FieldLabel>
-            <Input
-              id="wt-volume-custom"
-              placeholder="Ex.: 40.000 L"
-              value={form.waterTankVolumeCustom}
-              onChange={(e) => update('waterTankVolumeCustom', e.target.value)}
-            />
+            <FieldLabel htmlFor="wt-volume">Volume</FieldLabel>
+            <Select value={form.waterTankVolume || null} onValueChange={(v) => update('waterTankVolume', v ?? '')}>
+              <SelectTrigger id="wt-volume" className="w-full">
+                <SelectValue placeholder="Selecione o volume" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {volumes.map((v) => (
+                    <SelectItem key={v} value={v}>
+                      {Number(v).toLocaleString('pt-BR')} L
+                    </SelectItem>
+                  ))}
+                  <SelectItem value="outro">Outro volume</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </Field>
-        )}
+
+          {form.waterTankVolume === 'outro' && (
+            <Field>
+              <FieldLabel htmlFor="wt-volume-custom">Informe o volume</FieldLabel>
+              <Input
+                id="wt-volume-custom"
+                placeholder="Ex.: 40.000 L"
+                value={form.waterTankVolumeCustom}
+                onChange={(e) => update('waterTankVolumeCustom', e.target.value)}
+              />
+            </Field>
+          )}
+        </div>
       </div>
 
       {error && <p className="text-sm text-destructive">{error}</p>}

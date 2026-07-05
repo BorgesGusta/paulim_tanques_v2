@@ -35,7 +35,7 @@ export function QuoteWizard() {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
-      <DialogContent showCloseButton>
+      <DialogContent showCloseButton className="sm:max-w-2xl">
         <DialogHeader className="sr-only">
           <DialogTitle>Solicitar orçamento</DialogTitle>
         </DialogHeader>
