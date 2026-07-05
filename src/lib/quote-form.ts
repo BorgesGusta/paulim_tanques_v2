@@ -22,6 +22,8 @@ export type QuoteForm = {
   tankBipartido: boolean
   tankLiquid2: TankLiquid | ''
   tankLiquid2Custom: string
+  tankContainment: boolean
+  tankPump: boolean
 
   // Step 2 – Equipamentos
   equipmentDescription: string
@@ -55,6 +57,8 @@ export const emptyQuoteForm: QuoteForm = {
   tankBipartido: false,
   tankLiquid2: '',
   tankLiquid2Custom: '',
+  tankContainment: false,
+  tankPump: false,
   equipmentDescription: '',
   locationType: '',
   locationName: '',
@@ -143,11 +147,16 @@ function productLabel(f: QuoteForm): string {
       ? f.tankVolumeCustom
       : `${Number(f.tankVolume).toLocaleString('pt-BR')} L`
     const liquid = f.tankLiquid === 'outro' ? f.tankLiquidCustom : (liquidMap[f.tankLiquid] ?? '')
+    const extras = [
+      f.tankContainment ? 'com bacia de contenção' : null,
+      f.tankPump ? 'com bomba instalada' : null,
+    ].filter(Boolean).join(', ')
+    const extrasSuffix = extras ? ` (${extras})` : ''
     if (f.tankBipartido) {
       const liquid2 = f.tankLiquid2 === 'outro' ? f.tankLiquid2Custom : (liquidMap[f.tankLiquid2] ?? '')
-      return `Tanque Estacionário Bipartido ${vol} — Lado 1: ${liquid} / Lado 2: ${liquid2}`
+      return `Tanque Estacionário Bipartido ${vol} — Lado 1: ${liquid} / Lado 2: ${liquid2}${extrasSuffix}`
     }
-    return `Tanque Estacionário ${vol} — ${liquid}`
+    return `Tanque Estacionário ${vol} — ${liquid}${extrasSuffix}`
   }
   return `Equipamentos: ${f.equipmentDescription}`
 }

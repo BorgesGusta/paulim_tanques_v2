@@ -19,6 +19,9 @@ export async function postToSheet(data: QuoteForm): Promise<void> {
     volumeTanque: data.tankVolume === 'outro' ? data.tankVolumeCustom : data.tankVolume || null,
     liquidoTanque: data.tankLiquid === 'outro' ? data.tankLiquidCustom : data.tankLiquid || null,
     bipartido: data.tankBipartido || null,
+    liquidoTanqueLado2: data.tankLiquid2 === 'outro' ? data.tankLiquid2Custom : data.tankLiquid2 || null,
+    baciaContencao: data.tankContainment || null,
+    bombaInstalada: data.tankPump || null,
     equipamentos: data.equipmentDescription || null,
     // step 3 fields
     tipoLocal: data.locationType,

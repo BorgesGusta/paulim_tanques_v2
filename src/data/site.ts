@@ -19,16 +19,16 @@ export const productCategories = [
     description:
       "Taça Cheia, Taça Vazia e Tubular. Volumes de 10.000 L a 50.000 L, com fabricação sob medida para instalações rurais, industriais e comerciais.",
     models: ['Taça Cheia', 'Taça Vazia', 'Tubular'],
-    imageSrc: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600',
-    imageAlt: "Reservatório de caixa d'água",
+    imageSrc: '/assets/products/caixa-dagua-ambiente.jpg',
+    imageAlt: "Caixa d'água Paulim Tanques instalada em fazenda",
   },
   {
     title: 'Tanques Estacionários',
     description:
       'Para armazenamento de diesel, gasolina, etanol, combustíveis e outros líquidos. O modelo bipartido permite dois produtos no mesmo tanque.',
     models: ['Tanque simples', 'Tanque bipartido'],
-    imageSrc: 'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=600',
-    imageAlt: 'Tanque estacionário industrial',
+    imageSrc: '/assets/products/tanque-ambiente.jpg',
+    imageAlt: 'Tanque estacionário Paulim Tanques instalado em fazenda',
   },
 ] as const
 

@@ -70,6 +70,12 @@ export function StepConfirm() {
         {form.product === 'tanque-estacionario' && (
           <Row label="Bipartido" value={form.tankBipartido ? 'Sim' : 'Não'} />
         )}
+        {form.product === 'tanque-estacionario' && (
+          <Row label="Bacia de contenção" value={form.tankContainment ? 'Sim' : 'Não'} />
+        )}
+        {form.product === 'tanque-estacionario' && (
+          <Row label="Bomba instalada" value={form.tankPump ? 'Sim' : 'Não'} />
+        )}
         {form.product === 'equipamentos' && (
           <Row label="Equipamentos" value={form.equipmentDescription} />
         )}
