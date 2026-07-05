@@ -17,7 +17,7 @@ const models: { value: WaterTankModel; label: string; description: string }[] = 
   {
     value: 'coluna-seca',
     label: 'Coluna Seca',
-    description: 'A coluna de sustentação é apenas estrutural — só o reservatório no topo armazena água.',
+    description: 'A coluna de sustentação é apenas estrutural. Só o reservatório no topo armazena água.',
   },
   {
     value: 'tubular',

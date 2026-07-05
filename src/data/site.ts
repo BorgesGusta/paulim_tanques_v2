@@ -139,12 +139,12 @@ export const clientLogos: { name: string; logoSrc: string | null }[] = [
 export const testimonials = [
   {
     name: 'João Ferreira',
-    role: 'Gerente de Fazenda — Pará',
+    role: 'Gerente de Fazenda, Pará',
     quote: '[Depoimento do cliente aqui]',
   },
   {
     name: 'Carlos Mota',
-    role: 'Proprietário de Posto — Marabá',
+    role: 'Proprietário de Posto, Marabá',
     quote: '[Depoimento do cliente aqui]',
   },
 ] as const
@@ -161,7 +161,7 @@ export const contact = {
   whatsappNumber: WHATSAPP_NUMBER,
   whatsappLabel: '(94) 99156-2929',
   serviceArea: 'Marabá, Pará',
-  address: 'RD PA 150, 48 — Próximo ao Motel, Distrito Industrial, Marabá - PA, 68500-001',
+  address: 'RD PA 150, 48, Próximo ao Motel, Distrito Industrial, Marabá - PA, 68500-001',
   email: 'vendas@paulimtanques.com.br',
   instagramUrl: 'https://www.instagram.com/paulimtanques/',
   facebookUrl: 'https://www.facebook.com/profile.php?id=61559910652895',

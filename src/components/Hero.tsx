@@ -103,13 +103,13 @@ export function Hero() {
             className="hero-enter font-display font-extrabold leading-[0.95] tracking-[-0.04em] text-primary-foreground"
             style={{ fontSize: 'clamp(2.6rem, 6vw, 5.5rem)', textWrap: 'balance', animationDelay: '160ms' } as React.CSSProperties}
           >
-            Soluções técnicas para operações que não podem parar.
+            Soluções para operações que não podem parar.
           </h1>
 
           {/* Subtitle */}
           <p className="hero-enter max-w-[52ch] text-lg leading-8 text-primary-foreground/80" style={{ animationDelay: '240ms' }}>
             Fabricamos, mantemos e entregamos tanques e equipamentos de
-            abastecimento direto na sua operação — em toda a região Norte, sem enrolação.
+            abastecimento em toda a região Norte.
           </p>
 
           {/* Proof points */}

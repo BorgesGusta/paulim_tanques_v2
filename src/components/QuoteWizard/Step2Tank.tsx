@@ -102,7 +102,7 @@ export function Step2Tank() {
 
         <Field>
           <FieldLabel htmlFor="tank-liquid">
-            {form.tankBipartido ? 'Líquido armazenado — lado 1' : 'Líquido armazenado'}
+            {form.tankBipartido ? 'Líquido armazenado (lado 1)' : 'Líquido armazenado'}
           </FieldLabel>
           <Select value={form.tankLiquid || null} onValueChange={(v) => update('tankLiquid', v as TankLiquid ?? '')}>
             <SelectTrigger id="tank-liquid" className="w-full">
@@ -133,7 +133,7 @@ export function Step2Tank() {
         {form.tankBipartido && (
           <>
             <Field>
-              <FieldLabel htmlFor="tank-liquid-2">Líquido armazenado — lado 2</FieldLabel>
+              <FieldLabel htmlFor="tank-liquid-2">Líquido armazenado (lado 2)</FieldLabel>
               <Select value={form.tankLiquid2 || null} onValueChange={(v) => update('tankLiquid2', v as TankLiquid ?? '')}>
                 <SelectTrigger id="tank-liquid-2" className="w-full">
                   <SelectValue placeholder="Selecione o líquido" />

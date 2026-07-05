@@ -20,7 +20,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="section-shell flex min-h-16 items-center justify-between gap-4">
         {/* Logo */}
-        <a href="#inicio" aria-label="Paulim Tanques — início da página">
+        <a href="#inicio" aria-label="Paulim Tanques, início da página">
           <img
             src="/assets/paulim-tanques-logo.png"
             alt="Paulim Tanques"

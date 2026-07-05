@@ -101,7 +101,7 @@ export function CatalogRequestButton({
             <DialogHeader>
               <DialogTitle>Receba o catálogo por e-mail</DialogTitle>
               <DialogDescription>
-                Responda rapidinho — assim já te enviamos o catálogo certo pro que você precisa.
+                Responda rapidinho e já te enviamos o catálogo certo pro que você precisa.
               </DialogDescription>
             </DialogHeader>
 

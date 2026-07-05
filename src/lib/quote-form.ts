@@ -136,7 +136,7 @@ function productLabel(f: QuoteForm): string {
     const vol = f.waterTankVolume === 'outro'
       ? f.waterTankVolumeCustom
       : `${Number(f.waterTankVolume).toLocaleString('pt-BR')} L`
-    return `Caixa d'Água ${modelMap[f.waterTankModel] ?? ''} — ${vol}`
+    return `Caixa d'Água ${modelMap[f.waterTankModel] ?? ''} (${vol})`
   }
   if (f.product === 'tanque-estacionario') {
     const liquidMap: Record<string, string> = {
@@ -154,9 +154,9 @@ function productLabel(f: QuoteForm): string {
     const extrasSuffix = extras ? ` (${extras})` : ''
     if (f.tankBipartido) {
       const liquid2 = f.tankLiquid2 === 'outro' ? f.tankLiquid2Custom : (liquidMap[f.tankLiquid2] ?? '')
-      return `Tanque Estacionário Bipartido ${vol} — Lado 1: ${liquid} / Lado 2: ${liquid2}${extrasSuffix}`
+      return `Tanque Estacionário Bipartido ${vol}, Lado 1: ${liquid}, Lado 2: ${liquid2}${extrasSuffix}`
     }
-    return `Tanque Estacionário ${vol} — ${liquid}${extrasSuffix}`
+    return `Tanque Estacionário ${vol}, ${liquid}${extrasSuffix}`
   }
   return `Equipamentos: ${f.equipmentDescription}`
 }
@@ -167,14 +167,14 @@ function locationLabel(f: QuoteForm): string {
     posto: 'Posto de Combustível', outro: 'Outro',
   }
   const type = typeMap[f.locationType] ?? ''
-  const name = f.locationName ? ` — ${f.locationName}` : ''
+  const name = f.locationName ? ` (${f.locationName})` : ''
   const cnpj = f.cnpj ? ` (CNPJ: ${f.cnpj})` : ''
   return `${type}${name}${cnpj}`
 }
 
 export function buildQuoteWhatsAppUrl(f: QuoteForm): string {
   const lines = [
-    'Solicitação de orçamento — Paulim Tanques',
+    'Solicitação de orçamento, Paulim Tanques',
     '',
     `Produto: ${productLabel(f)}`,
     `Local: ${locationLabel(f)}`,
