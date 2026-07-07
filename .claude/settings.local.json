@@ -25,7 +25,13 @@
       "Bash(cat /tmp/commit-push23.txt)",
       "Bash(mv caixa-dagua-taca-cheia.png caixa-dagua-coluna-cheia.png)",
       "Bash(mv caixa-dagua-taca-vazia.png caixa-dagua-coluna-seca.png)",
-      "Bash(cat /tmp/model-rename-validation.txt)"
+      "Bash(cat /tmp/model-rename-validation.txt)",
+      "Bash(cat /tmp/commit-push24.txt)",
+      "Bash(cat /tmp/video-and-layout-validation.txt)",
+      "Bash(cat /tmp/commit-push25.txt)",
+      "Bash(cat /tmp/copy-fix-validation.txt)",
+      "Bash(cat /tmp/commit-push26.txt)",
+      "Bash(cat /tmp/hero-trustbar-validation.txt)"
     ]
   },
   "hooks": {

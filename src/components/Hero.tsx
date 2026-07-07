@@ -1,8 +1,52 @@
 import * as React from 'react'
-import { CheckCircle2, ArrowDown, FileText } from 'lucide-react'
+import { CheckCircle2, ArrowDown, FileText, Clock, PackageCheck, Truck } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useQuote } from '@/context/QuoteContext'
 import { CatalogRequestButton } from '@/components/CatalogRequest'
+import { trustItems } from '@/data/site'
+
+const trustIcons = [Clock, PackageCheck, Truck]
+
+function AnimatedValue({ value }: { value: string }) {
+  const match = value.match(/^(\d+)(.*)$/)
+  const ref = React.useRef<HTMLSpanElement>(null)
+  const [display, setDisplay] = React.useState(match ? `0${match[2]}` : value)
+
+  React.useEffect(() => {
+    if (!match) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const el = ref.current
+    if (!el) return
+
+    const target = Number(match[1])
+    const suffix = match[2]
+    let started = false
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || started) return
+        started = true
+        const duration = 1400
+        const startTime = performance.now()
+
+        function tick(now: number) {
+          const progress = Math.min((now - startTime) / duration, 1)
+          const eased = 1 - Math.pow(1 - progress, 3)
+          setDisplay(`${Math.round(target * eased)}${suffix}`)
+          if (progress < 1) requestAnimationFrame(tick)
+        }
+        requestAnimationFrame(tick)
+        observer.disconnect()
+      },
+      { threshold: 0.5 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  return <span ref={ref}>{match ? display : value}</span>
+}
 
 type HeroMedia = { type: 'image' | 'video'; src: string }
 
@@ -90,8 +134,17 @@ export function Hero() {
         aria-hidden="true"
       />
 
+      {/* Bottom scrim — legibility for the trust stats sitting on the image */}
+      <div
+        className="absolute inset-x-0 bottom-0 z-10 h-56"
+        style={{
+          background: 'linear-gradient(to top, oklch(0.17 0.03 145 / 0.85) 0%, transparent 100%)',
+        }}
+        aria-hidden="true"
+      />
+
       {/* Content */}
-      <div className="relative z-20 section-shell flex min-h-full flex-col justify-center gap-10 py-16 lg:max-w-2xl lg:py-24" style={{ minHeight: 'calc(100svh - 4rem)' }}>
+      <div className="relative z-20 section-shell flex min-h-full flex-col justify-center gap-10 py-16 pb-32 lg:max-w-2xl lg:py-24 lg:pb-36" style={{ minHeight: 'calc(100svh - 4rem)' }}>
         <div className="flex flex-col gap-6">
           {/* Evidence line */}
           <p className="hero-enter text-sm font-semibold text-primary-foreground/70" style={{ animationDelay: '80ms' }}>
@@ -149,6 +202,32 @@ export function Hero() {
               className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
             />
           </div>
+        </div>
+      </div>
+
+      {/* Trust stats — overlapping the bottom of the hero image */}
+      <div className="absolute inset-x-0 bottom-0 z-20 py-6 lg:py-8">
+        <div className="section-shell">
+          <dl className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-6">
+            {trustItems.map((item, index) => {
+              const Icon = trustIcons[index % trustIcons.length]
+              return (
+                <div
+                  key={item.label}
+                  className="reveal-stagger flex flex-col items-center gap-1.5 text-center"
+                  style={{ '--reveal-delay': `${index * 80}ms` } as React.CSSProperties}
+                >
+                  <Icon className="size-5 text-brand-light" aria-hidden="true" />
+                  <dt className="text-2xl font-extrabold text-primary-foreground leading-none sm:text-3xl">
+                    <AnimatedValue value={item.value} />
+                  </dt>
+                  <dd className="text-xs text-primary-foreground/70 max-w-[18ch] leading-snug">
+                    {item.label}
+                  </dd>
+                </div>
+              )
+            })}
+          </dl>
         </div>
       </div>
     </section>

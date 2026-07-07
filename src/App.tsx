@@ -1,7 +1,6 @@
 import { ScrollProgress } from '@/components/ScrollProgress'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
-import { TrustBar } from '@/components/TrustBar'
 import { ClientLogos } from '@/components/ClientLogos'
 import { Solutions } from '@/components/Solutions'
 import { Sectors } from '@/components/Sectors'
@@ -21,7 +20,6 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <TrustBar />
         <ClientLogos />
         <Solutions />
         <Sectors />
