@@ -28,6 +28,28 @@ export function loadGoogleMaps(): Promise<void> {
   return loadPromise
 }
 
+// Google appends its suggestion dropdown (.pac-container) to <body>, outside
+// any dialog/modal. If the dialog has "click outside closes" or focus-trap
+// logic listening on document in the capture phase, it can intercept the
+// pointerdown on a suggestion before Google's own click handler processes it
+// — the classic "have to select a suggestion twice" bug for Places
+// Autocomplete used inside a modal. Stopping propagation for anything inside
+// .pac-container keeps that pointerdown from ever reaching the dialog.
+function guardAutocompleteDropdownFromDialog(): () => void {
+  function stop(event: Event) {
+    const target = event.target as HTMLElement | null
+    if (target?.closest('.pac-container')) {
+      event.stopPropagation()
+    }
+  }
+  document.addEventListener('pointerdown', stop, true)
+  document.addEventListener('mousedown', stop, true)
+  return () => {
+    document.removeEventListener('pointerdown', stop, true)
+    document.removeEventListener('mousedown', stop, true)
+  }
+}
+
 export function initAutocomplete(
   input: HTMLInputElement,
   onPlace: (address: string, lat: number, lng: number) => void,
@@ -36,6 +58,7 @@ export function initAutocomplete(
     fields: ['formatted_address', 'geometry'],
     componentRestrictions: { country: 'br' },
   })
+  const unguard = guardAutocompleteDropdownFromDialog()
 
   const listener = autocomplete.addListener('place_changed', () => {
     const place = autocomplete.getPlace()
@@ -46,7 +69,10 @@ export function initAutocomplete(
     }
   })
 
-  return () => window.google.maps.event.removeListener(listener)
+  return () => {
+    window.google.maps.event.removeListener(listener)
+    unguard()
+  }
 }
 
 export function initCityAutocomplete(
@@ -58,6 +84,7 @@ export function initCityAutocomplete(
     types: ['(cities)'],
     componentRestrictions: { country: 'br' },
   })
+  const unguard = guardAutocompleteDropdownFromDialog()
 
   const listener = autocomplete.addListener('place_changed', () => {
     const place = autocomplete.getPlace()
@@ -73,7 +100,10 @@ export function initCityAutocomplete(
     }
   })
 
-  return () => window.google.maps.event.removeListener(listener)
+  return () => {
+    window.google.maps.event.removeListener(listener)
+    unguard()
+  }
 }
 
 export function createMapWithMarker(
@@ -87,6 +117,10 @@ export function createMapWithMarker(
     streetViewControl: false,
     mapTypeControl: false,
     fullscreenControl: false,
+    zoomControl: true,
+    zoomControlOptions: {
+      position: window.google.maps.ControlPosition.RIGHT_BOTTOM,
+    },
   })
 
   const marker = new window.google.maps.Marker({
