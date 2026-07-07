@@ -19,7 +19,7 @@ export function QuoteProvider({ children }: { children: React.ReactNode }) {
   const [step, setStep] = React.useState(1)
   const [form, setFormState] = React.useState<QuoteForm>(emptyQuoteForm)
 
-  function open(product?: QuoteProduct) {
+  const open = React.useCallback((product?: QuoteProduct) => {
     if (product) {
       setFormState((prev) => ({ ...prev, product }))
       setStep(2)
@@ -27,20 +27,20 @@ export function QuoteProvider({ children }: { children: React.ReactNode }) {
       setStep(1)
     }
     setIsOpen(true)
-  }
+  }, [])
 
-  function close() {
+  const close = React.useCallback(() => {
     setIsOpen(false)
-  }
+  }, [])
 
-  function reset() {
+  const reset = React.useCallback(() => {
     setFormState(emptyQuoteForm)
     setStep(1)
-  }
+  }, [])
 
-  function setForm(updater: (prev: QuoteForm) => QuoteForm) {
+  const setForm = React.useCallback((updater: (prev: QuoteForm) => QuoteForm) => {
     setFormState(updater)
-  }
+  }, [])
 
   return (
     <QuoteContext.Provider value={{ isOpen, open, close, step, setStep, form, setForm, reset }}>
