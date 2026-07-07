@@ -161,7 +161,7 @@ export function Hero() {
 
           {/* Subtitle */}
           <p className="hero-enter max-w-[52ch] text-lg leading-8 text-primary-foreground/80" style={{ animationDelay: '240ms' }}>
-            Fabricamos, mantemos e entregamos tanques e equipamentos de
+            Fabricação, manutenção e entrega de tanques e equipamentos de
             abastecimento em toda a região Norte.
           </p>
 
