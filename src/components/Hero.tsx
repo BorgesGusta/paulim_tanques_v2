@@ -134,9 +134,9 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      {/* Bottom scrim — legibility for the trust stats sitting on the image */}
+      {/* Bottom scrim — legibility for the trust stats sitting on the image (desktop overlay only) */}
       <div
-        className="absolute inset-x-0 bottom-0 z-10 h-56"
+        className="absolute inset-x-0 bottom-0 z-10 hidden h-56 lg:block"
         style={{
           background: 'linear-gradient(to top, oklch(0.17 0.03 145 / 0.85) 0%, transparent 100%)',
         }}
@@ -144,7 +144,7 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-20 section-shell flex min-h-full flex-col justify-center gap-10 py-16 pb-32 lg:max-w-2xl lg:py-24 lg:pb-36" style={{ minHeight: 'calc(100svh - 4rem)' }}>
+      <div className="relative z-20 section-shell flex flex-col justify-center gap-10 py-16 lg:max-w-2xl lg:py-24 lg:pb-36" style={{ minHeight: 'calc(100svh - 4rem)' }}>
         <div className="flex flex-col gap-6">
           {/* Evidence line */}
           <p className="hero-enter text-sm font-semibold text-primary-foreground/70" style={{ animationDelay: '80ms' }}>
@@ -205,8 +205,10 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Trust stats — overlapping the bottom of the hero image */}
-      <div className="absolute inset-x-0 bottom-0 z-20 py-6 lg:py-8">
+      {/* Trust stats — normal flow on mobile (so it never overlaps the taller
+          stacked content), overlapping the bottom of the hero image on desktop
+          where there's room to spare. */}
+      <div className="relative z-20 bg-brand-deep/40 py-8 lg:absolute lg:inset-x-0 lg:bottom-0 lg:bg-transparent lg:py-8">
         <div className="section-shell">
           <dl className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-6">
             {trustItems.map((item, index) => {
