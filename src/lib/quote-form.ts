@@ -122,7 +122,6 @@ export function validateStep4(f: QuoteForm): string | null {
   if (!f.clientEmail.trim() || !f.clientEmail.includes('@'))
     return 'Informe um e-mail válido.'
   if (!f.clientCity.trim()) return 'Informe a cidade.'
-  if (!f.clientState.trim()) return 'Informe o estado.'
   return null
 }
 
@@ -184,7 +183,7 @@ export function buildQuoteWhatsAppUrl(f: QuoteForm): string {
     `Nome: ${f.clientName}`,
     `WhatsApp: ${f.clientPhone}`,
     `E-mail: ${f.clientEmail}`,
-    `Cidade/Estado: ${f.clientCity} / ${f.clientState}`,
+    `Cidade: ${f.clientCity}${f.clientState ? ` (${f.clientState})` : ''}`,
     ...(f.notes.trim() ? [`Observações: ${f.notes}`] : []),
   ]
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`

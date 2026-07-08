@@ -88,7 +88,7 @@ export function StepConfirm() {
         <Row label="Nome" value={form.clientName} />
         <Row label="WhatsApp" value={form.clientPhone} />
         <Row label="E-mail" value={form.clientEmail} />
-        <Row label="Cidade/Estado" value={`${form.clientCity} / ${form.clientState}`} />
+        <Row label="Cidade" value={form.clientState ? `${form.clientCity} (${form.clientState})` : form.clientCity} />
         {form.notes && <Row label="Observações" value={form.notes} />}
       </dl>
 

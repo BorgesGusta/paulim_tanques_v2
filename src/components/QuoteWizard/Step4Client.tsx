@@ -85,30 +85,23 @@ export function Step4Client() {
           />
         </Field>
 
-        <div className="grid grid-cols-2 gap-3">
-          <Field>
-            <FieldLabel htmlFor="cl-city">Cidade</FieldLabel>
-            <Input
-              id="cl-city"
-              ref={cityRef}
-              placeholder="Digite e selecione sua cidade"
-              autoComplete="address-level2"
-              value={form.clientCity}
-              onChange={(e) => update('clientCity', e.target.value)}
-            />
-          </Field>
-          <Field>
-            <FieldLabel htmlFor="cl-state">Estado</FieldLabel>
-            <Input
-              id="cl-state"
-              placeholder="PA"
-              maxLength={2}
-              autoComplete="address-level1"
-              value={form.clientState}
-              onChange={(e) => update('clientState', e.target.value.toUpperCase())}
-            />
-          </Field>
-        </div>
+        <Field>
+          <FieldLabel htmlFor="cl-city">Cidade</FieldLabel>
+          <Input
+            id="cl-city"
+            ref={cityRef}
+            placeholder="Digite e selecione sua cidade"
+            autoComplete="address-level2"
+            value={form.clientCity}
+            onChange={(e) => {
+              update('clientCity', e.target.value)
+              setForm((prev) => ({ ...prev, clientState: '' }))
+            }}
+          />
+          {form.clientState && (
+            <p className="text-xs text-muted-foreground">Estado: {form.clientState}</p>
+          )}
+        </Field>
 
         <Field>
           <FieldLabel htmlFor="cl-notes">Observações (opcional)</FieldLabel>
